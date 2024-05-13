@@ -1,22 +1,83 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Demo Project</title>
+  <title>[Your Name] - Computer Science Student</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background-color: #f5f5f5;
+      background-color: #f8f9fa; /* Light gray background */
+      color: #333; /* Dark gray text */
+    }
+
+    .header {
+      background-color: #e0e0e0; /* Lighter gray for header */
+      padding: 10px 20px;
+      display: flex; /* Arrange elements horizontally */
+      align-items: center; /* Align vertically */
+      position: sticky; /* Make the header sticky */
+      top: 0; /* Stick to the top of the page */
+      z-index: 1000; /* Ensure it stays on top of other elements */
+    }
+
+    .header-title {
+      flex: 1; /* Take up remaining space in header */
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      list-style: none; /* Remove default bullet points */
+      padding: 0;
+      margin: 0;
+    }
+
+    .header-nav li {
+      margin-right: 20px;
+    }
+
+    .header-nav a {
+      color: inherit; /* Inherit text color from body */
+      text-decoration: none; /* Remove underline from links */
+    }
+
+    .header-nav a:hover {
+      text-decoration: underline; /* Underline links on hover */
+    }
+
+    .main {
+      display: flex; /* Keep flexbox for horizontal arrangement */
+      align-items: center; /* Align elements vertically */
+      margin-top: 20px;
+    }
+
+    .main-image {
+      flex: 0 0 auto; /* Remove flex grow and shrink, set a fixed width */
+      width: 150px; /* Adjust width as needed */
+      margin-right: 20px;
+    }
+
+    .main-image img {
+      width: 100%; /* Responsive image */
+      border-radius: 5px;
+    }
+
+    .main-content {
+      flex: 2;
     }
 
     h1 {
       text-align: center;
-      color: #333;
       font-size: 2em;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     p {
@@ -24,15 +85,53 @@
     }
 
     .highlight {
-      background-color: #f0e68c;
+      background-color: #e0e0e0; /* Lighter gray highlight */
       padding: 5px 10px;
       border-radius: 5px;
+    }
+
+    .resume-download {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .resume-download a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff; /* Blue background for download button */
+      color: #fff; /* White text for download button */
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .resume-download a:hover {
+      background-color: #0062cc; /* Darker blue on hover */
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to My Demo Project!</h1>
-  <p>This is a simple HTML page to showcase my demo project. Feel free to explore and customize it further.</p>
-  <p class="highlight">This paragraph is highlighted for your attention.</p>
+  <header class="header">
+    <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
+    <nav class="header-nav">
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Skills & Experience</a></li>
+      <li><a href="https://github.com/mantavya0807">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
+      <li><a href="#">Contact</a></li>
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="main-image">
+      <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan" style="border-radius: 50%; width: 150px; height: 150px;">
+    </div>
+    <div class="main-content">
+      <h1>Welcome!</h1>
+      <p>I'm a computer science student passionate about [mention your areas of interest in CS]. This website is a work in progress, but here you can learn more about me and my work.</p>
+      <div class="resume-download">
+        <a href="{% static 'Mantavya_Mahajan_Resume.pdf' %}">view Resume</a>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
