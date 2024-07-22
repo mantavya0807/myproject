@@ -18,20 +18,20 @@
     }
 
     .header {
-      background-color: #e0e0e0; /* Lighter gray for header */
-      padding: 10px 20px;
-      display: flex; /* Arrange elements horizontally */
-      align-items: center; /* Align vertically */
-      position: sticky; /* Make the header sticky */
-      top: 0; /* Stick to the top of the page */
-      z-index: 1000; /* Ensure it stays on top of other elements */
-    }
+  display: flex; /* Keep flexbox for horizontal arrangement */
+  align-items: center; /* Align vertically */
+  position: sticky; /* Make the header sticky */
+  top: 0; /* Stick to the top of the page */
+  z-index: 1000; /* Ensure it stays on top of other elements */
+  justify-content: space-between; /* Distribute content evenly with margins */
+}
 
-    .header-title {
-      flex: 1; /* Take up remaining space in header */
-      font-size: 1.5em;
-      margin: 0;
-    }
+.header-title {
+  /* No additional styles needed */
+  font-size: 1.5em;
+  margin: 0;
+}
+
 
     .header-nav {
       display: flex;
@@ -113,7 +113,8 @@
   <header class="header">
     <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
     <nav class="header-nav">
-      <li><a href="#">Projects</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="{% url 'project' %}">Projects</a></li>
       <li><a href="#">Skills & Experience</a></li>
       <li><a href="https://github.com/mantavya0807">GitHub</a></li>
       <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
@@ -127,7 +128,7 @@
     </div>
     <div class="main-content">
       <h1>Welcome!</h1>
-      <p>I'm a computer science student passionate about [mention your areas of interest in CS]. This website is a work in progress, but here you can learn more about me and my work.</p>
+      <p>Welcome to my personal website! I am currently a third-year student at Penn State University, where I am pursuing a double major in Computer Science and Computational Mathematics. My academic journey is fueled by a deep passion for technology and problem-solving. With a strong foundation in both theoretical and practical aspects of computing, I am dedicated to advancing my knowledge and skills in the field of computer science.As I look towards the future, I am excited to embark on a career that merges my interests in software development, data analysis, and algorithm design. Through my coursework and hands-on projects, I have developed a keen analytical mindset and a love for tackling complex challenges. I am eager to contribute to innovative solutions that can make a positive impact in the world.Thank you for visiting my site, and I invite you to explore my projects, experiences, and thoughts as I continue my journey in the dynamic and ever-evolving field of computer science.</p>
       <div class="resume-download">
         <a href="{% static 'Mantavya_Mahajan_Resume.pdf' %}">view Resume</a>
       </div>

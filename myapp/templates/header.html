@@ -1,0 +1,48 @@
+    .header {
+  display: flex; /* Keep flexbox for horizontal arrangement */
+  align-items: center; /* Align vertically */
+  position: sticky; /* Make the header sticky */
+  top: 0; /* Stick to the top of the page */
+  z-index: 1000; /* Ensure it stays on top of other elements */
+  justify-content: space-between; /* Distribute content evenly with margins */
+}
+
+.header-title {
+  /* No additional styles needed */
+  font-size: 1.5em;
+  margin: 0;
+}
+
+
+    .header-nav {
+      display: flex;
+      list-style: none; /* Remove default bullet points */
+      padding: 0;
+      margin: 0;
+    }
+
+    .header-nav li {
+      margin-right: 20px;
+    }
+
+    .header-nav a {
+      color: inherit; /* Inherit text color from body */
+      text-decoration: none; /* Remove underline from links */
+    }
+
+    .header-nav a:hover {
+      text-decoration: underline; /* Underline links on hover */
+    }
+
+
+      <header class="header">
+    <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
+    <nav class="header-nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="{% url 'project' %}">Projects</a></li>
+      <li><a href="#">Skills & Experience</a></li>
+      <li><a href="https://github.com/mantavya0807">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
+      <li><a href="#">Contact</a></li>
+    </nav>
+  </header>
