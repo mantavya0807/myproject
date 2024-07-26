@@ -5,37 +5,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[Your Name] - Computer Science Student</title>
+  <title>Mantavya Mahajan - Computer Science and Computational Mathematics</title>
   <!-- Add Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
-      background-color: #f8f9fa; /* Light gray background */
-      color: #333; /* Dark gray text */
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
     }
 
     .header {
-  display: flex; /* Keep flexbox for horizontal arrangement */
-  align-items: center; /* Align vertically */
-  position: sticky; /* Make the header sticky */
-  top: 0; /* Stick to the top of the page */
-  z-index: 1000; /* Ensure it stays on top of other elements */
-  justify-content: space-between; /* Distribute content evenly with margins */
-}
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background-color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-.header-title {
-  /* No additional styles needed */
-  font-size: 1.5em;
-  margin: 0;
-}
-
+    .header-title {
+      font-size: 1.5em;
+      margin: 0;
+    }
 
     .header-nav {
       display: flex;
-      list-style: none; /* Remove default bullet points */
+      list-style: none;
       padding: 0;
       margin: 0;
     }
@@ -45,29 +47,35 @@
     }
 
     .header-nav a {
-      color: inherit; /* Inherit text color from body */
-      text-decoration: none; /* Remove underline from links */
+      color: inherit;
+      text-decoration: none;
     }
 
     .header-nav a:hover {
-      text-decoration: underline; /* Underline links on hover */
+      text-decoration: underline;
     }
 
     .main {
-      display: flex; /* Keep flexbox for horizontal arrangement */
-      align-items: center; /* Align elements vertically */
-      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      margin-top: 80px;
+      padding: 20px;
     }
 
     .main-image {
-      flex: 0 0 auto; /* Remove flex grow and shrink, set a fixed width */
-      width: 150px; /* Adjust width as needed */
+      flex: 0 0 auto;
+      width: 150px;
       margin-right: 20px;
     }
 
     .main-image img {
-      width: 100%; /* Responsive image */
-      border-radius: 5px;
+      width: 100%;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .main-image img:hover {
+      transform: scale(1.1);
     }
 
     .main-content {
@@ -85,7 +93,7 @@
     }
 
     .highlight {
-      background-color: #e0e0e0; /* Lighter gray highlight */
+      background-color: #e0e0e0;
       padding: 5px 10px;
       border-radius: 5px;
     }
@@ -98,41 +106,122 @@
     .resume-download a {
       display: inline-block;
       padding: 10px 20px;
-      background-color: #007bff; /* Blue background for download button */
-      color: #fff; /* White text for download button */
+      background-color: #007bff;
+      color: #fff;
       text-decoration: none;
       border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
     }
 
     .resume-download a:hover {
-      background-color: #0062cc; /* Darker blue on hover */
+      background-color: #0056b3;
+    }
+
+    .section {
+      padding: 20px;
+      background-color: white;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    /* Smooth scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
+  <!-- Add smooth scrolling -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const links = document.querySelectorAll('.header-nav a');
+      for (const link of links) {
+        link.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          window.scrollTo({
+            top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
+            behavior: 'smooth'
+          });
+        });
+      }
+
+      // Fade-in effect for sections
+      const sections = document.querySelectorAll('.section');
+      const options = {
+        threshold: 0.1
+      };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
 </head>
 <body>
   <header class="header">
     <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
     <nav class="header-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="{% url 'project' %}">Projects</a></li>
-      <li><a href="#">Skills & Experience</a></li>
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'education' %}">Education</a></li>
       <li><a href="https://github.com/mantavya0807">GitHub</a></li>
       <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#contact">Contact</a></li>
     </nav>
   </header>
 
-  <main class="main">
+  <main class="main" id="home">
     <div class="main-image">
-      <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan" style="border-radius: 50%; width: 150px; height: 150px;">
+      <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan">
     </div>
     <div class="main-content">
       <h1>Welcome!</h1>
-      <p>Welcome to my personal website! I am currently a third-year student at Penn State University, where I am pursuing a double major in Computer Science and Computational Mathematics. My academic journey is fueled by a deep passion for technology and problem-solving. With a strong foundation in both theoretical and practical aspects of computing, I am dedicated to advancing my knowledge and skills in the field of computer science.As I look towards the future, I am excited to embark on a career that merges my interests in software development, data analysis, and algorithm design. Through my coursework and hands-on projects, I have developed a keen analytical mindset and a love for tackling complex challenges. I am eager to contribute to innovative solutions that can make a positive impact in the world.Thank you for visiting my site, and I invite you to explore my projects, experiences, and thoughts as I continue my journey in the dynamic and ever-evolving field of computer science.</p>
+      <p>Welcome to my personal website! I am currently a third-year student at Penn State University, where I am pursuing a double major in Computer Science and Computational Mathematics. My academic journey is fueled by a deep passion for technology and problem-solving. With a strong foundation in both theoretical and practical aspects of computing, I am dedicated to advancing my knowledge and skills in the field of computer science. As I look towards the future, I am excited to embark on a career that merges my interests in software development, data analysis, and algorithm design. Through my coursework and hands-on projects, I have developed a keen analytical mindset and a love for tackling complex challenges. I am eager to contribute to innovative solutions that can make a positive impact in the world. Thank you for visiting my site, and I invite you to explore my projects, experiences, and thoughts as I continue my journey in the dynamic and ever-evolving field of computer science.</p>
       <div class="resume-download">
-        <a href="{% static 'Mantavya_Mahajan_Resume.pdf' %}">view Resume</a>
+        <a href="{% static 'Mantavya_Mahajan_Resume.pdf' %}">View Resume</a>
+        <a href="{% static 'SSR_TSRPT.pdf' %}" style="margin-left: 10px;">Download Transcript</a>
       </div>
     </div>
   </main>
+
+  <section class="section" id="education">
+    <h2>Education</h2>
+    <p>My academic pursuits began at The Pennsylvania State University, where I am currently working towards a Bachelor of Science degree in Computer Science and Computational Mathematics. With a GPA of 3.6, I have consistently performed well, earning a spot on the Dean's List for multiple semesters including Fall 2022, Spring 2023, Fall 2023, and Spring 2024.</p>
+    <p>Throughout my studies, I have completed a variety of rigorous courses that have built a strong foundation in both computer science and mathematics. These courses include Python, Data Structures & Algorithms, Object-Oriented Programming, Discrete Mathematics, Programming Languages, Advanced Algorithms, System Programming, and Digital Design. Each course has provided me with invaluable knowledge and practical skills that I apply in my projects and research.</p>
+    <p>Prior to my time at Penn State, I completed my high school education at St. Xaviers School in Delhi, India, where I graduated with a GPA of 3.7. My education there laid the groundwork for my interest in computer science and mathematics, and prepared me well for the challenges of university-level coursework.</p>
+  </section>
+
+  <section class="section" id="current">
+    <h2>Current Undertaking</h2>
+    <p>Currently, I am diving deep into the world of Machine Learning and Artificial Intelligence, an area that fascinates me for its potential to revolutionize industries and solve complex problems. My current project involves building predictive models using neural networks to analyze large datasets, which has been a challenging yet incredibly rewarding experience.</p>
+    <p>This project is focused on solving real-world problems related to data analysis and prediction. By harnessing the power of neural networks, I aim to uncover patterns and insights that can significantly enhance decision-making processes. This involves rigorous data cleaning, feature engineering, and model training to ensure high accuracy and reliability of predictions.</p>
+    <p>One of the most exciting aspects of this undertaking is the opportunity to apply theoretical knowledge to practical scenarios. From handling large volumes of data to fine-tuning algorithms, every step brings new learning experiences and advancements in my skill set. I am eager to continue pushing the boundaries of what can be achieved with AI and look forward to the impactful contributions this work can make.</p>
+  </section>
+
+  <section class="section" id="work">
+    <h2>Current Work Experience</h2>
+    <p>In addition to my academic pursuits, I am currently gaining invaluable professional experience as a Full Stack Web Development Intern at Alchem International. This role has allowed me to apply my technical skills in a real-world setting and has been instrumental in my professional growth.</p>
+    <p>At Alchem International, I have been involved in developing and maintaining web applications using a diverse set of technologies including HTML, CSS, JavaScript, Bootstrap, jQuery, and PHP. I have worked on implementing new features and optimizing existing code to enhance the performance and functionality of web applications.</p>
+    <p>Collaborating with cross-functional teams, I have learned the importance of teamwork and effective communication. I participate in daily stand-up meetings, conduct code reviews, and use Git for version control and JIRA for project management. Managing databases using MySQL has also been a significant part of my responsibilities, where I ensure data integrity and optimize queries for better performance.</p>
+    <p>This internship has been a tremendous learning experience, providing me with practical insights into the software development lifecycle and reinforcing my passion for web development.</p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 Mantavya Mahajan. All rights reserved.</p>
+  </footer>
 </body>
 </html>

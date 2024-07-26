@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantavya Mahajan - Education</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background-color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-title {
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header-nav li {
+      margin-right: 20px;
+    }
+
+    .header-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+    .main-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .main-image {
+      width: 150px;
+      margin-bottom: 20px;
+      order: 1;
+      margin-left: auto;
+    }
+
+    .main-image img {
+      width: 100%;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .main-image img:hover {
+      transform: scale(1.1);
+    }
+
+    .content {
+      max-width: 800px;
+      order: 0;
+      flex: 1;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .highlight {
+      background-color: #e0e0e0;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .resume-download {
+      margin-top: 20px;
+      order: 2;
+      margin-left: auto;
+    }
+
+    .resume-download a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .resume-download a:hover {
+      background-color: #0056b3;
+    }
+
+    .section {
+      padding: 20px;
+      background-color: white;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    /* Smooth scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="header-title">Mantavya Mahajan - Education</h1>
+    <nav class="header-nav">
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'education' %}">Education</a></li>
+      <li><a href="https://github.com/mantavya0807">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="main-row">
+      <div class="content">
+        <h1>My Education Journey</h1>
+        <p>I am currently pursuing a Bachelor of Science degree in Computer Science and Computational Mathematics at The Pennsylvania State University. My academic journey at Penn State has been marked by rigorous coursework, outstanding performance, and a deep passion for technology and problem-solving.</p>
+        
+        <h2>Pennsylvania State University</h2>
+        <p>During my time at Penn State, I have maintained a GPA of 3.6 and have been honored on the Dean's List for multiple semesters, including Fall 2022, Spring 2023, Fall 2023, and Spring 2024. Additionally, I have achieved A grades in all my computer science courses, which include:</p>
+        <ul>
+          <li>Python</li>
+          <li>Data Structures & Algorithms</li>
+          <li>Object-Oriented Programming in Java</li>
+          <li>Discrete Mathematics</li>
+          <li>Programming Languages</li>
+          <li>Advanced Data Structures and Algorithms</li>
+          <li>System Programming</li>
+          <li>Digital Design</li>
+        </ul>
+        <p>These courses have been instrumental in building my foundation in both computer science and mathematics. They have equipped me with invaluable knowledge and practical skills, which I apply in my projects and research. My experience in these courses has not only honed my technical abilities but also enhanced my problem-solving skills and analytical thinking. Each course has presented unique challenges, from designing efficient algorithms to understanding the intricacies of programming languages, all of which I have tackled with determination and enthusiasm.</p>
+        
+        <h2>St. Xaviers School, Delhi, India</h2>
+        <p>Prior to my time at Penn State, I completed my high school education at St. Xaviers School in Delhi, India, graduating with a GPA of 3.7. My education there laid the groundwork for my interest in computer science and mathematics, and prepared me well for the challenges of university-level coursework. At St. Xaviers, I was actively involved in various extracurricular activities, which helped me develop a well-rounded skill set. I was a member of the school's science club, where I participated in science fairs and competitions, winning several accolades for my projects. My high school experience instilled in me a strong work ethic and a love for learning, which continue to drive me in my academic pursuits today.</p>
+      </div>
+      <div class="main-image">
+        <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan">
+      </div>
+    </div>
+    <div class="resume-download">
+      <a href="{% static 'SSR_TSRPT.pdf' %}">Download Transcript</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 Mantavya Mahajan. All rights reserved.</p>
+  </footer>
+</body>
+</html>
