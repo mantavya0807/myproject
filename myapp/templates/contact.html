@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Mantavya Mahajan</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background-color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-title {
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header-nav li {
+      margin-right: 20px;
+    }
+
+    .header-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      display: flex;
+      align-items: center;
+      margin-top: 80px;
+      padding: 20px;
+      flex-direction: column;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-form {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
+    <nav class="header-nav">
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'education' %}">Education</a></li>
+      <li><a href="{% url 'experience' %}">Skills & Experience</a></li>
+      <li><a href="https://github.com/mantavya0807">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="contact-info">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:mantavyamahajan08@gmail.com">mantavyamahajan08@gmail.com</a></p>
+    </div>
+    <form class="contact-form" id="contactForm">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+    <div id="successMessage" style="display:none; margin-top: 20px;" class="alert alert-success">
+      Message sent successfully!
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 Mantavya Mahajan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    $(document).ready(function(){
+      $('#contactForm').on('submit', function(event){
+        event.preventDefault();
+        $.ajax({
+          url: '{% url "contact" %}',
+          method: 'POST',
+          data: {
+            name: $('#name').val(),
+            email: $('#email').val(),
+            message: $('#message').val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+          },
+          success: function(response){
+            $('#successMessage').show();
+            $('#contactForm')[0].reset();
+          },
+          error: function(response){
+            alert('There was an error sending your message. Please try again.');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

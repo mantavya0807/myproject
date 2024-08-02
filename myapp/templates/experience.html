@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantavya Mahajan - Computer Science and Computational Mathematics</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background-color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-title {
+      font-size: 1.5em;
+      margin: 0;
+    }
+
+    .header-nav {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header-nav li {
+      margin-right: 20px;
+    }
+
+    .header-nav a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header-nav a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      display: flex;
+      align-items: center;
+      margin-top: 80px;
+      padding: 20px;
+    }
+
+    .main-image {
+      flex: 0 0 auto;
+      width: 150px;
+      margin-right: 20px;
+    }
+
+    .main-image img {
+      width: 100%;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .main-image img:hover {
+      transform: scale(1.1);
+    }
+
+    .main-content {
+      flex: 2;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .highlight {
+      background-color: #e0e0e0;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .resume-download {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .resume-download a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .resume-download a:hover {
+      background-color: #0056b3;
+    }
+
+    .section {
+      padding: 20px;
+      background-color: white;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    /* Smooth scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <!-- Add smooth scrolling -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const links = document.querySelectorAll('.header-nav a');
+      for (const link of links) {
+        link.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          window.scrollTo({
+            top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
+            behavior: 'smooth'
+          });
+        });
+      }
+
+      // Fade-in effect for sections
+      const sections = document.querySelectorAll('.section');
+      const options = {
+        threshold: 0.1
+      };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</head>
+<body>
+  <header class="header">
+    <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
+    <nav class="header-nav">
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'education' %}">Education</a></li>
+      <li><a href="{% url 'experience' %}">Skills & Experience</a></li>
+      <li><a href="https://github.com/mantavya0807">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </nav>
+  </header>
+
+  <section class="section" id="skills" style="margin-top: 2%;">
+    <h2>Skills</h2>
+    <p>Throughout my academic journey and various projects, I have developed a robust set of skills in multiple areas. These skills include:</p>
+    <ul>
+      <li>Proficiency in programming languages such as Python, Java, C, and PHP</li>
+      <li>Strong knowledge of data structures and algorithms</li>
+      <li>Experience in web development using HTML, CSS, JavaScript, Bootstrap, and jQuery</li>
+      <li>Database management and SQL</li>
+      <li>Understanding of machine learning and artificial intelligence concepts, including machine learning in Python</li>
+      <li>Proficiency with machine learning libraries such as scikit-learn, TensorFlow, and Keras</li>
+      <li>Experience with data analysis and data manipulation libraries like Pandas and NumPy</li>
+      <li>Data analysis and data visualization using Tableau</li>
+      <li>Ability to work with version control systems like Git</li>
+      <li>Strong problem-solving and analytical skills</li>
+    </ul>
+  </section>
+
+  <section class="section" id="internship">
+    <h2>Internship Experience at Alchem International</h2>
+    <p>In addition to my academic pursuits, I gained invaluable professional experience as a Full Stack Web Development Intern at Alchem International. This role allowed me to apply my technical skills in a real-world setting and was instrumental in my professional growth.</p>
+    <p>At Alchem International, I was involved in developing and maintaining web applications using a diverse set of technologies including HTML, CSS, JavaScript, Bootstrap, jQuery, and PHP. I worked on implementing new features and optimizing existing code to enhance the performance and functionality of web applications. My responsibilities included:</p>
+    <ul>
+      <li>Developing dynamic web pages using HTML, CSS, and JavaScript</li>
+      <li>Creating and managing database systems using MySQL</li>
+      <li>Implementing responsive designs with Bootstrap</li>
+      <li>Enhancing user experience through jQuery scripts</li>
+      <li>Conducting code reviews and participating in daily stand-up meetings</li>
+      <li>Using Git for version control and JIRA for project management</li>
+    </ul>
+    <p>Through this internship, I learned the importance of teamwork, effective communication, and project management, which are crucial skills in any professional setting. This experience provided me with practical insights into the software development lifecycle and reinforced my passion for web development.</p>
+  </section>
+
+  <section class="section" id="research">
+    <h2>Research in Open Source Software</h2>
+    <p>My research in open source software focuses on contributing to various open source projects and understanding the dynamics of open source communities. I have contributed to projects that involve improving code quality, adding new features, and fixing bugs. This experience has provided me with valuable insights into collaborative software development and the importance of community in open source projects.</p>
+    <p>Some of my contributions include:</p>
+    <ul>
+      <li>Enhancing the functionality of existing open source projects</li>
+      <li>Writing documentation and tutorials to help new contributors</li>
+      <li>Participating in code reviews and providing feedback to other contributors</li>
+      <li>Collaborating with developers from around the world</li>
+    </ul>
+    <p>This research has not only improved my technical skills but also taught me the significance of giving back to the community and the impact of collective effort in software development.</p>
+  </section>
+
+  <section class="section" id="research-assistant">
+    <h2>Research Assistant in Collaboration with the National Park Reserve</h2>
+    <p>As a Research Assistant, I collaborated with the National Park Reserve to analyze different audio sources in the wild. The primary goal of this project was to develop an algorithm that could automatically distinguish between basic and common sources of audio, such as wildlife sounds and environmental noise. My responsibilities included:</p>
+    <ul>
+      <li>Collecting and preprocessing audio data from various sources</li>
+      <li>Developing and training machine learning models to classify audio signals</li>
+      <li>Implementing algorithms for noise reduction and feature extraction</li>
+      <li>Evaluating the performance of the models and fine-tuning parameters</li>
+      <li>Collaborating with researchers and park rangers to validate the results</li>
+    </ul>
+    <p>This research project allowed me to apply my knowledge of machine learning and signal processing to solve real-world problems. It was a rewarding experience that contributed to the conservation efforts of the National Park Reserve by providing a tool for monitoring and analyzing wildlife activity.</p>
+  </section>
+
+  <section class="section" id="tutoring">
+    <h2>Math Peer Tutor</h2>
+    <p>As a Math Peer Tutor at Penn State University, I assist students in understanding complex mathematical concepts and solving problems. This role involves:</p>
+    <ul>
+      <li>Providing one-on-one tutoring sessions to students struggling with coursework</li>
+      <li>Explaining difficult concepts in a clear and concise manner</li>
+      <li>Helping students develop effective study strategies</li>
+      <li>Encouraging a positive attitude towards learning and problem-solving</li>
+    </ul>
+    <p>This experience has enhanced my communication skills and deepened my understanding of mathematical concepts. It is rewarding to see students improve their skills and gain confidence in their abilities.</p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2024 Mantavya Mahajan. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mantavya Mahajan - Education</title>
+  <title>Mantavya Mahajan - Computer Science and Computational Mathematics</title>
   <!-- Add Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <style>
@@ -57,23 +57,15 @@
 
     .main {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       margin-top: 80px;
       padding: 20px;
     }
 
-    .main-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      width: 100%;
-    }
-
     .main-image {
+      flex: 0 0 auto;
       width: 150px;
-      margin-bottom: 20px;
-      order: 1;
-      margin-left: auto;
+      margin-right: 20px;
     }
 
     .main-image img {
@@ -86,13 +78,12 @@
       transform: scale(1.1);
     }
 
-    .content {
-      max-width: 800px;
-      order: 0;
-      flex: 1;
+    .main-content {
+      flex: 2;
     }
 
     h1 {
+      text-align: center;
       font-size: 2em;
       margin-bottom: 10px;
     }
@@ -109,8 +100,7 @@
 
     .resume-download {
       margin-top: 20px;
-      order: 2;
-      margin-left: auto;
+      text-align: center;
     }
 
     .resume-download a {
@@ -128,12 +118,39 @@
     }
 
     .section {
+      position: relative;
       padding: 20px;
       background-color: white;
       margin: 20px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       opacity: 0;
       transition: opacity 0.6s ease-in-out;
+    }
+
+    .download-transcript {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .image-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .image-left img {
+      width: 200px; /* Made the image larger */
+      margin-right: 20px;
+    }
+
+    .image-right {
+      display: flex;
+      align-items: center;
+    }
+
+    .image-right img {
+      width: 150px;
+      margin-left: 20px;
     }
 
     .footer {
@@ -148,49 +165,108 @@
       scroll-behavior: smooth;
     }
   </style>
+  <!-- Add smooth scrolling -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const links = document.querySelectorAll('.header-nav a');
+      for (const link of links) {
+        link.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          window.scrollTo({
+            top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
+            behavior: 'smooth'
+          });
+        });
+      }
+
+      // Fade-in effect for sections
+      const sections = document.querySelectorAll('.section');
+      const options = {
+        threshold: 0.1
+      };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
 </head>
 <body>
   <header class="header">
-    <h1 class="header-title">Mantavya Mahajan - Education</h1>
+    <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
     <nav class="header-nav">
       <li><a href="{% url 'index' %}">Home</a></li>
       <li><a href="{% url 'education' %}">Education</a></li>
+      <li><a href="{% url 'experience' %}">Skills & Experience</a></li>
       <li><a href="https://github.com/mantavya0807">GitHub</a></li>
       <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
     </nav>
   </header>
 
-  <main class="main">
-    <div class="main-row">
-      <div class="content">
-        <h1>My Education Journey</h1>
-        <p>I am currently pursuing a Bachelor of Science degree in Computer Science and Computational Mathematics at The Pennsylvania State University. My academic journey at Penn State has been marked by rigorous coursework, outstanding performance, and a deep passion for technology and problem-solving.</p>
-        
-        <h2>Pennsylvania State University</h2>
-        <p>During my time at Penn State, I have maintained a GPA of 3.6 and have been honored on the Dean's List for multiple semesters, including Fall 2022, Spring 2023, Fall 2023, and Spring 2024. Additionally, I have achieved A grades in all my computer science courses, which include:</p>
-        <ul>
-          <li>Python</li>
-          <li>Data Structures & Algorithms</li>
-          <li>Object-Oriented Programming in Java</li>
-          <li>Discrete Mathematics</li>
-          <li>Programming Languages</li>
-          <li>Advanced Data Structures and Algorithms</li>
-          <li>System Programming</li>
-          <li>Digital Design</li>
-        </ul>
-        <p>These courses have been instrumental in building my foundation in both computer science and mathematics. They have equipped me with invaluable knowledge and practical skills, which I apply in my projects and research. My experience in these courses has not only honed my technical abilities but also enhanced my problem-solving skills and analytical thinking. Each course has presented unique challenges, from designing efficient algorithms to understanding the intricacies of programming languages, all of which I have tackled with determination and enthusiasm.</p>
-        
-        <h2>St. Xaviers School, Delhi, India</h2>
-        <p>Prior to my time at Penn State, I completed my high school education at St. Xaviers School in Delhi, India, graduating with a GPA of 3.7. My education there laid the groundwork for my interest in computer science and mathematics, and prepared me well for the challenges of university-level coursework. At St. Xaviers, I was actively involved in various extracurricular activities, which helped me develop a well-rounded skill set. I was a member of the school's science club, where I participated in science fairs and competitions, winning several accolades for my projects. My high school experience instilled in me a strong work ethic and a love for learning, which continue to drive me in my academic pursuits today.</p>
-      </div>
-      <div class="main-image">
-        <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan">
-      </div>
+  <section class="section" id="education" style="margin-top: 60px;">
+    <h2>Education</h2>
+    <p>My academic pursuits began at The Pennsylvania State University, where I am currently working towards a Bachelor of Science degree in Computer Science and Computational Mathematics. With a <b>GPA: 3.6</b>, I have consistently performed well, earning a spot on the Dean's List for multiple semesters including Fall 2022, Fall 2023, and Spring 2024.</p>
+    <div class="download-transcript">
+      <a href="{% static 'SSR_TSRPT.pdf' %}" class="btn btn-primary">Download Transcript</a>
     </div>
-    <div class="resume-download">
-      <a href="{% static 'SSR_TSRPT.pdf' %}">Download Transcript</a>
+  </section>
+
+  <section class="section image-left" id="undergrad">
+    <img src="{% static 'penn-state-logo.png' %}" alt="Penn State University">
+    <div class="content">
+      <h2>Undergraduate Education</h2>
+      <p>Throughout my studies, I have completed a variety of rigorous courses that have built a strong foundation in both computer science and mathematics. These courses include:</p>
+      <ul>
+        <li>Python</li>
+        <li>Data Structures & Algorithms</li>
+        <li>Object-Oriented Programming</li>
+        <li>Discrete Mathematics</li>
+        <li>Programming Languages</li>
+        <li>Advanced Algorithms</li>
+        <li>System Programming</li>
+        <li>Digital Design</li>
+        <li>Statistics</li>
+        <li>Game Theory</li>
+      </ul>
+      <p>Highlights of my undergraduate education include:</p>
+      <ul>
+        <li><b>Dean's List:</b> Achieved this honor in three semesters for outstanding academic performance.</li>
+        <li><b>Research Projects:</b> Worked on several research projects, including fluid dynamics using ANSYS, solar flares analysis, and audio analysis using machine learning to differentiate between different audio sources.</li>
+        <li><b>Extracurricular Activities:</b> Active mentor for incoming students in the College of Engineering, and a learning assistant for math and physics courses.</li>
+      </ul>
+      <p>Each course and project has provided me with invaluable knowledge and practical skills that I apply in my projects and research. I have developed a keen interest in areas such as software development, data analysis, and algorithm design, which I plan to pursue further in my career.</p>
     </div>
-  </main>
+  </section>
+
+  <section class="section image-right" id="highschool">
+    <div class="content">
+      <h2>High School Education</h2>
+      <p>Prior to my time at Penn State, I completed my high school education at St. Xaviers School in Delhi, India, where I graduated with a <b>GPA: 3.7</b>. My education there laid the groundwork for my interest in computer science and mathematics, and prepared me well for the challenges of university-level coursework.</p>
+      <p>During high school, I was actively involved in various extracurricular activities, which helped me develop a well-rounded skill set. I was a member of the school's science club, where I participated in science fairs and competitions, winning several accolades for my projects. My high school experience instilled in me a strong work ethic and a love for learning, which continue to drive me in my academic pursuits today.</p>
+    </div>
+    <img src="{% static 'school-logo.png' %}" alt="St. Xaviers School">
+  </section>
+
+  <section class="section" id="extra-courses">
+    <h2>Additional Courses</h2>
+    <p>In addition to my regular coursework, I have taken several online courses to further my knowledge and skills in computer science and related fields. These courses include:</p>
+    <ul>
+      <li><b>CS50 by David Malan:</b> A comprehensive introduction to computer science and programming.</li>
+      <li><b>Shell Scripting and Automation using Python:</b> A course from Coursera on automating tasks and scripting.</li>
+      <li><b>Google's Advanced Data Analysis Professional Certificate:</b> An in-depth program on data analysis techniques.</li>
+      <li><b>Kaggle Mini Courses on Machine Learning:</b> Practical, hands-on courses focusing on various aspects of machine learning.</li>
+    </ul>
+    <p>These additional courses have allowed me to stay updated with the latest trends and technologies in the industry, and have provided me with a competitive edge in my field. I am committed to lifelong learning and continuously seek opportunities to expand my expertise and stay ahead in the rapidly evolving field of technology.</p>
+  </section>
 
   <footer class="footer">
     <p>&copy; 2024 Mantavya Mahajan. All rights reserved.</p>
