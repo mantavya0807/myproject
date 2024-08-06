@@ -1,6 +1,6 @@
+from decouple import config
 from pathlib import Path
 import os
-from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-d3%$%2lt^af7zef&6y2+(ac#0hd4)%mb8&h^br$%lx+rgld(0l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
 # Application definition
 
@@ -111,7 +111,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email settings
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
