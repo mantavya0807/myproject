@@ -1,228 +1,727 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mantavya Mahajan - Computer Science and Computational Mathematics</title>
-  <!-- Add Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-      color: #333;
+{% block title %}Mantavya Mahajan - Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section" style="margin-top: 80px;">
+    <div class="hero-content">
+        <div class="profile-image">
+            <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan" class="profile-pic">
+        </div>
+        <div class="hero-text">
+            <h1 class="welcome-title">Hi, I'm Mantavya Mahajan</h1>
+            <p class="welcome-subtitle">Computer Science & Computational Mathematics Student</p>
+            <div class="typing-text" id="typingText">Welcome to my personal website! I’m a third-year student at Penn State University, double majoring in Computer Science and Computational Mathematics. Passionate about technology and problem-solving, I’ve built a strong foundation in both theoretical and practical aspects of computing. My interests lie in software development, data analysis, and algorithm design, and I’m excited to contribute to innovative solutions that make a positive impact. Explore my projects and experiences as I continue growing in the dynamic field of computer science. Thank you for visiting!</div>
+            <div class="cta-buttons">
+                <a href="{% static 'Mantavya_Mahajan_Resume.pdf' %}" class="cta-button primary">
+                    <i class="fas fa-file-alt"></i> View Resume
+                </a>
+                <a href="{% url 'contact' %}" class="cta-button secondary">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Replace existing stats section -->
+<div class="stats-section">
+    <div class="stat-card" role="button" tabindex="0">
+        <i class="fas fa-code"></i>
+        <div class="stat-content">
+            <h3 class="counter" data-target="10">0</h3>
+            <p>Projects Completed</p>
+        </div>
+        <div class="stat-tooltip" role="tooltip">
+            <h4>Project Portfolio</h4>
+            <ul>
+                <li>DermAI - ML-based skin condition classifier</li>
+                <li>AgriScience - Farm management platform</li>
+                <li>Course Scheduler - Academic planning tool</li>
+                <li>And many more innovative solutions!</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="stat-card" role="button" tabindex="0">
+        <i class="fas fa-laptop-code"></i>
+        <div class="stat-content">
+            <h3>3.6</h3>
+            <p>GPA</p>
+        </div>
+        <div class="stat-tooltip" role="tooltip">
+            <h4>Academic Achievement</h4>
+            <ul>
+                <li>Maintaining Dean's List standing</li>
+                <li>Double major in CS and Math</li>
+                <li>Advanced coursework in AI/ML</li>
+                <li>Top performer in core CS courses</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="stat-card" role="button" tabindex="0">
+        <i class="fas fa-users"></i>
+        <div class="stat-content">
+            <h3 class="counter" data-target="220">0</h3>
+            <p>Students Mentored</p>
+        </div>
+        <div class="stat-tooltip" role="tooltip">
+            <h4>Mentorship Impact</h4>
+            <ul>
+                <li>Lead Learning Assistant for CS courses</li>
+                <li>Peer tutor for Math 140 & Physics 211</li>
+                <li>EON Program Head Mentor</li>
+                <li>95% positive feedback from students</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="stat-card" role="button" tabindex="0">
+        <i class="fas fa-award"></i>
+        <div class="stat-content">
+            <h3>5x</h3>
+            <p>Dean's List</p>
+        </div>
+        <div class="stat-tooltip" role="tooltip">
+            <h4>Academic Excellence</h4>
+            <ul>
+                <li>Fall 2022 - Dean's List</li>
+                <li>Spring 2023 - Dean's List</li>
+                <li>Fall 2023 - Dean's List</li>
+                <li>Spring 2024 - Dean's List</li>
+                <li>Consistently top academic performance</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Projects -->
+<div class="section" id="featured-projects">
+    <h2><i class="fas fa-star"></i> Featured Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="project-content">
+                <h3>DermAI</h3>
+                <p>Machine learning model for acne classification with 70% accuracy rate</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">OpenCV</span>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-icon">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <div class="project-content">
+                <h3>AgriScience</h3>
+                <p>Django-based platform for optimizing crop growth and farm management</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Django</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">Bootstrap</span>
+                </div>
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-icon">
+                <i class="fas fa-calendar"></i>
+            </div>
+            <div class="project-content">
+                <h3>Course Scheduler</h3>
+                <p>Java application for efficient academic course scheduling</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Java</span>
+                    <span class="tech-tag">Derby DB</span>
+                    <span class="tech-tag">JavaFX</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Current Focus -->
+<div class="section" id="current-focus">
+    <h2><i class="fas fa-rocket"></i> Current Focus</h2>
+    <div class="focus-grid">
+        <div class="focus-card">
+            <div class="focus-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="focus-content">
+                <h3>Academic Excellence</h3>
+                <p>Pursuing a dual major in Computer Science and Computational Mathematics with focus on AI and Machine Learning</p>
+            </div>
+        </div>
+        <div class="focus-card">
+            <div class="focus-icon">
+                <i class="fas fa-flask"></i>
+            </div>
+            <div class="focus-content">
+                <h3>Research</h3>
+                <p>Working on innovative projects in machine learning and artificial intelligence applications</p>
+            </div>
+        </div>
+        <div class="focus-card">
+            <div class="focus-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="focus-content">
+                <h3>Technical Skills</h3>
+                <p>Expanding expertise in modern web technologies and cloud computing platforms</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .hero-section {
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 1rem;
+        margin-bottom: 2rem;
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      background-color: white;
-      padding: 10px 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .hero-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .header-title {
-      font-size: 1.5em;
-      margin: 0;
+    .profile-image {
+        flex: 0 0 300px;
     }
 
-    .header-nav {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .profile-pic {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
     }
 
-    .header-nav li {
-      margin-right: 20px;
+    .profile-pic:hover {
+        transform: scale(1.05);
     }
 
-    .header-nav a {
-      color: inherit;
-      text-decoration: none;
+    .hero-text {
+        flex: 1;
     }
 
-    .header-nav a:hover {
-      text-decoration: underline;
+    .welcome-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
     }
 
-    .main {
-      display: flex;
-      align-items: center;
-      margin-top: 80px;
-      padding: 20px;
+    .welcome-subtitle {
+        font-size: 1.5rem;
+        color: #666;
+        margin-bottom: 1rem;
     }
 
-    .main-image {
-      flex: 0 0 auto;
-      width: 150px;
-      margin-right: 20px;
+    .typing-text {
+        font-size: 1.25rem;
+        color: #333;
+        min-height: 1.5em;
     }
 
-    .main-image img {
-      width: 100%;
-      border-radius: 50%;
-      transition: transform 0.3s ease-in-out;
+    /* Stats Section */
+    .stats-section {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 0;
     }
 
-    .main-image img:hover {
-      transform: scale(1.1);
+    .stat-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        transition: transform 0.3s ease;
     }
 
-    .main-content {
-      flex: 2;
+    .stat-card:hover {
+        transform: translateY(-5px);
     }
 
-    h1 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 10px;
+    .stat-card i {
+        font-size: 2rem;
+        color: var(--primary-color);
     }
 
-    p {
-      line-height: 1.5;
+    .stat-content h3 {
+        font-size: 1.5rem;
+        margin: 0;
+        color: var(--primary-color);
     }
 
-    .highlight {
-      background-color: #e0e0e0;
-      padding: 5px 10px;
-      border-radius: 5px;
+    .stat-content p {
+        margin: 0;
+        color: #666;
     }
 
-    .resume-download {
-      margin-top: 20px;
-      text-align: center;
+    /* Projects Grid */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
     }
 
-    .resume-download a {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease-in-out;
+    .project-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
     }
 
-    .resume-download a:hover {
-      background-color: #0056b3;
+    .project-card:hover {
+        transform: translateY(-5px);
     }
 
-    .section {
-      padding: 20px;
-      background-color: white;
-      margin: 20px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transition: opacity 0.6s ease-in-out;
+    .project-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
     }
 
-    .footer {
-      background-color: #343a40;
-      color: white;
-      padding: 10px 0;
-      text-align: center;
+    .tech-stack {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
     }
 
-    /* Smooth scrolling for anchor links */
-    html {
-      scroll-behavior: smooth;
+    .tech-tag {
+        background: #e9ecef;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.875rem;
+        color: var(--primary-color);
     }
-  </style>
-  <!-- Add smooth scrolling -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const links = document.querySelectorAll('.header-nav a');
-      for (const link of links) {
-        link.addEventListener('click', function (e) {
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          window.scrollTo({
-            top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
-            behavior: 'smooth'
-          });
-        });
-      }
 
-      // Fade-in effect for sections
-      const sections = document.querySelectorAll('.section');
-      const options = {
-        threshold: 0.1
-      };
-      const observer = new IntersectionObserver((entries, observer) => {
+    /* Focus Grid */
+    .focus-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .focus-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .focus-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .focus-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    /* CTA Buttons */
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button.primary {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .cta-button.secondary {
+        background: white;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .hero-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .profile-image {
+            flex: 0 0 200px;
+        }
+
+        .stats-section {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .projects-grid,
+        .focus-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+            justify-content: center;
+        }
+
+        .hero-section {
+            padding: 2rem 1rem;
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.25rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .stats-section {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+        }
+
+        .cta-button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+    /* Add to your existing CSS */
+.profile-image {
+    position: relative;
+    flex: 0 0 300px;
+    margin-left: -50px; /* Shift image slightly to the left */
+}
+
+.profile-pic {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.5s ease;
+    border: 5px solid white;
+}
+
+.profile-image::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 1rem;
+    z-index: -1;
+    opacity: 0.1;
+    transition: all 0.5s ease;
+}
+
+.profile-image:hover .profile-pic {
+    transform: translateY(-10px) translateX(-10px);
+}
+
+.profile-image:hover::after {
+    transform: translateY(10px) translateX(10px);
+    opacity: 0.2;
+}
+
+/* Enhanced Stats Card Hover Effects */
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.stat-card:hover::before {
+    left: 100%;
+}
+
+/* Project Card Enhanced Hover */
+.project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::after {
+    content: 'View Project →';
+    position: absolute;
+    bottom: -40px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.project-card:hover::after {
+    bottom: 20px;
+    opacity: 1;
+}
+
+/* Focus Card Enhanced Hover */
+.focus-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.focus-icon {
+    transition: all 0.3s ease;
+}
+
+.focus-card:hover .focus-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Typing Text Container */
+.typing-container {
+    height: 3em;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.typing-text {
+    display: inline-block;
+    position: relative;
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Add this to make the typing cursor effect */
+.typing-text::after {
+    content: '|';
+    position: absolute;
+    right: -8px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Add new styles */
+.stat-card {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.stat-tooltip {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.stat-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background: white;
+}
+
+.stat-tooltip h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.stat-tooltip ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stat-tooltip li {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.stat-tooltip li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.stat-card:hover .stat-tooltip,
+.stat-card:focus .stat-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+
+.stat-card:hover,
+.stat-card:focus {
+    transform: translateY(-5px);
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    .stat-tooltip {
+        width: 200px;
+        font-size: 0.8rem;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const phrases = [
+        "Welcome to my personal website!",
+        "Exploring the future through code and innovation.",
+        "Passionate about Technology and Problem Solving.",
+        "Building solutions that make a difference."
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    const typingText = document.getElementById('typingText');
+    const typingDelay = 40;  // Reduced from 100 to 50
+    const erasingDelay = 25; // Reduced from 50 to 25
+    const newPhraseDelay = 1500; // Reduced from 2000 to 1500
+
+    function type() {
+        if (charIndex < phrases[phraseIndex].length) {
+            typingText.textContent = phrases[phraseIndex].substring(0, charIndex + 1);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        } else {
+            setTimeout(erase, newPhraseDelay);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            typingText.textContent = phrases[phraseIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        } else {
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(type, typingDelay);
+        }
+    }
+
+    type();
+
+    // Counter animation
+    function animateCounter(counter) {
+        const target = parseInt(counter.dataset.target);
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const animation = setInterval(() => {
+            current += increment;
+            counter.textContent = Math.floor(current);
+            
+            if (current >= target) {
+                counter.textContent = target;
+                clearInterval(animation);
+            }
+        }, 16);
+    }
+
+    // Initialize counters when visible
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            observer.unobserve(entry.target);
-          }
+            if (entry.isIntersecting && entry.target.classList.contains('counter')) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
         });
-      }, options);
-      sections.forEach(section => {
-        observer.observe(section);
-      });
     });
-  </script>
-</head>
-<body>
-  <header class="header">
-    <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
-    <nav class="header-nav">
-      <li><a href="{% url 'index' %}">Home</a></li>
-      <li><a href="{% url 'education' %}">Education</a></li>
-      <li><a href="{% url 'experience' %}">Skills & Experience</a></li>
-      <li><a href="https://github.com/mantavya0807">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
-      <li><a href="{% url 'contact' %}">Contact</a></li>
-    </nav>
-  </header>
 
-  <main class="main" id="home">
-    <div class="main-image">
-      <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan">
-    </div>
-    <div class="main-content">
-      <h1>Welcome!</h1>
-      <p>Welcome to my personal website! I am currently a third-year student at Penn State University, where I am pursuing a double major in Computer Science and Computational Mathematics. My academic journey is fueled by a deep passion for technology and problem-solving. With a strong foundation in both theoretical and practical aspects of computing, I am dedicated to advancing my knowledge and skills in the field of computer science. As I look towards the future, I am excited to embark on a career that merges my interests in software development, data analysis, and algorithm design. Through my coursework and hands-on projects, I have developed a keen analytical mindset and a love for tackling complex challenges. I am eager to contribute to innovative solutions that can make a positive impact in the world. Thank you for visiting my site, and I invite you to explore my projects, experiences, and thoughts as I continue my journey in the dynamic and ever-evolving field of computer science.</p>
-      <div class="resume-download">
-        <a href="{% static 'Mantavya_Mahajan_Resume.pdf' %}">View Resume</a>
-        <a href="{% static 'SSR_TSRPT.pdf' %}" style="margin-left: 10px;">Download Transcript</a>
-      </div>
-    </div>
-  </main>
+    document.querySelectorAll('.counter').forEach(counter => {
+        observer.observe(counter);
+    });
 
-  <section class="section" id="education">
-    <h2>Education</h2>
-    <p>My academic pursuits began at The Pennsylvania State University, where I am currently working towards a Bachelor of Science degree in Computer Science and Computational Mathematics. With a GPA of 3.6, I have consistently performed well, earning a spot on the Dean's List for multiple semesters including Fall 2022, Spring 2023, Fall 2023, and Spring 2024.</p>
-    <p>Throughout my studies, I have completed a variety of rigorous courses that have built a strong foundation in both computer science and mathematics. These courses include Python, Data Structures & Algorithms, Object-Oriented Programming, Discrete Mathematics, Programming Languages, Advanced Algorithms, System Programming, and Digital Design. Each course has provided me with invaluable knowledge and practical skills that I apply in my projects and research.</p>
-    <p>Prior to my time at Penn State, I completed my high school education at St. Xaviers School in Delhi, India, where I graduated with a GPA of 3.7. My education there laid the groundwork for my interest in computer science and mathematics, and prepared me well for the challenges of university-level coursework.</p>
-  </section>
-
-  <section class="section" id="current">
-    <h2>Current Undertaking</h2>
-    <p>Currently, I am diving deep into the world of Machine Learning and Artificial Intelligence, an area that fascinates me for its potential to revolutionize industries and solve complex problems. My current project involves building predictive models using neural networks to analyze large datasets, which has been a challenging yet incredibly rewarding experience.</p>
-    <p>This project is focused on solving real-world problems related to data analysis and prediction. By harnessing the power of neural networks, I aim to uncover patterns and insights that can significantly enhance decision-making processes. This involves rigorous data cleaning, feature engineering, and model training to ensure high accuracy and reliability of predictions.</p>
-    <p>One of the most exciting aspects of this undertaking is the opportunity to apply theoretical knowledge to practical scenarios. From handling large volumes of data to fine-tuning algorithms, every step brings new learning experiences and advancements in my skill set. I am eager to continue pushing the boundaries of what can be achieved with AI and look forward to the impactful contributions this work can make.</p>
-  </section>
-
-  <section class="section" id="work">
-    <h2>Current Work Experience</h2>
-    <p>In addition to my academic pursuits, I am currently gaining invaluable professional experience as a Full Stack Web Development Intern at Alchem International. This role has allowed me to apply my technical skills in a real-world setting and has been instrumental in my professional growth.</p>
-    <p>At Alchem International, I have been involved in developing and maintaining web applications using a diverse set of technologies including HTML, CSS, JavaScript, Bootstrap, jQuery, and PHP. I have worked on implementing new features and optimizing existing code to enhance the performance and functionality of web applications.</p>
-    <p>Collaborating with cross-functional teams, I have learned the importance of teamwork and effective communication. I participate in daily stand-up meetings, conduct code reviews, and use Git for version control and JIRA for project management. Managing databases using MySQL has also been a significant part of my responsibilities, where I ensure data integrity and optimize queries for better performance.</p>
-    <p>This internship has been a tremendous learning experience, providing me with practical insights into the software development lifecycle and reinforcing my passion for web development.</p>
-  </section>
-
-  <footer class="footer">
-    <p>&copy; 2024 Mantavya Mahajan. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    // Keyboard accessibility
+    document.querySelectorAll('.stat-card').forEach(card => {
+        card.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                card.focus();
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+{% endblock %}

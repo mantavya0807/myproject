@@ -6,7 +6,6 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# Create your views here.
 def index(request):
     return render(request, 'index.html')
 
@@ -63,6 +62,7 @@ def contact(request):
             return JsonResponse({"message": f"Failed to send message: {e}"})
 
     return render(request, 'contact.html')
+
 
 def experience(request):
     return render(request, 'experience.html')

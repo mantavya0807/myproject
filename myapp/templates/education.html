@@ -1,275 +1,199 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mantavya Mahajan - Computer Science and Computational Mathematics</title>
-  <!-- Add Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-      color: #333;
-    }
+{% block title %}Education - Mantavya Mahajan{% endblock %}
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      background-color: white;
-      padding: 10px 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .header-title {
-      font-size: 1.5em;
-      margin: 0;
-    }
-
-    .header-nav {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .header-nav li {
-      margin-right: 20px;
-    }
-
-    .header-nav a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .header-nav a:hover {
-      text-decoration: underline;
-    }
-
-    .main {
-      display: flex;
-      align-items: center;
-      margin-top: 80px;
-      padding: 20px;
-    }
-
-    .main-image {
-      flex: 0 0 auto;
-      width: 150px;
-      margin-right: 20px;
-    }
-
-    .main-image img {
-      width: 100%;
-      border-radius: 50%;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .main-image img:hover {
-      transform: scale(1.1);
-    }
-
-    .main-content {
-      flex: 2;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-
-    p {
-      line-height: 1.5;
-    }
-
-    .highlight {
-      background-color: #e0e0e0;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-
-    .resume-download {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .resume-download a {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease-in-out;
-    }
-
-    .resume-download a:hover {
-      background-color: #0056b3;
-    }
-
-    .section {
-      position: relative;
-      padding: 20px;
-      background-color: white;
-      margin: 20px 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transition: opacity 0.6s ease-in-out;
-    }
-
-    .download-transcript {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-
-    .image-left {
-      display: flex;
-      align-items: center;
-    }
-
-    .image-left img {
-      width: 200px; /* Made the image larger */
-      margin-right: 20px;
-    }
-
-    .image-right {
-      display: flex;
-      align-items: center;
-    }
-
-    .image-right img {
-      width: 150px;
-      margin-left: 20px;
-    }
-
-    .footer {
-      background-color: #343a40;
-      color: white;
-      padding: 10px 0;
-      text-align: center;
-    }
-
-    /* Smooth scrolling for anchor links */
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-  <!-- Add smooth scrolling -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const links = document.querySelectorAll('.header-nav a');
-      for (const link of links) {
-        link.addEventListener('click', function (e) {
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          window.scrollTo({
-            top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
-            behavior: 'smooth'
-          });
-        });
-      }
-
-      // Fade-in effect for sections
-      const sections = document.querySelectorAll('.section');
-      const options = {
-        threshold: 0.1
-      };
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            observer.unobserve(entry.target);
-          }
-        });
-      }, options);
-      sections.forEach(section => {
-        observer.observe(section);
-      });
-    });
-  </script>
-</head>
-<body>
-  <header class="header">
-    <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
-    <nav class="header-nav">
-      <li><a href="{% url 'index' %}">Home</a></li>
-      <li><a href="{% url 'education' %}">Education</a></li>
-      <li><a href="{% url 'experience' %}">Skills & Experience</a></li>
-      <li><a href="https://github.com/mantavya0807">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
-      <li><a href="{% url 'contact' %}">Contact</a></li>
-    </nav>
-  </header>
-
-  <section class="section" id="education" style="margin-top: 60px;">
-    <h2>Education</h2>
+{% block content %}
+<div id="education" class="section" style="margin-top: 80px;">
+    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
     <p>My academic pursuits began at The Pennsylvania State University, where I am currently working towards a Bachelor of Science degree in Computer Science and Computational Mathematics. With a <b>GPA: 3.6</b>, I have consistently performed well, earning a spot on the Dean's List for multiple semesters including Fall 2022, Fall 2023, and Spring 2024.</p>
     <div class="download-transcript">
-      <a href="{% static 'SSR_TSRPT.pdf' %}" class="btn btn-primary">Download Transcript</a>
+        <a href="{% static 'SSR_TSRPT.pdf' %}" class="btn btn-primary">
+            <i class="fas fa-download"></i> Download Transcript
+        </a>
     </div>
-  </section>
+</div>
 
-  <section class="section image-left" id="undergrad">
-    <img src="{% static 'penn-state-logo.png' %}" alt="Penn State University">
-    <div class="content">
-      <h2>Undergraduate Education</h2>
-      <p>Throughout my studies, I have completed a variety of rigorous courses that have built a strong foundation in both computer science and mathematics. These courses include:</p>
-      <ul>
-        <li>Python</li>
-        <li>Data Structures & Algorithms</li>
-        <li>Object-Oriented Programming</li>
-        <li>Discrete Mathematics</li>
-        <li>Programming Languages</li>
-        <li>Advanced Algorithms</li>
-        <li>System Programming</li>
-        <li>Digital Design</li>
-        <li>Statistics</li>
-        <li>Game Theory</li>
-      </ul>
-      <p>Highlights of my undergraduate education include:</p>
-      <ul>
-        <li><b>Dean's List:</b> Achieved this honor in three semesters for outstanding academic performance.</li>
-        <li><b>Research Projects:</b> Worked on several research projects, including fluid dynamics using ANSYS, solar flares analysis, and audio analysis using machine learning to differentiate between different audio sources.</li>
-        <li><b>Extracurricular Activities:</b> Active mentor for incoming students in the College of Engineering, and a learning assistant for math and physics courses.</li>
-      </ul>
-      <p>Each course and project has provided me with invaluable knowledge and practical skills that I apply in my projects and research. I have developed a keen interest in areas such as software development, data analysis, and algorithm design, which I plan to pursue further in my career.</p>
+<div class="section" id="undergrad">
+    <div class="education-container">
+        <div class="education-logo">
+            <img src="{% static 'penn-state-logo.png' %}" alt="Penn State University" style="width: 150px; height: auto;">
+        </div>
+        <div class="education-content">
+            <h2><i class="fas fa-university"></i> Undergraduate Education</h2>
+            <p>Throughout my studies, I have completed a variety of rigorous courses that have built a strong foundation in both computer science and mathematics. These courses include:</p>
+            <div class="courses-grid">
+                <div class="course-column">
+                    <h4>Computer Science</h4>
+                    <ul>
+                        <li><i class="fas fa-cogs"></i> Compilers and Interpreters</li>
+                        <li><i class="fas fa-project-diagram"></i> Data Structures & Algorithms</li>
+                        <li><i class="fas fa-cubes"></i> Object-Oriented Programming</li>
+                        <li><i class="fas fa-pencil-ruler"></i> Software Design</li>
+                        <li><i class="fas fa-terminal"></i> System Programming</li>
+                    </ul>
+                </div>
+                <div class="course-column">
+                    <h4>Mathematics</h4>
+                    <ul>
+                        <li><i class="fas fa-calculator"></i> Discrete Mathematics</li>
+                        <li><i class="fas fa-brain"></i> Advanced Algorithms</li>
+                        <li><i class="fas fa-microchip"></i> Digital Design</li>
+                        <li><i class="fas fa-chart-bar"></i> Statistics</li>
+                        <li><i class="fas fa-chess"></i> Game Theory</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Highlights</h3>
+            <ul class="achievements">
+                <li><i class="fas fa-award"></i> <b>Dean's List:</b> Achieved this honor in five semesters for outstanding academic performance.</li>
+                <li><i class="fas fa-flask"></i> <b>Research Projects:</b> Worked on several research projects, including fluid dynamics using ANSYS, solar flares analysis, and audio analysis using machine learning.</li>
+                <li><i class="fas fa-users"></i> <b>Extracurricular Activities:</b> Active mentor for incoming students and learning assistant for math and physics courses.</li>
+            </ul>
+        </div>
     </div>
-  </section>
+</div>
 
-  <section class="section image-right" id="highschool">
-    <div class="content">
-      <h2>High School Education</h2>
-      <p>Prior to my time at Penn State, I completed my high school education at St. Xaviers School in Delhi, India, where I graduated with a <b>GPA: 3.7</b>. My education there laid the groundwork for my interest in computer science and mathematics, and prepared me well for the challenges of university-level coursework.</p>
-      <p>During high school, I was actively involved in various extracurricular activities, which helped me develop a well-rounded skill set. I was a member of the school's science club, where I participated in science fairs and competitions, winning several accolades for my projects. My high school experience instilled in me a strong work ethic and a love for learning, which continue to drive me in my academic pursuits today.</p>
+<div class="section" id="highschool">
+    <div class="education-container">
+        <div class="education-logo">
+            <img src="{% static 'school-logo.png' %}" alt="St. Xaviers School" style="width: 120px; height: auto;">
+        </div>
+        <div class="education-content">
+            <h2><i class="fas fa-school"></i> High School Education</h2>
+            <p>Prior to my time at Penn State, I completed my high school education at St. Xaviers School in Delhi, India, where I graduated with a <b>GPA: 3.7</b>. My education there laid the groundwork for my interest in computer science and mathematics.</p>
+            <p>During high school, I was actively involved in various extracurricular activities, including the school's science club, where I participated in science fairs and competitions, winning several accolades for my projects.</p>
+        </div>
     </div>
-    <img src="{% static 'school-logo.png' %}" alt="St. Xaviers School">
-  </section>
+</div>
 
-  <section class="section" id="extra-courses">
-    <h2>Additional Courses</h2>
-    <p>In addition to my regular coursework, I have taken several online courses to further my knowledge and skills in computer science and related fields. These courses include:</p>
-    <ul>
-      <li><b>CS50 by David Malan:</b> A comprehensive introduction to computer science and programming.</li>
-      <li><b>Shell Scripting and Automation using Python:</b> A course from Coursera on automating tasks and scripting.</li>
-      <li><b>Google's Advanced Data Analysis Professional Certificate:</b> An in-depth program on data analysis techniques.</li>
-      <li><b>Kaggle Mini Courses on Machine Learning:</b> Practical, hands-on courses focusing on various aspects of machine learning.</li>
-    </ul>
-    <p>These additional courses have allowed me to stay updated with the latest trends and technologies in the industry, and have provided me with a competitive edge in my field. I am committed to lifelong learning and continuously seek opportunities to expand my expertise and stay ahead in the rapidly evolving field of technology.</p>
-  </section>
+<div class="section" id="extra-courses">
+    <h2><i class="fas fa-certificate"></i> Additional Courses</h2>
+    <p>In addition to my regular coursework, I have taken several online courses to further my knowledge and skills:</p>
+    <div class="courses-list">
+        <div class="course-item">
+            <i class="fas fa-laptop"></i>
+            <div>
+                <h4>CS50 by David Malan</h4>
+                <p>A comprehensive introduction to computer science and programming.</p>
+            </div>
+        </div>
+        <div class="course-item">
+            <i class="fas fa-terminal"></i>
+            <div>
+                <h4>Shell Scripting and Automation using Python</h4>
+                <p>A course from Coursera on automating tasks and scripting.</p>
+            </div>
+        </div>
+        <div class="course-item">
+            <i class="fas fa-chart-line"></i>
+            <div>
+                <h4>Google's Advanced Data Analysis Professional Certificate</h4>
+                <p>An in-depth program on data analysis techniques.</p>
+            </div>
+        </div>
+        <div class="course-item">
+            <i class="fas fa-robot"></i>
+            <div>
+                <h4>Kaggle Mini Courses on Machine Learning</h4>
+                <p>Practical, hands-on courses focusing on various aspects of machine learning.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <footer class="footer">
-    <p>&copy; 2024 Mantavya Mahajan. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+{% block extra_css %}
+<style>
+    .education-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .education-logo {
+        flex-shrink: 0;
+        padding: 1rem;
+    }
+
+    .education-content {
+        flex-grow: 1;
+    }
+
+    .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 1.5rem 0;
+    }
+
+    .course-column h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .course-column ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .course-column li {
+        margin-bottom: 0.5rem;
+    }
+
+    .course-column i {
+        margin-right: 0.5rem;
+        color: var(--primary-color);
+    }
+
+    .courses-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .course-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .course-item:hover {
+        transform: translateY(-3px);
+    }
+
+    .course-item i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+    }
+
+    .course-item h4 {
+        margin: 0 0 0.5rem 0;
+        color: var(--primary-color);
+    }
+
+    .course-item p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+        .education-container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .courses-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+{% endblock %}

@@ -1,156 +1,364 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Mantavya Mahajan</title>
-  <!-- Add Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-      color: #333;
-    }
+{% block title %}Contact - Mantavya Mahajan{% endblock %}
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      background-color: white;
-      padding: 10px 20px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .header-title {
-      font-size: 1.5em;
-      margin: 0;
-    }
-
-    .header-nav {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .header-nav li {
-      margin-right: 20px;
-    }
-
-    .header-nav a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .header-nav a:hover {
-      text-decoration: underline;
-    }
-
-    .main {
-      display: flex;
-      align-items: center;
-      margin-top: 80px;
-      padding: 20px;
-      flex-direction: column;
-    }
-
-    .contact-info {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .contact-form {
-      width: 100%;
-      max-width: 600px;
-      padding: 20px;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .footer {
-      background-color: #343a40;
-      color: white;
-      padding: 10px 0;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
-  <header class="header">
-    <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
-    <nav class="header-nav">
-      <li><a href="{% url 'index' %}">Home</a></li>
-      <li><a href="{% url 'education' %}">Education</a></li>
-      <li><a href="{% url 'experience' %}">Skills & Experience</a></li>
-      <li><a href="https://github.com/mantavya0807">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/">LinkedIn</a></li>
-      <li><a href="{% url 'contact' %}">Contact</a></li>
-    </nav>
-  </header>
-
-  <main class="main">
-    <div class="contact-info">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:mantavyamahajan08@gmail.com">mantavyamahajan08@gmail.com</a></p>
+{% block content %}
+<div class="contact-container" style="margin-top: 80px;">
+    <div class="contact-info-section">
+        <div class="contact-card">
+            <div class="contact-header">
+                <h2><i class="fas fa-paper-plane"></i> Get in Touch</h2>
+                <p class="subtitle">Let's create something amazing together</p>
+            </div>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <div class="method-details">
+                        <h3>Email</h3>
+                        <a href="mailto:mantavyamahajan08@gmail.com">mantavyamahajan08@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-phone"></i>
+                    <div class="method-details">
+                        <h3>Phone</h3>
+                        <a href="tel:+15645444219">+1 (564) 544-4219</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="method-details">
+                        <h3>Location</h3>
+                        <p>State College, Pennsylvania</p>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-link"></i>
+                    <div class="method-details">
+                        <h3>Social</h3>
+                        <div class="social-links">
+                            <a href="https://github.com/mantavya0807" target="_blank" class="social-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/" target="_blank" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <form class="contact-form" id="contactForm">
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
-    <div id="successMessage" style="display:none; margin-top: 20px;" class="alert alert-success">
-      Message sent successfully!
+
+    <div class="contact-form-section">
+      <form id="contactForm" class="animated-form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="input-animation"></div>
+            </div>
+            
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                </div>
+                <div class="input-animation"></div>
+            </div>
+            
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-comment-alt"></i>
+                    <textarea id="message" name="message" required placeholder="Your Message" rows="4"></textarea>
+                </div>
+                <div class="input-animation"></div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+                <span class="btn-text">Send Message</span>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <p>Message sent successfully!</p>
+        </div>
     </div>
-  </main>
+</div>
 
-  <footer class="footer">
-    <p>&copy; 2024 Mantavya Mahajan. All rights reserved.</p>
-  </footer>
+{% block extra_css %}
+<style>
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
 
-  <script>
-    $(document).ready(function(){
-      $('#contactForm').on('submit', function(event){
+.contact-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-header h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    background: #f8f9fa;
+    transform: translateX(10px);
+}
+
+.contact-method i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    width: 2rem;
+    text-align: center;
+}
+
+.method-details h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.method-details p,
+.method-details a {
+    margin: 0;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.method-details a:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.social-link {
+    font-size: 1.5rem;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Form Styling */
+.animated-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.input-group:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.input-group i {
+    color: #666;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.input-group input,
+.input-group textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.input-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.submit-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.submit-btn i {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+    transform: translateX(5px);
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #d1fae5;
+    color: #065f46;
+    border-radius: 0.5rem;
+    animation: slideUp 0.3s ease;
+}
+
+.success-message i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-method:hover {
+        transform: none;
+    }
+
+    .contact-card,
+    .animated-form {
+        padding: 1.5rem;
+    }
+}
+</style>
+
+<script>
+$(document).ready(function(){
+    let isSubmitting = false;
+    
+    $('#contactForm').on('submit', function(event){
         event.preventDefault();
+        if (isSubmitting) return;
+        
+        isSubmitting = true;
+        const submitBtn = $(this).find('.submit-btn');
+        const btnText = submitBtn.find('.btn-text');
+        const btnIcon = submitBtn.find('i');
+        
+        btnText.text('Sending...');
+        btnIcon.removeClass('fa-paper-plane').addClass('fa-spinner fa-spin');
+
         $.ajax({
-          url: '{% url "contact" %}',
-          method: 'POST',
-          data: {
-            name: $('#name').val(),
-            email: $('#email').val(),
-            message: $('#message').val(),
-            csrfmiddlewaretoken: '{{ csrf_token }}'
-          },
-          success: function(response){
-            $('#successMessage').show();
-            $('#contactForm')[0].reset();
-          },
-          error: function(response){
-            alert('There was an error sending your message. Please try again.');
-          }
+            url: '{% url "contact" %}',
+            type: 'POST',
+            data: {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                message: $('#message').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response){
+                $('#successMessage').slideDown();
+                $('#contactForm')[0].reset();
+                setTimeout(() => {
+                    $('#successMessage').slideUp();
+                }, 3000);
+            },
+            error: function(xhr){
+                let errorMessage = 'There was an error sending your message. Please try again.';
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
+                }
+                alert(errorMessage);
+            },
+            complete: function(){
+                isSubmitting = false;
+                btnText.text('Send Message');
+                btnIcon.removeClass('fa-spinner fa-spin').addClass('fa-paper-plane');
+            }
         });
-      });
     });
-  </script>
-</body>
-</html>
+});
+</script>
+
+{% endblock %}
+{% endblock %}
