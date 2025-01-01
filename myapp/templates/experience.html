@@ -1,734 +1,444 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Experience - Mantavya Mahajan{% endblock %}
+{% block title %}Skills & Experience - Mantavya Mahajan{% endblock %}
 
 {% block content %}
-<!-- Quick Navigation -->
-<div class="quick-nav-container">
-    <div class="quick-nav">
-        <a href="#skills" class="nav-item">
-            <i class="fas fa-tools"></i> <span>Skills</span>
-        </a>
-        <a href="#industry" class="nav-item">
-            <i class="fas fa-building"></i> <span>Industry</span>
-        </a>
-        <a href="#research" class="nav-item">
-            <i class="fas fa-flask"></i> <span>Research</span>
-        </a>
-        <a href="#leadership" class="nav-item">
-            <i class="fas fa-users"></i> <span>Leadership</span>
-        </a>
+
+<!-- Page Container -->
+<div class="section animate-fade-up" style="margin-top:80px;">
+  <h2 class="section-title">
+    <i class="fas fa-tools"></i> Skills Overview
+  </h2>
+  
+  <!-- Skills Grid -->
+  <div class="skills-grid">
+    <div class="skill-card animate-fade-up">
+        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+        <ul>
+            <li><strong>Python</strong> <span class="skill-level">Advanced</span></li>
+            <li><strong>Java</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>C/C++</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>TypeScript</strong> <span class="skill-level">Intermediate</span></li>
+        </ul>
     </div>
+    
+    <div class="skill-card animate-fade-up">
+        <h3><i class="fas fa-globe"></i> Web Technologies</h3>
+        <ul>
+            <li><strong>React / Angular</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>Node.js</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>Django</strong> <span class="skill-level">Advanced</span></li>
+            <li><strong>HTML / CSS / JS</strong> <span class="skill-level">Advanced</span></li>
+            <li><strong>GraphQL</strong> <span class="skill-level">Intermediate</span></li>
+        </ul>
+    </div>
+
+    <div class="skill-card animate-fade-up">
+        <h3><i class="fas fa-database"></i> Databases</h3>
+        <ul>
+            <li><strong>MySQL</strong> <span class="skill-level">Advanced</span></li>
+            <li><strong>PostgreSQL</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>MongoDB</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>Firebase</strong> <span class="skill-level">Intermediate</span></li>
+            <li><strong>Redis</strong> <span class="skill-level">Intermediate</span></li>
+        </ul>
+    </div>
+
+    <div class="skill-card animate-fade-up">
+        <h3><i class="fas fa-tools"></i> DevOps & Tools</h3>
+        <ul>
+            <li><strong>Docker</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>Git/GitHub</strong> <span class="skill-level">Advanced</span></li>
+            <li><strong>CI/CD</strong> <span class="skill-level">Proficient</span></li>
+        </ul>
+    </div>
+
+    <div class="skill-card animate-fade-up">
+        <h3><i class="fas fa-cloud"></i> Cloud Services & ML</h3>
+        <ul>
+            <li><strong>AWS</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>Firebase</strong> <span class="skill-level">Intermediate</span></li>
+            <li><strong>TensorFlow</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>PyTorch</strong> <span class="skill-level">Intermediate</span></li>
+            <li><strong>Scikit-learn</strong> <span class="skill-level">Proficient</span></li>
+            <li><strong>OpenCV</strong> <span class="skill-level">Intermediate</span></li>
+        </ul>
+    </div>
+
+  </div>
+
+<!-- Industry Experience -->
+<div class="section animate-fade-up">
+  <h2 class="section-title">
+    <i class="fas fa-building"></i> Industry Experience
+  </h2>
+  
+  <div class="experience-card animate-fade-up">
+    <div class="experience-header">
+      <h3>Co-Developer &amp; Technical Lead</h3>
+      <span class="company">M8 Social Platform</span>
+      <span class="duration">Aug 2024 - Present</span>
+    </div>
+    <div class="experience-content">
+      <p class="highlight-text">Driving AI-driven matchmaking and real-world social connections</p>
+      <ul class="achievement-list">
+        <li><i class="fas fa-check-circle"></i> Engineered an advanced ML matching algorithm that boosted match rates by 50%</li>
+        <li><i class="fas fa-check-circle"></i> Collaborated with local vendors on "D8s" experiences, increasing offline meetups by 60%</li>
+        <li><i class="fas fa-check-circle"></i> Implemented a filtering system reducing time-to-match by 75%</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="experience-card animate-fade-up">
+    <div class="experience-header">
+      <h3>Full Stack Developer Intern</h3>
+      <span class="company">Alchem International</span>
+      <span class="duration">May 2024 - Aug 2024</span>
+    </div>
+    <div class="experience-content">
+      <p class="highlight-text">Optimizing enterprise web apps through modern dev practices</p>
+      <ul class="achievement-list">
+        <li><i class="fas fa-rocket"></i> Improved page load times by 40% &amp; increased user engagement by 25%</li>
+        <li><i class="fas fa-code-branch"></i> Deployed automated testing, cutting bug reports by 45%</li>
+        <li><i class="fas fa-chart-line"></i> Developed analytics dashboards enabling real-time performance insights</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-<div class="section skills-section" id="skills" style="margin-top: 80px;">
-    <h2><i class="fas fa-tools"></i> Technical Expertise</h2>
-    
-    <div class="main-skills-row">
-        <div class="skill-group">
-            <h3><i class="fas fa-code"></i> Programming Languages</h3>
-            <div class="skill-bars">
-                <div class="skill-item">
-                    <span class="skill-name">Python</span>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="90"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Java</span>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="85"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">C/C++</span>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="80"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">TypeScript</span>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="75"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Research Experience -->
+<div class="section animate-fade-up">
+  <h2 class="section-title">
+    <i class="fas fa-flask"></i> Research Experience
+  </h2>
 
-        <div class="skill-group">
-            <h3><i class="fas fa-globe"></i> Web Technologies</h3>
-            <div class="skill-bars">
-                <div class="skill-item">
-                    <span class="skill-name">React/Angular</span>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="85"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Node.js</span>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="80"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Django</span>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="90"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">HTML/CSS/JS</span>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="95"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="research-grid">
+    <div class="research-card animate-fade-up">
+      <div class="research-icon">
+        <i class="fas fa-laptop-medical"></i>
+      </div>
+      <div class="research-content">
+        <h3>Medical LLM Optimization</h3>
+        <p class="institution">Penn State Healthcare Innovation Lab</p>
+        <p class="description">
+          Developing compact, privacy-focused language models for medical devices, achieving an 80% size reduction with 95% transcription accuracy.
+        </p>
+      </div>
     </div>
 
-    <div class="other-skills-row">
-        <div class="skill-box">
-            <div class="skill-icon"><i class="fas fa-database"></i></div>
-            <h3>Databases</h3>
-            <p>MySQL, PostgreSQL, Firebase, Redis</p>
-        </div>
-        <div class="skill-box">
-            <div class="skill-icon"><i class="fas fa-brain"></i></div>
-            <h3>Machine Learning</h3>
-            <p>TensorFlow, PyTorch, Scikit-learn</p>
-        </div>
-        <div class="skill-box">
-            <div class="skill-icon"><i class="fas fa-tools"></i></div>
-            <h3>Development Tools</h3>
-            <p>Git, Docker, AWS, Linux</p>
-        </div>
+    <div class="research-card animate-fade-up">
+      <div class="research-icon">
+        <i class="fas fa-code-branch"></i>
+      </div>
+      <div class="research-content">
+        <h3>Code Deobfuscation for LLMs</h3>
+        <p class="institution">OPARCS Lab, Penn State</p>
+        <p class="description">
+          Innovating code deobfuscation techniques to enhance AI comprehension of complex code. Achieved 85% success in restoring obfuscated code.
+        </p>
+      </div>
     </div>
+
+    <div class="research-card animate-fade-up">
+      <div class="research-icon">
+        <i class="fas fa-wind"></i>
+      </div>
+      <div class="research-content">
+        <h3>Fluid Dynamics Analysis</h3>
+        <p class="institution">Engineering Simulation Lab</p>
+        <p class="description">
+          Conducted advanced CFD and structural analysis for aerospace components, reducing simulation time by 60%.
+        </p>
+      </div>
+    </div>
+
+    <div class="research-card animate-fade-up">
+      <div class="research-icon">
+        <i class="fas fa-vr-cardboard"></i>
+      </div>
+      <div class="research-content">
+        <h3>AR Warehouse Optimization</h3>
+        <p class="institution">Industrial Engineering Dept</p>
+        <p class="description">
+          Implemented Augmented Reality solutions improving warehouse picking efficiency by 40% and cutting training time in half.
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="section" id="industry">
-    <h2><i class="fas fa-building"></i> Industry Experience</h2>
-    
-    <div class="experience-card">
-        <div class="experience-header">
-            <h3>Co-Developer & Technical Lead</h3>
-            <span class="company">M8 Social Platform</span>
-            <span class="duration">Aug 2024 - Present</span>
-        </div>
-        <div class="experience-content">
-            <p class="highlight-text">Pioneering the future of social connections through AI-driven matchmaking and real-world engagement</p>
-            <div class="achievements">
-                <div class="achievement-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Developed an innovative social platform that revolutionizes how people connect, utilizing advanced algorithms and machine learning for precise matching based on over 25 compatibility factors</span>
-                </div>
-                <div class="achievement-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Created the unique "D8s" feature, partnering with local businesses to offer curated experiences, leading to a 60% increase in real-world meetups among users</span>
-                </div>
-                <div class="achievement-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Implemented a sophisticated filtering system that reduced time-to-match by 75% compared to traditional platforms</span>
-                </div>
-            </div>
-        </div>
+<!-- Leadership Experience -->
+<div class="section animate-fade-up">
+  <h2 class="section-title">
+    <i class="fas fa-users"></i> Leadership
+  </h2>
+
+  <div class="leadership-grid">
+    <div class="leadership-card animate-fade-up">
+      <div class="leadership-icon">
+        <i class="fas fa-chalkboard-teacher"></i>
+      </div>
+      <div class="leadership-content">
+        <h3>Learning Assistant Program Lead</h3>
+        <p class="institution">Penn State University</p>
+        <p class="duration">Aug 2023 – May 2024</p>
+        <p class="description">
+          Spearheaded a peer tutoring program supporting 200+ students in STEM courses, boosting class performance by 25%.
+        </p>
+      </div>
     </div>
 
-    <div class="experience-card">
-        <div class="experience-header">
-            <h3>Full Stack Developer Intern</h3>
-            <span class="company">Alchem International</span>
-            <span class="duration">May 2024 - Aug 2024</span>
-        </div>
-        <div class="experience-content">
-            <p class="highlight-text">Transforming enterprise web applications through modern development practices and innovative solutions</p>
-            <div class="achievements">
-                <div class="achievement-item">
-                    <i class="fas fa-rocket"></i>
-                    <span>Engineered performance optimizations that reduced page load times by 40% and increased user engagement by 25%</span>
-                </div>
-                <div class="achievement-item">
-                    <i class="fas fa-code-branch"></i>
-                    <span>Implemented automated testing procedures that reduced bug reports by 45% and improved deployment efficiency</span>
-                </div>
-                <div class="achievement-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Developed analytics dashboard that provided real-time insights, leading to data-driven decisions and 30% improvement in user satisfaction</span>
-                </div>
-            </div>
-        </div>
+    <div class="leadership-card animate-fade-up">
+      <div class="leadership-icon">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <div class="leadership-content">
+        <h3>EON Program Head Mentor</h3>
+        <p class="institution">College of Engineering</p>
+        <p class="duration">Aug 2023 – May 2024</p>
+        <p class="description">
+          Oversaw mentorship for freshman CS majors, establishing structured guidance and improving retention by 15%.
+        </p>
+      </div>
     </div>
-</div>
-
-<div class="section" id="research">
-    <h2><i class="fas fa-flask"></i> Research Experience</h2>
-    
-    <div class="research-grid">
-        <div class="research-card">
-            <div class="research-icon">
-                <i class="fas fa-laptop-medical"></i>
-            </div>
-            <div class="research-content">
-                <h3>Medical LLM Optimization</h3>
-                <p class="institution">Penn State Healthcare Innovation Lab</p>
-                <p class="description">Leading research on optimizing large language models for medical applications, focusing on creating efficient, privacy-focused solutions that can run locally on medical devices. Achieved 80% reduction in model size while maintaining 95% accuracy in medical transcription tasks.</p>
-                <div class="research-highlights">
-                    <span class="highlight-tag">Model Optimization</span>
-                    <span class="highlight-tag">Healthcare AI</span>
-                    <span class="highlight-tag">Privacy Focus</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="research-card">
-            <div class="research-icon">
-                <i class="fas fa-code-branch"></i>
-            </div>
-            <div class="research-content">
-                <h3>Code Deobfuscation for LLMs</h3>
-                <p class="institution">OPARCS Lab, Penn State</p>
-                <p class="description">Developing innovative techniques for automated code deobfuscation to enhance LLM comprehension of complex codebases. Created a novel algorithm achieving 85% accuracy in restoring obfuscated code structure.</p>
-                <div class="research-highlights">
-                    <span class="highlight-tag">AI</span>
-                    <span class="highlight-tag">Code Analysis</span>
-                    <span class="highlight-tag">Machine Learning</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="research-card">
-            <div class="research-icon">
-                <i class="fas fa-wind"></i>
-            </div>
-            <div class="research-content">
-                <h3>Fluid Dynamics Analysis</h3>
-                <p class="institution">Engineering Simulation Lab</p>
-                <p class="description">Conducted advanced fluid dynamics and structural analysis using ANSYS, focusing on aerospace applications. Developed automated workflows that reduced simulation time by 60% while maintaining accuracy.</p>
-                <div class="research-highlights">
-                    <span class="highlight-tag">ANSYS</span>
-                    <span class="highlight-tag">CFD</span>
-                    <span class="highlight-tag">Automation</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="research-card">
-            <div class="research-icon">
-                <i class="fas fa-vr-cardboard"></i>
-            </div>
-            <div class="research-content">
-                <h3>AR Warehouse Optimization</h3>
-                <p class="institution">Industrial Engineering Department</p>
-                <p class="description">Pioneered the use of Augmented Reality for warehouse layout optimization, developing a system that improved picking efficiency by 40% and reduced training time by 60%.</p>
-                <div class="research-highlights">
-                    <span class="highlight-tag">AR</span>
-                    <span class="highlight-tag">Optimization</span>
-                    <span class="highlight-tag">Industry 4.0</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="section" id="leadership">
-    <h2><i class="fas fa-users"></i> Leadership Experience</h2>
-    
-    <div class="leadership-grid">
-        <div class="leadership-card">
-            <div class="leadership-icon">
-                <i class="fas fa-chalkboard-teacher"></i>
-            </div>
-            <div class="leadership-content">
-                <h3>Learning Assistant Program Lead</h3>
-                <p class="institution">Penn State University</p>
-                <p class="date">Aug 2023 – May 2024</p>
-                <p class="description">Led the peer tutoring initiative for core STEM courses, managing a team of 15 tutors and serving over 200 students. Developed innovative teaching methodologies that improved student performance by an average of 25%.</p>
-                <ul class="achievement-list">
-                    <li>Conducted 100+ personalized tutoring sessions</li>
-                    <li>Achieved 95% positive student feedback</li>
-                    <li>Created comprehensive study materials</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="leadership-card">
-            <div class="leadership-icon">
-                <i class="fas fa-user-graduate"></i>
-            </div>
-            <div class="leadership-content">
-                <h3>EON Program Head Mentor</h3>
-                <p class="institution">College of Engineering</p>
-                <p class="date">Aug 2023 – May 2024</p>
-                <p class="description">Spearheaded the mentorship program for incoming Computer Science students, implementing structured guidance programs that improved retention rates by 15%.</p>
-                <ul class="achievement-list">
-                    <li>Mentored 30+ first-year students</li>
-                    <li>Developed comprehensive onboarding guides</li>
-                    <li>Organized networking events and workshops</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 
 {% block extra_css %}
 <style>
-    /* Quick Navigation */
-    .quick-nav {
-        position: sticky;
-        top: 70px;
-        background: white;
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        z-index: 100;
-        margin-bottom: 2rem;
-        border-radius: 0.5rem;
-    }
-
-    .nav-item {
-        color: var(--text-color);
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .nav-item:hover {
-        background: var(--primary-color);
-        color: white;
-        transform: translateY(-2px);
-    }
-
-    /* Skills Section */
-    .skills-section {
-        padding: 2rem;
-    }
-
-    .main-skills-row {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        margin-bottom: 3rem;
-    }
-
-    .skill-group {
-        background: white;
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .skill-bars {
-        margin-top: 1.5rem;
-    }
-
-    .skill-item {
-        margin-bottom: 1.5rem;
-    }
-
-    .skill-name {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-    }
-
-    .skill-bar {
-        height: 8px;
-        background: #e9ecef;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-
-    .skill-progress {
-        width: 0;
-        height: 100%;
-        background: var(--primary-color);
-        border-radius: 4px;
-        transition: width 1.5s ease-in-out;
-    }
-
-    .other-skills-row {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    .skill-box {
-        background: white;
-        padding: 2rem;
-        border-radius: 1rem;
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-    }
-
-    .skill-box:hover {
-        transform: translateY(-5px);
-    }
-
-    .skill-icon {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: 1rem;
-    }
-
-    .experience-card {
-        background: white;
-        border-radius: 1rem;
-        padding: 2rem;
-        margin-bottom: 2rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    .experience-header {
-        margin-bottom: 1.5rem;
-    }
-
-    .company {
-        color: var(--primary-color);
-        font-weight: 500;
-        display: block;
-        margin: 0.5rem 0;
-    }
-
-    .duration {
-        color: #666;
-        font-style: italic;
-    }
-
-    .highlight-text {
-        font-size: 1.1rem;
-        color: #2d3748;
-        margin-bottom: 1.5rem;
-        font-weight: 500;
-    }
-
-    .achievement-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .achievement-item i {
-        color: var(--primary-color);
-        margin-top: 0.25rem;
-    }
-
-    /* Research Section */
-    .research-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-
-    .research-card {
-        background: white;
-        border-radius: 1rem;
-        padding: 2rem;
-        display: flex;
-        gap: 1.5rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-    }
-
-    .research-highlights {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-    }
-
-    .quick-nav-container {
-    position: fixed;
-    top: 50%;
-    right: -200px; /* Hidden by default */
-    transform: translateY(-50%);
-    z-index: 1000;
-    transition: right 0.3s ease-in-out;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 10px 0 0 10px;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    }
-
-    .quick-nav-container:hover {
-        right: 0;
-    }
-
-    .quick-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .nav-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        color: var(--text-color);
-        text-decoration: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.5rem;
-        transition: all 0.3s ease;
-        background: white;
-        position: relative;
-    }
-
-    .nav-item:hover {
-        transform: translateX(-10px);
-        background: var(--primary-color);
-        color: white;
-    }
-
-    .nav-item i {
-        font-size: 1.2rem;
-        transition: transform 0.3s ease;
-    }
-
-    .nav-item:hover i {
-        transform: scale(1.2);
-    }
-
-    /* Initial animation */
-    @keyframes showNav {
-        0% { right: -200px; }
-        20% { right: 0; }
-        80% { right: 0; }
-        100% { right: -200px; }
-    }
-
-    .quick-nav-container.show-initial {
-        animation: showNav 3s ease-in-out;
-    }
-
-    /* Add to your research grid */
-    .research-card.fluid-research {
-        background: linear-gradient(45deg, #f6f8fa, #ffffff);
-    }
-
-    .research-card.solar-research {
-        background: linear-gradient(45deg, #fff7e6, #ffffff);
-    }
-    .highlight-tag {
-        background: #e9ecef;
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.875rem;
-        color: var(--primary-color);
-    }
-
-    /* Leadership Section */
-    .leadership-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-
-    .leadership-card {
-        background: white;
-        border-radius: 1rem;
-        padding: 2rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-    }
-
-    .leadership-icon {
-        font-size: 2rem;
-        color: var(--primary-color);
-        margin-bottom: 1rem;
-    }
-
-    .achievement-list {
-        margin-top: 1rem;
-        padding-left: 1.5rem;
-    }
-
-    .achievement-list li {
-        margin-bottom: 0.5rem;
-    }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .quick-nav {
-        flex-wrap: wrap;
-        gap: 1rem;
-        padding: 0.5rem;
-    }
-
-    .research-grid,
-    .main-skills-row,
-    .other-skills-row,
-    .leadership-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .research-card,
-    .leadership-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem;
-    }
-
-    .research-icon,
-    .leadership-icon {
-        margin: 0 auto 1rem;
-    }
-
-    .research-highlights {
-        justify-content: center;
-    }
-
-    .skill-group {
-        padding: 1.5rem;
-    }
-
-    .skill-bars {
-        margin-top: 1rem;
-    }
-
-    .nav-item {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-    }
-
-    .experience-card {
-        padding: 1.5rem;
-    }
-
-    .experience-content {
-        text-align: left;
-    }
-
-    .achievement-item {
-        flex-direction: row;
-        text-align: left;
-        gap: 0.75rem;
-    }
-
-    .achievement-list {
-        text-align: left;
-    }
-
-    .highlight-text {
-        font-size: 1rem;
-        text-align: left;
-    }
+/* Section Title */
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-@media (max-width: 480px) {
-    .quick-nav {
-        position: relative;
-        top: 0;
-        margin-top: 80px;
-    }
+/* Grid Containers */
+.skills-grid,
+.research-grid,
+.leadership-grid {
+  display: grid;
+  gap: 2rem;
+}
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.research-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 1rem;
+}
+.leadership-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
 
-    .nav-item {
-        width: 100%;
-        justify-content: center;
-    }
+/* Card Styles */
+.skill-card,
+.experience-card,
+.research-card,
+.leadership-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden; /* For the hover highlight */
+}
 
-    .experience-header {
-        text-align: center;
-    }
+/* Hover highlight effect (like a shining strip) */
+.skill-card::before,
+.experience-card::before,
+.research-card::before,
+.leadership-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(130deg, rgba(255,255,255,0.3), transparent 50%);
+  transform: rotate(0deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
 
-    .skill-box {
-        padding: 1rem;
-    }
+/* On hover, slight lift + highlight shimmer */
+.skill-card:hover,
+.experience-card:hover,
+.research-card:hover,
+.leadership-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+.skill-card:hover::before,
+.experience-card:hover::before,
+.research-card:hover::before,
+.leadership-card:hover::before {
+  transform: rotate(30deg) translate(100%, -50%);
+  opacity: 0.6;
+}
 
-    .research-content,
-    .leadership-content {
-        padding: 0.5rem;
-    }
+/* Skill Card */
+.skill-card h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+.skill-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.skill-card li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: var(--text-color);
+}
+.skill-level {
+  color: var(--accent-color);
+  font-weight: 600;
+}
 
-    .highlight-tag {
-        font-size: 0.75rem;
-        padding: 0.2rem 0.5rem;
-    }
+/* Experience Cards */
+.experience-header h3 {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+.company {
+  color: var(--accent-color);
+  font-weight: 600;
+  display: block;
+  margin: 0.25rem 0;
+}
+.duration {
+  font-style: italic;
+  color: #94a3b8; /* text-light color */
+}
+.highlight-text {
+  color: var(--text-color);
+  font-weight: 500;
+  margin: 1rem 0;
+}
+.achievement-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.achievement-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #e2e8f0; /* main text color */
+}
+.achievement-list li i {
+  color: var(--primary-color);
+  margin-top: 3px;
+}
 
-    .section {
-        margin: 1rem 0;
-        padding: 1rem;
-    }
+/* Research Cards */
+.research-card {
+  display: flex;
+  gap: 1rem;
+}
+.research-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.research-card:hover .research-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+.research-content h3 {
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+}
+.institution {
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.description {
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+/* Leadership Cards */
+.leadership-icon {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.leadership-card:hover .leadership-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+.leadership-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+}
+.leadership-content .institution {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+.leadership-content .duration {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* Animations (Fade-up) */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  opacity: 0;
+}
+
+/* Responsive Design: Adjust as needed */
+@media (max-width: 768px) {
+  .research-card {
+    flex-direction: column;
+  }
+  .research-icon {
+    margin-bottom: 0.75rem;
+  }
 }
 </style>
+{% endblock %}
 
+{% block extra_js %}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Skill bar animation
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const progress = entry.target;
-                const percentage = progress.getAttribute('data-progress');
-                progress.style.width = percentage + '%';
-            }
-        });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.skill-progress').forEach(progress => {
-        observer.observe(progress);
+// Use Intersection Observer to apply the "fadeUp" animation
+document.addEventListener('DOMContentLoaded', () => {
+  const elements = document.querySelectorAll('.animate-fade-up');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeUp 0.8s ease forwards';
+        observer.unobserve(entry.target);
+      }
     });
-
-    document.addEventListener('DOMContentLoaded', function() {
-    // Initial animation
-    const navContainer = document.querySelector('.quick-nav-container');
-    navContainer.classList.add('show-initial');
-    
-    // Add hover detection area
-    const hoverArea = document.createElement('div');
-    hoverArea.style.cssText = 'position: fixed; top: 0; right: 0; width: 50px; height: 100%; z-index: 999;';
-    document.body.appendChild(hoverArea);
-    
-    hoverArea.addEventListener('mouseenter', () => {
-        navContainer.style.right = '0';
-    });
-    
-    navContainer.addEventListener('mouseleave', () => {
-        navContainer.style.right = '-200px';
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Show the quick navigation for 2 seconds on page load
-    const navContainer = document.querySelector('.quick-nav-container');
-    navContainer.classList.add('show-initial');
-
-    // Create an invisible hover area to trigger the navigation
-    const hoverArea = document.createElement('div');
-    hoverArea.style.cssText = 'position: fixed; top: 0; right: 0; width: 50px; height: 100%; z-index: 999;';
-    document.body.appendChild(hoverArea);
-
-    hoverArea.addEventListener('mouseenter', () => {
-        navContainer.style.right = '0';
-    });
-
-    navContainer.addEventListener('mouseleave', () => {
-        navContainer.style.right = '-200px';
-    });
-});
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-item').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            const headerOffset = 100;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        });
-    });
+  }, { threshold: 0.15 }); // Trigger when 15% of element is visible
+  
+  elements.forEach(el => observer.observe(el));
 });
 </script>
 {% endblock %}
-{% endblock %}
+{% endblock content %}

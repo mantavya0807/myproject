@@ -4,100 +4,213 @@
 {% block title %}Education - Mantavya Mahajan{% endblock %}
 
 {% block content %}
-<div id="education" class="section" style="margin-top: 80px;">
-    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-    <p>My academic pursuits began at The Pennsylvania State University, where I am currently working towards a Bachelor of Science degree in Computer Science and Computational Mathematics. With a <b>GPA: 3.6</b>, I have consistently performed well, earning a spot on the Dean's List for multiple semesters including Fall 2022, Fall 2023, and Spring 2024.</p>
-    <div class="download-transcript">
-        <a href="{% static 'SSR_TSRPT.pdf' %}" class="btn btn-primary">
-            <i class="fas fa-download"></i> Download Transcript
-        </a>
+<!-- Main Education Section -->
+<div id="education" class="section animate-fade-up">
+    <h2 class="section-title">
+        <i class="fas fa-graduation-cap"></i> Education
+    </h2>
+    <div class="education-summary">
+        <p class="intro-text">
+            My academic pursuits began at The Pennsylvania State University, where I am currently working towards a Bachelor of Science degree in Computer Science and Computational Mathematics. With a <b>GPA: 3.6</b>, I have consistently performed well, earning a spot on the Dean's List for multiple semesters including Fall 2022, Fall 2023, and Spring 2024.
+        </p>
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-star"></i></div>
+                <div class="stat-info">
+                    <h4>GPA</h4>
+                    <div class="stat-value">3.6</div>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="90%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-award"></i></div>
+                <div class="stat-info">
+                    <h4>Dean's List</h4>
+                    <div class="stat-value">5x</div>
+                    <div class="progress-bar">
+                        <div class="progress" data-width="100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="download-transcript">
+            <a href="{% static 'SSR_TSRPT.pdf' %}" class="btn btn-primary download-btn" download aria-label="Download Transcript">
+                <i class="fas fa-download"></i> Download Transcript
+                <span class="btn-hover"></span>
+            </a>
+        </div>
     </div>
 </div>
 
-<div class="section" id="undergrad">
+<!-- Undergraduate Education -->
+<div class="section animate-fade-up" id="undergrad">
     <div class="education-container">
         <div class="education-logo">
-            <img src="{% static 'penn-state-logo.png' %}" alt="Penn State University" style="width: 150px; height: auto;">
+            <img src="{% static 'penn-state-logo.png' %}" alt="Penn State University" class="rotate-in" aria-hidden="true">
         </div>
         <div class="education-content">
-            <h2><i class="fas fa-university"></i> Undergraduate Education</h2>
-            <p>Throughout my studies, I have completed a variety of rigorous courses that have built a strong foundation in both computer science and mathematics. These courses include:</p>
+            <h2 class="section-title">
+                <i class="fas fa-university"></i> Undergraduate Education
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2022 - Present</h3>
+                        <p>Penn State University</p>
+                    </div>
+                </div>
+            </div>
+            <p class="intro-text">
+                Throughout my studies, I have completed a variety of rigorous courses that have built a strong foundation in both computer science and mathematics. These courses include:
+            </p>
             <div class="courses-grid">
-                <div class="course-column">
-                    <h4>Computer Science</h4>
-                    <ul>
+                <div class="course-column card-hover">
+                    <h4><i class="fas fa-code"></i> Computer Science</h4>
+                    <ul class="animated-list">
                         <li><i class="fas fa-cogs"></i> Compilers and Interpreters</li>
                         <li><i class="fas fa-project-diagram"></i> Data Structures & Algorithms</li>
                         <li><i class="fas fa-cubes"></i> Object-Oriented Programming</li>
                         <li><i class="fas fa-pencil-ruler"></i> Software Design</li>
                         <li><i class="fas fa-terminal"></i> System Programming</li>
+                        <li><i class="fas fa-network-wired"></i> Computer Networks</li>
+                        <li><i class="fas fa-database"></i> Database Management</li>
+                        <li><i class="fas fa-shield-alt"></i> Cybersecurity Fundamentals</li>
                     </ul>
                 </div>
-                <div class="course-column">
-                    <h4>Mathematics</h4>
-                    <ul>
+                <div class="course-column card-hover">
+                    <h4><i class="fas fa-square-root-alt"></i> Mathematics</h4>
+                    <ul class="animated-list">
                         <li><i class="fas fa-calculator"></i> Discrete Mathematics</li>
                         <li><i class="fas fa-brain"></i> Advanced Algorithms</li>
                         <li><i class="fas fa-microchip"></i> Digital Design</li>
                         <li><i class="fas fa-chart-bar"></i> Statistics</li>
                         <li><i class="fas fa-chess"></i> Game Theory</li>
+                        <li><i class="fas fa-infinity"></i> Linear Algebra</li>
+                        <li><i class="fas fa-wave-square"></i> Differential Equations</li>
+                        <li><i class="fas fa-chart-line"></i> Numerical Analysis</li>
                     </ul>
                 </div>
             </div>
             
-            <h3>Highlights</h3>
-            <ul class="achievements">
-                <li><i class="fas fa-award"></i> <b>Dean's List:</b> Achieved this honor in five semesters for outstanding academic performance.</li>
-                <li><i class="fas fa-flask"></i> <b>Research Projects:</b> Worked on several research projects, including fluid dynamics using ANSYS, solar flares analysis, and audio analysis using machine learning.</li>
-                <li><i class="fas fa-users"></i> <b>Extracurricular Activities:</b> Active mentor for incoming students and learning assistant for math and physics courses.</li>
-            </ul>
+            <!-- Academic Achievements -->
+            <h3 class="section-title">
+                <i class="fas fa-trophy"></i> Academic Achievements
+            </h3>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-flask"></i></div>
+                    <h4>Independent Research</h4>
+                    <p>Led multiple research projects in fluid dynamics, solar flares analysis, and machine learning applications.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h4>Learning Assistant</h4>
+                    <p>Assisted in teaching and mentoring students in various computer science and math courses.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="section" id="highschool">
+<!-- High School Education -->
+<div class="section animate-fade-up" id="highschool">
     <div class="education-container">
         <div class="education-logo">
-            <img src="{% static 'school-logo.png' %}" alt="St. Xaviers School" style="width: 120px; height: auto;">
+            <img src="{% static 'school-logo.png' %}" alt="St. Xaviers School" class="rotate-in" aria-hidden="true">
         </div>
         <div class="education-content">
-            <h2><i class="fas fa-school"></i> High School Education</h2>
-            <p>Prior to my time at Penn State, I completed my high school education at St. Xaviers School in Delhi, India, where I graduated with a <b>GPA: 3.7</b>. My education there laid the groundwork for my interest in computer science and mathematics.</p>
-            <p>During high school, I was actively involved in various extracurricular activities, including the school's science club, where I participated in science fairs and competitions, winning several accolades for my projects.</p>
+            <h2 class="section-title">
+                <i class="fas fa-school"></i> High School Education
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2018 - 2022</h3>
+                        <p>St. Xaviers School, Delhi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="highschool-content">
+                <p class="intro-text">
+                    At St. Xaviers School in Delhi, India, I graduated with a <b>GPA: 3.7</b>, establishing a strong foundation for my higher education journey. My time here was marked by:
+                </p>
+                <ul class="achievement-list">
+                    <li><i class="fas fa-trophy"></i> First place in the National Science Olympiad</li>
+                    <li><i class="fas fa-medal"></i> Best Student Award for academic excellence</li>
+                    <li><i class="fas fa-microscope"></i> President of the Science Club</li>
+                    <li><i class="fas fa-robot"></i> Led the school's first Robotics Team</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="section" id="extra-courses">
-    <h2><i class="fas fa-certificate"></i> Additional Courses</h2>
-    <p>In addition to my regular coursework, I have taken several online courses to further my knowledge and skills:</p>
+<!-- Additional Courses -->
+<div class="section animate-fade-up" id="extra-courses">
+    <h2 class="section-title">
+        <i class="fas fa-certificate"></i> Professional Certifications & Additional Courses
+    </h2>
+    <p class="intro-text">
+        Continuously expanding my knowledge through professional certifications and specialized courses:
+    </p>
     <div class="courses-list">
-        <div class="course-item">
-            <i class="fas fa-laptop"></i>
-            <div>
-                <h4>CS50 by David Malan</h4>
-                <p>A comprehensive introduction to computer science and programming.</p>
+        <div class="enhanced-course-item card-hover">
+            <div class="course-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="course-details">
+                <h4>CS50 by Harvard University</h4>
+                <p>Comprehensive computer science fundamentals and programming principles.</p>
+                <div class="course-meta">
+                    <span class="course-date"><i class="fas fa-calendar-alt"></i> 2023</span>
+                    <span class="course-badge">With Distinction</span>
+                </div>
             </div>
         </div>
-        <div class="course-item">
-            <i class="fas fa-terminal"></i>
-            <div>
-                <h4>Shell Scripting and Automation using Python</h4>
-                <p>A course from Coursera on automating tasks and scripting.</p>
+
+        <div class="enhanced-course-item card-hover">
+            <div class="course-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="course-details">
+                <h4>Advanced Python Specialization</h4>
+                <p>Mastery in Python programming, automation, and scripting.</p>
+                <div class="course-meta">
+                    <span class="course-date"><i class="fas fa-calendar-alt"></i> 2023</span>
+                    <span class="course-badge">Coursera</span>
+                </div>
             </div>
         </div>
-        <div class="course-item">
-            <i class="fas fa-chart-line"></i>
-            <div>
-                <h4>Google's Advanced Data Analysis Professional Certificate</h4>
-                <p>An in-depth program on data analysis techniques.</p>
+
+        <div class="enhanced-course-item card-hover">
+            <div class="course-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="course-details">
+                <h4>Google Data Analytics Professional Certificate</h4>
+                <p>Comprehensive data analysis techniques and tools.</p>
+                <div class="course-meta">
+                    <span class="course-date"><i class="fas fa-calendar-alt"></i> 2024</span>
+                    <span class="course-badge">Professional Certificate</span>
+                </div>
             </div>
         </div>
-        <div class="course-item">
-            <i class="fas fa-robot"></i>
-            <div>
-                <h4>Kaggle Mini Courses on Machine Learning</h4>
-                <p>Practical, hands-on courses focusing on various aspects of machine learning.</p>
+
+        <div class="enhanced-course-item card-hover">
+            <div class="course-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="course-details">
+                <h4>Machine Learning Specialization</h4>
+                <p>Deep learning, neural networks, and AI applications.</p>
+                <div class="course-meta">
+                    <span class="course-date"><i class="fas fa-calendar-alt"></i> 2024</span>
+                    <span class="course-badge">Stanford Online</span>
+                </div>
             </div>
         </div>
     </div>
@@ -105,95 +218,604 @@
 
 {% block extra_css %}
 <style>
+    /* Base Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+        from { transform: translateX(-100px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+        from { transform: translateX(100px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes rotateIn {
+        from { transform: rotate(-180deg) scale(0); opacity: 0; }
+        to { transform: rotate(0) scale(1); opacity: 1; }
+    }
+
+    /* Animation Classes */
+    .animate-fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .slide-in-left {
+        animation: slideInLeft 1s ease forwards;
+    }
+
+    .slide-in-right {
+        animation: slideInRight 1s ease forwards;
+    }
+
+    .rotate-in {
+        animation: rotateIn 1.5s ease forwards;
+    }
+
+    /* Section Styling */
+    .section {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 3px;
+        background: var(--primary-color);
+        margin-left: 10px;
+        border-radius: 2px;
+    }
+
+    .intro-text {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    /* Stats Cards */
+    .stats-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .stat-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .stat-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover .stat-icon {
+        transform: scale(1.2);
+    }
+
+    .stat-info h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: #e9ecef;
+        border-radius: 3px;
+        margin-top: 0.5rem;
+        overflow: hidden;
+    }
+
+    .progress {
+        height: 100%;
+        background: var(--primary-color);
+        border-radius: 3px;
+        width: 0;
+        transition: width 1.5s ease;
+    }
+
+    /* Download Transcript Button */
+    .download-transcript {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .download-btn {
+        position: relative;
+        overflow: hidden;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        background: var(--primary-color);
+        color: white;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn-hover {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: left 0.3s ease;
+    }
+
+    .download-btn:hover .btn-hover {
+        left: 100%;
+    }
+
+    /* Education Container */
     .education-container {
         display: flex;
         align-items: flex-start;
         gap: 2rem;
-        padding: 1rem;
+        flex-wrap: wrap;
     }
 
-    .education-logo {
-        flex-shrink: 0;
-        padding: 1rem;
-    }
-
-    .education-content {
-        flex-grow: 1;
-    }
-
-    .courses-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin: 1.5rem 0;
-    }
-
-    .course-column h4 {
-        color: var(--primary-color);
-        margin-bottom: 1rem;
-    }
-
-    .course-column ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .course-column li {
-        margin-bottom: 0.5rem;
-    }
-
-    .course-column i {
-        margin-right: 0.5rem;
-        color: var(--primary-color);
-    }
-
-    .courses-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-        margin-top: 1.5rem;
-    }
-
-    .course-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 1rem;
-        background-color: #f8f9fa;
-        border-radius: 0.5rem;
+    .education-logo img {
+        width: 150px;
+        height: auto;
         transition: transform 0.3s ease;
     }
 
-    .course-item:hover {
-        transform: translateY(-3px);
+    .education-logo img:hover {
+        transform: scale(1.05);
     }
 
-    .course-item i {
-        font-size: 1.5rem;
-        color: var(--primary-color);
+    .education-content {
+        flex: 1;
     }
 
-    .course-item h4 {
-        margin: 0 0 0.5rem 0;
-        color: var(--primary-color);
+    /* Timeline */
+    .timeline {
+        position: relative;
+        margin: 2rem 0;
+        padding-left: 2rem;
+        border-left: 2px solid var(--primary-color);
     }
 
-    .course-item p {
+    .timeline-item {
+        position: relative;
+        margin-bottom: 2rem;
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: -8px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-dot {
+        transform: scale(1.2);
+    }
+
+    .timeline-content h3 {
         margin: 0;
-        font-size: 0.9rem;
+        font-size: 1.1rem;
+        color: var(--primary-color);
     }
 
-    @media (max-width: 768px) {
+    .timeline-content p {
+        margin: 0.5rem 0 0;
+        color: #555;
+    }
+
+    /* Courses Grid */
+    .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .course-column {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .course-column:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .course-column h4 {
+        font-size: 1.3rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .animated-list li {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slideInList 0.5s forwards;
+    }
+
+    .animated-list li:nth-child(1) { animation-delay: 0.2s; }
+    .animated-list li:nth-child(2) { animation-delay: 0.4s; }
+    .animated-list li:nth-child(3) { animation-delay: 0.6s; }
+    .animated-list li:nth-child(4) { animation-delay: 0.8s; }
+    .animated-list li:nth-child(5) { animation-delay: 1s; }
+    .animated-list li:nth-child(6) { animation-delay: 1.2s; }
+    .animated-list li:nth-child(7) { animation-delay: 1.4s; }
+    .animated-list li:nth-child(8) { animation-delay: 1.6s; }
+
+    @keyframes slideInList {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Achievements Grid */
+    .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .achievement-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .achievement-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .achievement-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .achievement-card:hover .achievement-icon {
+        transform: scale(1.2);
+    }
+
+    .achievement-card h4 {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .achievement-card p {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    /* High School Content */
+    .highschool-content {
+        margin-top: 2rem;
+    }
+
+    .achievement-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+    }
+
+    .achievement-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background: rgba(99, 102, 241, 0.05);
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .achievement-list li:hover {
+        transform: translateX(10px);
+        background: rgba(99, 102, 241, 0.1);
+    }
+
+    .achievement-list i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
+
+    /* Additional Courses */
+    .courses-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .enhanced-course-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+    }
+
+    .enhanced-course-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .course-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .course-details h4 {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .course-details p {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+    }
+
+    .course-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: #666;
+    }
+
+    .course-meta span {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+
+    .course-badge {
+        background: var(--primary-color);
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    /* Card Hover Effect */
+    .card-hover {
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+    }
+
+    .card-hover:hover {
+        border-color: var(--primary-color);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
         .education-container {
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
 
-        .courses-grid {
+        .timeline {
+            padding-left: 1rem;
+        }
+
+        .courses-grid,
+        .achievements-grid,
+        .courses-list {
             grid-template-columns: 1fr;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .achievement-list li {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .courses-list {
+            grid-template-columns: 1fr;
+        }
+
+        .achievement-card {
+            padding: 1rem;
+        }
+    }
+
+    /* Dark Mode Compatibility */
+    @media (prefers-color-scheme: dark) {
+        .section {
+            background: var(--card-bg);
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .course-column {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .achievement-list li {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .achievement-list li:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .intro-text,
+        .courses-grid .course-column p,
+        .achievement-card p,
+        .course-details p {
+            color: var(--text-light);
+        }
+
+        .stat-content p,
+        .timeline-content p {
+            color: #ccc;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress {
+            background: var(--accent-color);
         }
     }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer for fade-in animations
+    const animateElements = document.querySelectorAll('.animate-fade-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    animateElements.forEach(el => {
+        observer.observe(el);
+    });
+
+    // Animate progress bars when in view
+    const progressBars = document.querySelectorAll('.progress');
+    progressBars.forEach(bar => {
+        const parent = bar.parentElement.parentElement;
+        const observerProgress = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    bar.style.width = bar.getAttribute('data-width');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        observerProgress.observe(parent);
+    });
+
+    // Animate list items sequentially
+    const listItems = document.querySelectorAll('.animated-list li');
+    listItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.2}s`;
+    });
+
+    // Add hover effects to achievement list items
+    const achievementItems = document.querySelectorAll('.achievement-list li');
+    achievementItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.classList.add('hovered');
+        });
+        item.addEventListener('mouseleave', () => {
+            item.classList.remove('hovered');
+        });
+    });
+
+    // Keyboard Accessibility for stat-cards and achievement-cards
+    const interactiveCards = document.querySelectorAll('.stat-card, .achievement-card, .course-column, .enhanced-course-item');
+    interactiveCards.forEach(card => {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.addEventListener('keypress', function(e) {
+            if(e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
 {% endblock %}

@@ -4,7 +4,7 @@
 {% block title %}Contact - Mantavya Mahajan{% endblock %}
 
 {% block content %}
-<div class="contact-container" style="margin-top: 80px;">
+<div class="contact-container">
     <div class="contact-info-section">
         <div class="contact-card">
             <div class="contact-header">
@@ -52,12 +52,12 @@
     </div>
 
     <div class="contact-form-section">
-      <form id="contactForm" class="animated-form" method="POST">
+        <form id="contactForm" class="animated-form" method="POST" novalidate>
             {% csrf_token %}
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                    <input type="text" id="name" name="name" required placeholder="Your Name" aria-label="Your Name">
                 </div>
                 <div class="input-animation"></div>
             </div>
@@ -65,7 +65,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                    <input type="email" id="email" name="email" required placeholder="Your Email" aria-label="Your Email">
                 </div>
                 <div class="input-animation"></div>
             </div>
@@ -73,292 +73,494 @@
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-comment-alt"></i>
-                    <textarea id="message" name="message" required placeholder="Your Message" rows="4"></textarea>
+                    <textarea id="message" name="message" required placeholder="Your Message" rows="4" aria-label="Your Message"></textarea>
                 </div>
                 <div class="input-animation"></div>
             </div>
             
-            <button type="submit" class="submit-btn">
+            <button type="submit" class="submit-btn" aria-label="Send Message">
                 <span class="btn-text">Send Message</span>
                 <i class="fas fa-paper-plane"></i>
+                <span class="btn-hover"></span>
             </button>
         </form>
         
-        <div id="successMessage" class="success-message">
+        <div id="successMessage" class="success-message" role="alert">
             <i class="fas fa-check-circle"></i>
             <p>Message sent successfully!</p>
         </div>
     </div>
 </div>
+{% endblock %}
 
 {% block extra_css %}
 <style>
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
+    /* Contact Container */
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 100px auto;
+        padding: 2rem;
+    }
 
-.contact-card {
-    background: white;
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+    @media (max-width: 992px) {
+        .contact-container {
+            grid-template-columns: 1fr;
+        }
+    }
 
-.contact-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
+    /* Contact Card */
+    .contact-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.contact-header h2 {
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
 
-.subtitle {
-    color: #666;
-    font-size: 1.1rem;
-}
+    .contact-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        animation: fadeInDown 1s ease forwards;
+    }
 
-.contact-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
+    .contact-header h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeInDown 0.6s ease forwards;
+    }
 
-.contact-method {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-}
+    .subtitle {
+        color: #666;
+        font-size: 1.1rem;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeInUp 0.6s ease forwards;
+        animation-delay: 0.3s;
+    }
 
-.contact-method:hover {
-    background: #f8f9fa;
-    transform: translateX(10px);
-}
-
-.contact-method i {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    width: 2rem;
-    text-align: center;
-}
-
-.method-details h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.method-details p,
-.method-details a {
-    margin: 0;
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.method-details a:hover {
-    color: var(--primary-color);
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
-
-.social-link {
-    font-size: 1.5rem;
-    color: #666;
-    transition: all 0.3s ease;
-}
-
-.social-link:hover {
-    color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-/* Form Styling */
-.animated-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    background: white;
-}
-
-.input-group:focus-within {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-}
-
-.input-group i {
-    color: #666;
-    width: 1.5rem;
-    text-align: center;
-}
-
-.input-group input,
-.input-group textarea {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-    background: transparent;
-}
-
-.input-group textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 1rem;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    position: relative;
-}
-
-.submit-btn:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
-}
-
-.submit-btn i {
-    transition: transform 0.3s ease;
-}
-
-.submit-btn:hover i {
-    transform: translateX(5px);
-}
-
-.success-message {
-    display: none;
-    text-align: center;
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #d1fae5;
-    color: #065f46;
-    border-radius: 0.5rem;
-    animation: slideUp 0.3s ease;
-}
-
-.success-message i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-@keyframes slideUp {
-    from {
+    /* Contact Methods */
+    .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
         opacity: 0;
         transform: translateY(20px);
+        animation: fadeInUp 0.6s ease forwards;
+        animation-delay: 0.6s;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-@media (max-width: 768px) {
-    .contact-container {
-        grid-template-columns: 1fr;
+    .contact-method {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
     }
 
     .contact-method:hover {
-        transform: none;
+        background: #f8f9fa;
+        transform: translateX(10px);
     }
 
-    .contact-card,
-    .animated-form {
-        padding: 1.5rem;
+    .contact-method i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        width: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease;
     }
-}
+
+    .contact-method:hover i {
+        transform: scale(1.2);
+    }
+
+    .method-details h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .method-details p,
+    .method-details a {
+        margin: 0;
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .method-details a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Social Links */
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .social-link {
+        font-size: 1.5rem;
+        color: #666;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+
+    /* Contact Form Section */
+    .contact-form-section {
+        animation: fadeInUp 0.6s ease forwards;
+        animation-delay: 0.9s;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* Animated Form */
+    .animated-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .animated-form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Form Groups */
+    .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        background: white;
+    }
+
+    .input-group:focus-within {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .input-group i {
+        color: #666;
+        flex-shrink: 0;
+        transition: color 0.3s ease;
+    }
+
+    .input-group:focus-within i {
+        color: var(--primary-color);
+    }
+
+    .input-group input,
+    .input-group textarea {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 0.5rem;
+        font-size: 1rem;
+        background: transparent;
+        transition: background 0.3s ease;
+    }
+
+    .input-group input::placeholder,
+    .input-group textarea::placeholder {
+        color: #ccc;
+        transition: color 0.3s ease;
+    }
+
+    .input-group input:focus::placeholder,
+    .input-group textarea:focus::placeholder {
+        color: transparent;
+    }
+
+    /* Input Animation */
+    .input-animation {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+
+    .input-group input:focus ~ .input-animation,
+    .input-group textarea:focus ~ .input-animation {
+        width: 100%;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .submit-btn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+
+    .submit-btn i {
+        transition: transform 0.3s ease;
+    }
+
+    .submit-btn:hover i {
+        transform: translateX(5px);
+    }
+
+    .btn-hover {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: left 0.3s ease;
+    }
+
+    .submit-btn:hover .btn-hover {
+        left: 100%;
+    }
+
+    /* Success Message */
+    .success-message {
+        display: none;
+        text-align: center;
+        margin-top: 1rem;
+        padding: 1rem;
+        background: #d1fae5;
+        color: #065f46;
+        border-radius: 0.5rem;
+        animation: slideUp 0.3s ease;
+    }
+
+    .success-message i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Dark Mode Compatibility */
+    @media (prefers-color-scheme: dark) {
+        .contact-card,
+        .animated-form {
+            background: var(--card-bg);
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-header h2,
+        .subtitle,
+        .method-details h3,
+        .method-details p,
+        .social-link,
+        .submit-btn,
+        .success-message p {
+            color: var(--text-light);
+        }
+
+        .input-group {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .input-group:focus-within {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .input-group input::placeholder,
+        .input-group textarea::placeholder {
+            color: #888;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .progress {
+            background: var(--accent-color);
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-method:hover i {
+            color: var(--accent-color);
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-color);
+        }
+    }
 </style>
 
 <script>
-$(document).ready(function(){
-    let isSubmitting = false;
-    
-    $('#contactForm').on('submit', function(event){
-        event.preventDefault();
-        if (isSubmitting) return;
-        
-        isSubmitting = true;
-        const submitBtn = $(this).find('.submit-btn');
-        const btnText = submitBtn.find('.btn-text');
-        const btnIcon = submitBtn.find('i');
-        
-        btnText.text('Sending...');
-        btnIcon.removeClass('fa-paper-plane').addClass('fa-spinner fa-spin');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate list items sequentially
+        const listItems = document.querySelectorAll('.animated-list li');
+        listItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.2}s`;
+        });
 
-        $.ajax({
-            url: '{% url "contact" %}',
-            type: 'POST',
-            data: {
-                name: $('#name').val(),
-                email: $('#email').val(),
-                message: $('#message').val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-            },
-            success: function(response){
-                $('#successMessage').slideDown();
-                $('#contactForm')[0].reset();
-                setTimeout(() => {
-                    $('#successMessage').slideUp();
-                }, 3000);
-            },
-            error: function(xhr){
-                let errorMessage = 'There was an error sending your message. Please try again.';
-                if (xhr.responseJSON && xhr.responseJSON.message) {
-                    errorMessage = xhr.responseJSON.message;
+        // Initialize progress bars
+        const progressBars = document.querySelectorAll('.progress');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    bar.style.width = bar.getAttribute('data-width');
+                    observer.unobserve(bar);
                 }
-                alert(errorMessage);
-            },
-            complete: function(){
-                isSubmitting = false;
-                btnText.text('Send Message');
-                btnIcon.removeClass('fa-spinner fa-spin').addClass('fa-paper-plane');
-            }
+            });
+        }, { threshold: 0.5 });
+
+        progressBars.forEach(bar => {
+            observer.observe(bar);
+        });
+
+        // Handle form submission success message display
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // AJAX submission is handled in the existing jQuery script
+            });
+        }
+    });
+</script>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        let isSubmitting = false;
+        
+        $('#contactForm').on('submit', function(event){
+            event.preventDefault();
+            if (isSubmitting) return;
+            
+            isSubmitting = true;
+            const submitBtn = $(this).find('.submit-btn');
+            const btnText = submitBtn.find('.btn-text');
+            const btnIcon = submitBtn.find('i');
+            
+            btnText.text('Sending...');
+            btnIcon.removeClass('fa-paper-plane').addClass('fa-spinner fa-spin');
+
+            $.ajax({
+                url: '{% url "contact" %}',
+                type: 'POST',
+                data: {
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    message: $('#message').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(response){
+                    if(response.message === "Message sent successfully!"){
+                        $('#successMessage').slideDown();
+                        $('#contactForm')[0].reset();
+                        setTimeout(() => {
+                            $('#successMessage').slideUp();
+                        }, 3000);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function(xhr){
+                    let errorMessage = 'There was an error sending your message. Please try again.';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMessage = xhr.responseJSON.message;
+                    }
+                    alert(errorMessage);
+                },
+                complete: function(){
+                    isSubmitting = false;
+                    btnText.text('Send Message');
+                    btnIcon.removeClass('fa-spinner fa-spin').addClass('fa-paper-plane');
+                }
+            });
         });
     });
-});
 </script>
-
-{% endblock %}
 {% endblock %}
