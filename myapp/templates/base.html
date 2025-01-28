@@ -51,9 +51,6 @@
 
         /* Header Styles */
         .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             position: fixed;
             width: 100%;
             top: 0;
@@ -115,7 +112,7 @@
         .main {
             display: flex;
             align-items: center;
-            margin-top: 80px;
+            margin-top: 80px; /* Adjusted to accommodate fixed header */
             padding: 20px;
         }
 
@@ -697,22 +694,25 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header class="header navbar navbar-expand-lg">
-        <a class="navbar-brand header-title" href="{% url 'index' %}">Mantavya Mahajan</a>
-        <!-- Navbar Toggler Button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars fa-lg"></i>
-        </button>
-        <nav class="header-nav collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'project' %}"><i class="fas fa-code"></i> Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'education' %}"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'experience' %}"><i class="fas fa-briefcase"></i> Skills & Experience</a></li>
-                <li class="nav-item"><a class="nav-link" href="https://github.com/mantavya0807" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a></li>
-                <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand header-title" href="{% url 'index' %}">Mantavya Mahajan</a>
+            <!-- Navbar Toggler Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <div class="collapse navbar-collapse header-nav" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'project' %}"><i class="fas fa-code"></i> Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'education' %}"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'experience' %}"><i class="fas fa-briefcase"></i> Skills & Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/mantavya0807" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -727,4 +727,100 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- AOS JS for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+            });
+
+            // Fade-in effect for sections using Intersection Observer
+            const sections = document.querySelectorAll('.section');
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.classList.add('animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Navbar transparency and shrink on scroll
+            const header = document.querySelector('.header');
+            const shrinkOn = 100; // Scroll threshold in pixels
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > shrinkOn) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Ripple Effect on Click/Tap
+            document.addEventListener('click', function (e) {
+                const target = e.target.closest('.cta-button, .resume-download a, .stat-card, .project-card, .focus-card');
+                if (target) {
+                    const rect = target.getBoundingClientRect();
+                    const ripple = document.createElement('span');
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.width = ripple.style.height = `${size}px`;
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    ripple.classList.add('ripple');
+
+                    // Remove existing ripples
+                    const existingRipples = target.getElementsByClassName('ripple');
+                    while (existingRipples[0]) {
+                        existingRipples[0].parentNode.removeChild(existingRipples[0]);
+                    }
+
+                    target.appendChild(ripple);
+                }
+            });
+
+            // Create Ripple CSS
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .ripple {
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple-animation 600ms linear;
+                    pointer-events: none;
+                }
+
+                @keyframes ripple-animation {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
