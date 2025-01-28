@@ -16,6 +16,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- AOS CSS for Animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
     <style>
         :root {
             /* Modern dark theme palette */
@@ -43,6 +46,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         /* Header Styles */
@@ -81,20 +85,19 @@
             font-size: 1.3em;
         }
 
-        .header-nav {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .header-nav li {
-            margin-right: 20px;
-        }
-
-        .header-nav a {
+        /* Responsive Navbar Toggle */
+        .navbar-toggler {
+            border: none;
             color: var(--text-color);
-            text-decoration: none;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+        }
+
+        /* Bootstrap Navbar Overrides */
+        .header-nav .nav-link {
+            color: var(--text-color);
             padding: 8px 12px;
             border-radius: 5px;
             transition: all var(--transition-speed) ease-in-out;
@@ -102,7 +105,7 @@
             align-items: center;
         }
 
-        .header-nav a:hover {
+        .header-nav .nav-link:hover {
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             transform: translateY(-2px);
@@ -118,19 +121,43 @@
 
         .main-image {
             flex: 0 0 auto;
-            width: 150px;
+            width: 300px;
             margin-right: 20px;
+            position: relative;
+            margin-left: -50px; /* Shift image slightly to the left */
         }
 
         .main-image img {
             width: 100%;
-            border-radius: 50%;
-            transition: transform var(--transition-speed) ease-in-out;
-            box-shadow: var(--shadow);
+            height: 300px;
+            object-fit: cover;
+            border-radius: 1rem;
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            border: 5px solid white;
         }
 
-        .main-image img:hover {
-            transform: scale(1.1);
+        .main-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 1rem;
+            z-index: -1;
+            opacity: 0.1;
+            transition: all 0.5s ease;
+        }
+
+        .main-image:hover img {
+            transform: translateY(-10px) translateX(-10px);
+        }
+
+        .main-image:hover::after {
+            transform: translateY(10px) translateX(10px);
+            opacity: 0.2;
         }
 
         .main-content {
@@ -154,28 +181,129 @@
         }
 
         /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
         .stat-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            color: var(--text-color);
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.8),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .stat-content h3 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .stat-content p {
+            margin: 0;
+            color: #666;
         }
 
         /* Project Cards */
         .project-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            color: var(--text-color);
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(99, 102, 241, 0.1);
+            transition: height 0.3s ease;
+        }
+
+        .project-card:hover::after {
+            height: 100%;
+        }
+
+        .project-icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content h3 {
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+            font-size: 1.25rem;
+        }
+
+        .project-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
         }
 
         .tech-tag {
-            background: rgba(99, 102, 241, 0.2);
-            color: var(--text-color);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 0.2em 0.5em;
-            border-radius: 3px;
-            margin-right: 5px;
-            font-size: 0.85em;
-            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .tech-tag:hover {
@@ -183,29 +311,128 @@
             color: white;
         }
 
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
         /* Focus Cards */
         .focus-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            color: var(--text-color);
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .focus-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(99, 102, 241, 0.1);
+            transition: height 0.3s ease;
+        }
+
+        .focus-card:hover::after {
+            height: 100%;
+        }
+
+        .focus-icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .focus-card:hover .focus-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .focus-content h3 {
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+            font-size: 1.25rem;
+        }
+
+        .focus-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            line-height: 1.5;
         }
 
         /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
         .cta-button.primary {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            background: var(--primary-color);
             color: white;
-            border: none;
         }
 
         .cta-button.secondary {
-            background: transparent;
+            background: white;
+            color: var(--primary-color);
             border: 2px solid var(--primary-color);
-            color: var(--text-color);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-hover);
+        }
+
+        /* Button Ripple Effect */
+        .cta-button::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .cta-button:active::after {
+            opacity: 1;
+            transition: none;
         }
 
         /* Button Styles */
@@ -225,6 +452,24 @@
             border-radius: 5px;
             transition: all var(--transition-speed) ease-in-out;
             margin: 0 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-download a::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .resume-download a:hover::after {
+            opacity: 1;
         }
 
         .resume-download a:hover {
@@ -266,6 +511,51 @@
 
             .main-image {
                 margin: 0 auto 20px;
+                width: 200px;
+            }
+
+            .main-image img {
+                height: 200px;
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid,
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-section {
+                padding: 2rem 1rem;
+            }
+
+            .welcome-title {
+                font-size: 2rem;
+            }
+
+            .welcome-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
             }
         }
 
@@ -290,7 +580,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Add subtle gradient background */
+        /* Subtle gradient background */
         body::before {
             content: '';
             position: fixed;
@@ -308,7 +598,7 @@
             z-index: -1;
         }
 
-        /* Make sure links are visible */
+        /* Link Styles */
         a {
             color: var(--primary-color);
             transition: color var(--transition-speed) ease;
@@ -322,29 +612,107 @@
         .project-card:hover,
         .focus-card:hover,
         .stat-card:hover {
-            transform: translateY(-5px);
             border-color: var(--primary-color);
             box-shadow: var(--shadow-hover);
+        }
+
+        /* Enhanced Stats Card Hover Effects */
+        .stat-tooltip {
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translateX(-50%) scale(0.95);
+            background: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .stat-tooltip::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 16px;
+            height: 16px;
+            background: white;
+        }
+
+        .stat-tooltip h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .stat-tooltip ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .stat-tooltip li {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.25rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .stat-tooltip li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .stat-card:hover .stat-tooltip,
+        .stat-card:focus .stat-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .stat-card:focus {
+            outline: none;
+        }
+
+        /* AOS Animations */
+        [data-aos] {
+            opacity: 0;
+            transition-property: transform, opacity;
+        }
+
+        .aos-animate {
+            opacity: 1;
+            transform: translate(0);
         }
     </style>
     
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header class="header">
-        <h1 class="header-title">Mantavya Mahajan - Computer Science And Computational Mathematics</h1>
-        <nav class="header-nav">
-            <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="{% url 'project' %}"><i class="fas fa-code"></i> Projects</a></li>
-            <li><a href="{% url 'education' %}"><i class="fas fa-graduation-cap"></i> Education</a></li>
-            <li><a href="{% url 'experience' %}"><i class="fas fa-briefcase"></i> Skills & Experience</a></li>
-            <li><a href="https://github.com/mantavya0807" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> GitHub
-            </a></li>
-            <li><a href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a></li>
-            <li><a href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
+    <header class="header navbar navbar-expand-lg">
+        <a class="navbar-brand header-title" href="{% url 'index' %}">Mantavya Mahajan</a>
+        <!-- Navbar Toggler Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+        <nav class="header-nav collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'project' %}"><i class="fas fa-code"></i> Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'education' %}"><i class="fas fa-graduation-cap"></i> Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'experience' %}"><i class="fas fa-briefcase"></i> Skills & Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://github.com/mantavya0807" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/mantavya-mahajan-42972721b/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -359,62 +727,4 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Smooth scrolling for navigation links
-            const links = document.querySelectorAll('.header-nav a');
-            links.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    if (this.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href').substring(1);
-                        const targetElement = document.getElementById(targetId);
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-
-            // Fade-in effect for sections
-            const sections = document.querySelectorAll('.section');
-            const observerOptions = {
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.classList.add('animate-fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-
-            // Navbar transparency and shrink on scroll
-            const header = document.querySelector('.header');
-            const shrinkOn = 100; // Scroll threshold in pixels
-
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > shrinkOn) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-        });
-    </script>
-
-    {% block extra_js %}{% endblock %}
-</body>
-</html>
+    <script src="https://stackpath.bootstrapcdn.com

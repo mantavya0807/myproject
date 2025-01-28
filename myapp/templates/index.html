@@ -5,17 +5,19 @@
 
 {% block content %}
 <!-- Hero Section -->
-<div class="hero-section" style="margin-top: 80px;">
+<div class="hero-section" data-aos="fade-up">
     <div class="hero-content">
-        <div class="profile-image">
-            <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan" class="profile-pic">
+        <div class="profile-image" data-aos="fade-right">
+            <img src="{% static 'photo.jpeg' %}" alt="Mantavya Mahajan" class="profile-pic" loading="lazy">
         </div>
-        <div class="hero-text">
-            <h1 class="welcome-title">Hi, I'm Mantavya Mahajan</h1>
-            <p class="welcome-subtitle">Computer Science & Computational Mathematics Student</p>
-            <div class="typing-text" id="typingText">Welcome to my personal website! I’m a third-year student at Penn State University, double majoring in Computer Science and Computational Mathematics. Passionate about technology and problem-solving, I’ve built a strong foundation in both theoretical and practical aspects of computing. My interests lie in software development, data analysis, and algorithm design, and I’m excited to contribute to innovative solutions that make a positive impact. Explore my projects and experiences as I continue growing in the dynamic field of computer science. Thank you for visiting!</div>
+        <div class="hero-text" data-aos="fade-left">
+            <h1 class="welcome-title" style="color: #666;">Hi, I'm Mantavya Mahajan</h1>
+            <p class="welcome-subtitle" style="color: #666;">Computer Science & Computational Mathematics Student</p>
+            <div class="typing-container">
+                <div class="typing-text" id="typingText" style="color: #666;"></div>
+            </div>
             <div class="cta-buttons">
-                <a href="{% static 'Mantavya_Mahajan_Resume.pdf' %}" class="cta-button primary">
+                <a href="{% static 'Mantavya_Mahajan_Resume.pdf' %}" class="cta-button primary" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-file-alt"></i> View Resume
                 </a>
                 <a href="{% url 'contact' %}" class="cta-button secondary">
@@ -26,9 +28,9 @@
     </div>
 </div>
 
-<!-- Replace existing stats section -->
-<div class="stats-section">
-    <div class="stat-card" role="button" tabindex="0">
+<!-- Stats Section -->
+<div class="stats-section" data-aos="fade-up">
+    <div class="stat-card" role="button" tabindex="0" data-aos="zoom-in" data-aos-delay="100">
         <i class="fas fa-code"></i>
         <div class="stat-content">
             <h3 class="counter" data-target="10">0</h3>
@@ -45,7 +47,7 @@
         </div>
     </div>
 
-    <div class="stat-card" role="button" tabindex="0">
+    <div class="stat-card" role="button" tabindex="0" data-aos="zoom-in" data-aos-delay="200">
         <i class="fas fa-laptop-code"></i>
         <div class="stat-content">
             <h3>3.6</h3>
@@ -62,7 +64,7 @@
         </div>
     </div>
 
-    <div class="stat-card" role="button" tabindex="0">
+    <div class="stat-card" role="button" tabindex="0" data-aos="zoom-in" data-aos-delay="300">
         <i class="fas fa-briefcase"></i>
         <div class="stat-content">
             <h3>2</h3>
@@ -79,7 +81,7 @@
         </div>
     </div>
 
-    <div class="stat-card" role="button" tabindex="0">
+    <div class="stat-card" role="button" tabindex="0" data-aos="zoom-in" data-aos-delay="400">
         <i class="fas fa-users"></i>
         <div class="stat-content">
             <h3 class="counter" data-target="220">0</h3>
@@ -96,7 +98,7 @@
         </div>
     </div>
 
-    <div class="stat-card" role="button" tabindex="0">
+    <div class="stat-card" role="button" tabindex="0" data-aos="zoom-in" data-aos-delay="500">
         <i class="fas fa-award"></i>
         <div class="stat-content">
             <h3>5x</h3>
@@ -116,10 +118,10 @@
 </div>
 
 <!-- Featured Projects -->
-<div class="section" id="featured-projects">
+<div class="section" id="featured-projects" data-aos="fade-up">
     <h2 class="animated-slide-in"><i class="fas fa-star"></i> Featured Projects</h2>
     <div class="projects-grid">
-        <div class="project-card animated-fade-in">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
             <div class="project-icon">
                 <i class="fas fa-brain"></i>
             </div>
@@ -136,7 +138,7 @@
                 </a>
             </div>
         </div>
-        <div class="project-card animated-fade-in">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
             <div class="project-icon">
                 <i class="fas fa-leaf"></i>
             </div>
@@ -153,7 +155,7 @@
                 </a>
             </div>
         </div>
-        <div class="project-card animated-fade-in">
+        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
             <div class="project-icon">
                 <i class="fas fa-chart-line"></i>
             </div>
@@ -165,18 +167,19 @@
                     <span class="tech-tag">Typescript</span>
                     <span class="tech-tag">Firebase</span>
                 </div>
-                <a href="https://github.com/mantavya0807/AgriScience" class="project-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/mantavya0807/Mealer" class="project-link" target="_blank" rel="noopener noreferrer">
                     View Project <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </div>
 </div>
+
 <!-- Current Focus -->
-<div class="section" id="current-focus">
+<div class="section" id="current-focus" data-aos="fade-up">
     <h2 class="animated-slide-in"><i class="fas fa-rocket"></i> Current Focus</h2>
     <div class="focus-grid">
-        <div class="focus-card animated-fade-in">
+        <div class="focus-card" data-aos="fade-up" data-aos-delay="100">
             <div class="focus-icon">
                 <i class="fas fa-briefcase"></i>
             </div>
@@ -185,7 +188,7 @@
                 <p>Exploring opportunities in software development, data science, and machine learning to apply my skills in real-world projects.</p>
             </div>
         </div>
-        <div class="focus-card animated-fade-in">
+        <div class="focus-card" data-aos="fade-up" data-aos-delay="200">
             <div class="focus-icon">
                 <i class="fas fa-chart-line"></i>
             </div>
@@ -194,7 +197,7 @@
                 <p>Conducting research to develop a comprehensive index that measures the impact of economic policies on various sectors.</p>
             </div>
         </div>
-        <div class="focus-card animated-fade-in">
+        <div class="focus-card" data-aos="fade-up" data-aos-delay="300">
             <div class="focus-icon">
                 <i class="fas fa-chalkboard-teacher"></i>
             </div>
@@ -205,7 +208,7 @@
         </div>
     </div>
 </div>
-
+{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -227,6 +230,8 @@
 
     .profile-image {
         flex: 0 0 300px;
+        position: relative;
+        margin-left: -50px; /* Shift image slightly to the left */
     }
 
     .profile-pic {
@@ -234,34 +239,32 @@
         height: 300px;
         object-fit: cover;
         border-radius: 1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
+        box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
+        transition: all 0.5s ease;
+        border: 5px solid white;
     }
 
-    .profile-pic:hover {
-        transform: scale(1.05);
+    .profile-image::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 100%;
+        height: 100%;
+        background: var(--primary-color);
+        border-radius: 1rem;
+        z-index: -1;
+        opacity: 0.1;
+        transition: all 0.5s ease;
     }
 
-    .hero-text {
-        flex: 1;
+    .profile-image:hover .profile-pic {
+        transform: translateY(-10px) translateX(-10px);
     }
 
-    .welcome-title {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-    }
-
-    .welcome-subtitle {
-        font-size: 1.5rem;
-        color: #666;
-        margin-bottom: 1rem;
-    }
-
-    .typing-text {
-        font-size: 1.25rem;
-        color: #333;
-        min-height: 1.5em;
+    .profile-image:hover::after {
+        transform: translateY(10px) translateX(10px);
+        opacity: 0.2;
     }
 
     /* Stats Section */
@@ -281,10 +284,33 @@
         align-items: center;
         gap: 1rem;
         transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
     }
 
     .stat-card:hover {
         transform: translateY(-5px);
+    }
+
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.8),
+            transparent
+        );
+        transition: 0.5s;
+    }
+
+    .stat-card:hover::before {
+        left: 100%;
     }
 
     .stat-card i {
@@ -311,120 +337,150 @@
         margin-top: 2rem;
     }
 
-
-
-.project-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-}
-
-.project-icon {
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.project-content h3 {
-    color: var(--primary-color);
-    margin: 0.5rem 0;
-    font-size: 1.25rem;
-}
-
-.project-content p {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-}
-
-.tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1rem 0;
-}
-
-.tech-tag {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--primary-color);
-    padding: 0.4rem 0.8rem;
-    border-radius: 0.5rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: transform 0.3s ease;
-}
-
-.project-link:hover {
-    transform: translateX(5px);
-}
-
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .project-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
     }
-}
+
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .project-card::after {
+        content: '';
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(99, 102, 241, 0.1);
+        transition: height 0.3s ease;
+    }
+
+    .project-card:hover::after {
+        height: 100%;
+    }
+
+    .project-icon {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-content h3 {
+        color: var(--primary-color);
+        margin: 0.5rem 0;
+        font-size: 1.25rem;
+    }
+
+    .project-content p {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+
+    .tech-tag {
+        background: rgba(99, 102, 241, 0.1);
+        color: var(--primary-color);
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+    .tech-tag:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .project-link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: transform 0.3s ease;
+    }
+
+    .project-link:hover {
+        transform: translateX(5px);
+    }
 
     /* Focus Grid */
     .focus-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.focus-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.focus-card:hover {
-    transform: translateY(-5px);
-}
-
-.focus-icon {
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.focus-content h3 {
-    color: var(--primary-color);
-    margin: 0.5rem 0;
-    font-size: 1.25rem;
-}
-
-.focus-content p {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 0;
-    line-height: 1.5;
-}
-
-@media (max-width: 768px) {
-    .focus-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 2rem;
     }
-}
+
+    .focus-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .focus-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .focus-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: rgba(99, 102, 241, 0.1);
+        transition: height 0.3s ease;
+    }
+
+    .focus-card:hover::after {
+        height: 100%;
+    }
+
+    .focus-icon {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .focus-card:hover .focus-icon {
+        transform: scale(1.2) rotate(10deg);
+    }
+
+    .focus-content h3 {
+        color: var(--primary-color);
+        margin: 0.5rem 0;
+        font-size: 1.25rem;
+    }
+
+    .focus-content p {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
 
     /* CTA Buttons */
     .cta-buttons {
@@ -441,6 +497,8 @@
         align-items: center;
         gap: 0.5rem;
         transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
     }
 
     .cta-button.primary {
@@ -456,6 +514,25 @@
 
     .cta-button:hover {
         transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    /* Button Ripple Effect */
+    .cta-button::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .cta-button:active::after {
+        opacity: 1;
+        transition: none;
     }
 
     /* Responsive Design */
@@ -467,6 +544,11 @@
 
         .profile-image {
             flex: 0 0 200px;
+            margin-left: 0; /* Reset left margin for mobile */
+        }
+
+        .profile-pic {
+            height: 200px;
         }
 
         .stats-section {
@@ -509,290 +591,286 @@
             justify-content: center;
         }
     }
-    /* Add to your existing CSS */
-.profile-image {
-    position: relative;
-    flex: 0 0 300px;
-    margin-left: -50px; /* Shift image slightly to the left */
-}
 
-.profile-pic {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 1rem;
-    box-shadow: 10px 10px 20px rgba(0,0,0,0.1);
-    transition: all 0.5s ease;
-    border: 5px solid white;
-}
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-.profile-image::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-color);
-    border-radius: 1rem;
-    z-index: -1;
-    opacity: 0.1;
-    transition: all 0.5s ease;
-}
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease forwards;
+    }
 
-.profile-image:hover .profile-pic {
-    transform: translateY(-10px) translateX(-10px);
-}
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
 
-.profile-image:hover::after {
-    transform: translateY(10px) translateX(10px);
-    opacity: 0.2;
-}
+    /* Subtle gradient background */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            45deg,
+            var(--bg-color),
+            rgba(99, 102, 241, 0.1),
+            var(--bg-color)
+        );
+        pointer-events: none;
+        z-index: -1;
+    }
 
-/* Enhanced Stats Card Hover Effects */
-.stat-card {
-    position: relative;
-    overflow: hidden;
-}
+    /* Link Styles */
+    a {
+        color: var(--primary-color);
+        transition: color var(--transition-speed) ease;
+    }
 
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.8),
-        transparent
-    );
-    transition: 0.5s;
-}
+    a:hover {
+        color: var(--accent-color);
+    }
 
-.stat-card:hover::before {
-    left: 100%;
-}
+    /* Card hover effects */
+    .project-card:hover,
+    .focus-card:hover,
+    .stat-card:hover {
+        border-color: var(--primary-color);
+        box-shadow: var(--shadow-hover);
+    }
 
-/* Project Card Enhanced Hover */
-.project-card {
-    position: relative;
-    overflow: hidden;
-}
-
-
-
-.project-card:hover::after {
-    bottom: 20px;
-    opacity: 1;
-}
-
-/* Focus Card Enhanced Hover */
-.focus-card {
-    position: relative;
-    overflow: hidden;
-}
-
-.focus-icon {
-    transition: all 0.3s ease;
-}
-
-.focus-card:hover .focus-icon {
-    transform: scale(1.2) rotate(10deg);
-}
-
-/* Typing Text Container */
-.typing-container {
-    height: 3em;
-    margin: 1rem 0;
-    overflow: hidden;
-}
-
-.typing-text {
-    display: inline-block;
-    position: relative;
-    font-size: 1.2rem;
-    color: #333;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-/* Add this to make the typing cursor effect */
-.typing-text::after {
-    content: '|';
-    position: absolute;
-    right: -8px;
-    animation: blink 0.8s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* Add new styles */
-.stat-card {
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.stat-tooltip {
-    position: absolute;
-    top: 120%;
-    left: 50%;
-    transform: translateX(-50%) scale(0.95);
-    background: white;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    width: 250px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 100;
-}
-
-.stat-tooltip::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-    width: 16px;
-    height: 16px;
-    background: white;
-}
-
-.stat-tooltip h4 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-}
-
-.stat-tooltip ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.stat-tooltip li {
-    font-size: 0.875rem;
-    color: #666;
-    margin-bottom: 0.25rem;
-    padding-left: 1rem;
-    position: relative;
-}
-
-.stat-tooltip li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--primary-color);
-}
-
-.stat-card:hover .stat-tooltip,
-.stat-card:focus .stat-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) scale(1);
-}
-
-.stat-card:hover,
-.stat-card:focus {
-    transform: translateY(-5px);
-    outline: none;
-}
-
-@media (max-width: 768px) {
+    /* Enhanced Stats Card Hover Effects */
     .stat-tooltip {
-        width: 200px;
-        font-size: 0.8rem;
+        position: absolute;
+        top: 120%;
+        left: 50%;
+        transform: translateX(-50%) scale(0.95);
+        background: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        width: 250px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 100;
     }
-}
+
+    .stat-tooltip::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        width: 16px;
+        height: 16px;
+        background: white;
+    }
+
+    .stat-tooltip h4 {
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .stat-tooltip ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .stat-tooltip li {
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 0.25rem;
+        padding-left: 1rem;
+        position: relative;
+    }
+
+    .stat-tooltip li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+    }
+
+    .stat-card:hover .stat-tooltip,
+    .stat-card:focus .stat-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) scale(1);
+    }
+
+    .stat-card:focus {
+        outline: none;
+    }
+
+    /* AOS Animations */
+    [data-aos] {
+        opacity: 0;
+        transition-property: transform, opacity;
+    }
+
+    .aos-animate {
+        opacity: 1;
+        transform: translate(0);
+    }
 </style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const phrases = [
-        "Welcome to my personal website!",
-        "Exploring the future through code and innovation.",
-        "Passionate about Technology and Problem Solving.",
-        "Building solutions that make a difference."
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    const typingText = document.getElementById('typingText');
-    const typingDelay = 40;  // Reduced from 100 to 50
-    const erasingDelay = 25; // Reduced from 50 to 25
-    const newPhraseDelay = 1500; // Reduced from 2000 to 1500
-
-    function type() {
-        if (charIndex < phrases[phraseIndex].length) {
-            typingText.textContent = phrases[phraseIndex].substring(0, charIndex + 1);
-            charIndex++;
-            setTimeout(type, typingDelay);
-        } else {
-            setTimeout(erase, newPhraseDelay);
-        }
-    }
-
-    function erase() {
-        if (charIndex > 0) {
-            typingText.textContent = phrases[phraseIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(erase, erasingDelay);
-        } else {
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            setTimeout(type, typingDelay);
-        }
-    }
-
-    type();
-
-    // Counter animation
-    function animateCounter(counter) {
-        const target = parseInt(counter.dataset.target);
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
-
-        const animation = setInterval(() => {
-            current += increment;
-            counter.textContent = Math.floor(current);
-            
-            if (current >= target) {
-                counter.textContent = target;
-                clearInterval(animation);
-            }
-        }, 16);
-    }
-
-    // Initialize counters when visible
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.target.classList.contains('counter')) {
-                animateCounter(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    });
-
-    document.querySelectorAll('.counter').forEach(counter => {
-        observer.observe(counter);
-    });
-
-    // Keyboard accessibility
-    document.querySelectorAll('.stat-card').forEach(card => {
-        card.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                card.focus();
-            }
-        });
-    });
-});
-</script>
 {% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const phrases = [
+            "Welcome to my personal website!",
+            "Exploring the future through code and innovation.",
+            "Passionate about Technology and Problem Solving.",
+            "Building solutions that make a difference."
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        const typingText = document.getElementById('typingText');
+        const typingDelay = 40;  // Adjusted for smoother typing
+        const erasingDelay = 25;
+        const newPhraseDelay = 1500; // Time before starting to erase
+
+        function type() {
+            if (charIndex < phrases[phraseIndex].length) {
+                typingText.textContent = phrases[phraseIndex].substring(0, charIndex + 1);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(erase, newPhraseDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typingText.textContent = phrases[phraseIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(type, typingDelay);
+            }
+        }
+
+        type();
+
+        // Counter animation
+        function animateCounter(counter) {
+            const target = parseInt(counter.dataset.target);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const animation = setInterval(() => {
+                current += increment;
+                counter.textContent = Math.floor(current);
+                
+                if (current >= target) {
+                    counter.textContent = target;
+                    clearInterval(animation);
+                }
+            }, 16);
+        }
+
+        // Initialize counters when visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.classList.contains('counter')) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // Keyboard accessibility for stat cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    card.focus();
+                }
+            });
+        });
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+
+        // Navbar Toggle Accessibility
+        const toggleButton = document.querySelector('.navbar-toggler');
+        const navbarNav = document.getElementById('navbarNav');
+
+        toggleButton.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navbarNav.classList.toggle('show');
+            }
+        });
+
+        // Ripple Effect on Click/Tap
+        document.addEventListener('click', function (e) {
+            const target = e.target.closest('.cta-button, .resume-download a, .stat-card, .project-card, .focus-card');
+            if (target) {
+                const rect = target.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add('ripple');
+
+                // Remove existing ripples
+                const existingRipples = target.getElementsByClassName('ripple');
+                while (existingRipples[0]) {
+                    existingRipples[0].parentNode.removeChild(existingRipples[0]);
+                }
+
+                target.appendChild(ripple);
+            }
+        });
+
+        // Create Ripple CSS
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 600ms linear;
+                pointer-events: none;
+            }
+
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    });
+</script>
 {% endblock %}
