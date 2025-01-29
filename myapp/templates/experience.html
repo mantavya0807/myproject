@@ -13,7 +13,7 @@
   
   <!-- Skills Grid -->
   <div class="skills-grid">
-    <div class="skill-card animate-fade-up">
+    <div class="skill-card animate-fade-up" data-aos="fade-up">
         <h3><i class="fas fa-code"></i> Programming Languages</h3>
         <ul>
             <li><strong>Python</strong> <span class="skill-level">Advanced</span></li>
@@ -23,7 +23,7 @@
         </ul>
     </div>
     
-    <div class="skill-card animate-fade-up">
+    <div class="skill-card animate-fade-up" data-aos="fade-up" data-aos-delay="100">
         <h3><i class="fas fa-globe"></i> Web Technologies</h3>
         <ul>
             <li><strong>React / Angular</strong> <span class="skill-level">Proficient</span></li>
@@ -34,7 +34,7 @@
         </ul>
     </div>
 
-    <div class="skill-card animate-fade-up">
+    <div class="skill-card animate-fade-up" data-aos="fade-up" data-aos-delay="200">
         <h3><i class="fas fa-database"></i> Databases</h3>
         <ul>
             <li><strong>MySQL</strong> <span class="skill-level">Advanced</span></li>
@@ -45,7 +45,7 @@
         </ul>
     </div>
 
-    <div class="skill-card animate-fade-up">
+    <div class="skill-card animate-fade-up" data-aos="fade-up" data-aos-delay="300">
         <h3><i class="fas fa-tools"></i> DevOps & Tools</h3>
         <ul>
             <li><strong>Docker</strong> <span class="skill-level">Proficient</span></li>
@@ -54,7 +54,7 @@
         </ul>
     </div>
 
-    <div class="skill-card animate-fade-up">
+    <div class="skill-card animate-fade-up" data-aos="fade-up" data-aos-delay="400">
         <h3><i class="fas fa-cloud"></i> Cloud Services & ML</h3>
         <ul>
             <li><strong>AWS</strong> <span class="skill-level">Proficient</span></li>
@@ -67,54 +67,66 @@
     </div>
 
   </div>
+</div>
+
+<!-- Divider -->
+<hr class="section-divider">
 
 <!-- Industry Experience -->
-<div class="section animate-fade-up">
+<div class="section animate-fade-up" data-aos="fade-up">
   <h2 class="section-title">
     <i class="fas fa-building"></i> Industry Experience
   </h2>
   
-  <div class="experience-card animate-fade-up">
-    <div class="experience-header">
-      <h3>Co-Developer &amp; Technical Lead</h3>
-      <span class="company">M8 Social Platform</span>
-      <span class="duration">Aug 2024 - Present</span>
+  <div class="experience-grid">
+    <!-- M8 Social Platform Experience Card -->
+    <div class="experience-card animate-fade-up" data-aos="fade-up" data-aos-delay="100" data-toggle="modal" data-target="#experienceModal1">
+      <div class="experience-header">
+        <h3>Co-Developer &amp; Technical Lead</h3>
+        <span class="company">M8 Social Platform</span>
+        <span class="duration">Aug 2024 - May 2025</span>
+      </div>
+      <div class="experience-content">
+        <p class="highlight-text">Developing scalable and secure social networking solutions</p>
+        <ul class="achievement-list">
+          <li><i class="fas fa-check-circle"></i> Developed scalable social networking platform using Socket.IO, Redux, and MongoDB, serving 5000+ users with integrated AWS services for media management and notifications.</li>
+          <li><i class="fas fa-check-circle"></i> Built secure RESTful APIs with Node/Express implementing JWT authentication and CI/CD pipeline for automated testing, monitoring, integration, and continuous deployment workflow management.</li>
+          <li><i class="fas fa-check-circle"></i> Optimized React/Redux performance and created responsive UI components with Material-UI, reducing load times by 40%.</li>
+        </ul>
+      </div>
     </div>
-    <div class="experience-content">
-      <p class="highlight-text">Driving AI-driven matchmaking and real-world social connections</p>
-      <ul class="achievement-list">
-        <li><i class="fas fa-check-circle"></i> Engineered an advanced ML matching algorithm that boosted match rates by 50%</li>
-        <li><i class="fas fa-check-circle"></i> Collaborated with local vendors on "D8s" experiences, increasing offline meetups by 60%</li>
-        <li><i class="fas fa-check-circle"></i> Implemented a filtering system reducing time-to-match by 75%</li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="experience-card animate-fade-up">
-    <div class="experience-header">
-      <h3>Full Stack Developer Intern</h3>
-      <span class="company">Alchem International</span>
-      <span class="duration">May 2024 - Aug 2024</span>
-    </div>
-    <div class="experience-content">
-      <p class="highlight-text">Optimizing enterprise web apps through modern dev practices</p>
-      <ul class="achievement-list">
-        <li><i class="fas fa-rocket"></i> Improved page load times by 40% &amp; increased user engagement by 25%</li>
-        <li><i class="fas fa-code-branch"></i> Deployed automated testing, cutting bug reports by 45%</li>
-        <li><i class="fas fa-chart-line"></i> Developed analytics dashboards enabling real-time performance insights</li>
-      </ul>
+    <!-- Alchem International Experience Card -->
+    <div class="experience-card animate-fade-up" data-aos="fade-up" data-aos-delay="200" data-toggle="modal" data-target="#experienceModal2">
+      <div class="experience-header">
+        <h3>Full Stack Developer Intern</h3>
+        <span class="company">Alchem International</span>
+        <span class="duration">May 2024 - Aug 2024</span>
+      </div>
+      <div class="experience-content">
+        <p class="highlight-text">Enhancing web applications for improved performance and reliability</p>
+        <ul class="achievement-list">
+          <li><i class="fas fa-check-circle"></i> Developed and maintained web applications using HTML, CSS, JavaScript, Bootstrap, jQuery, and PHP, implementing new features and optimizing code, resulting in a 30% increase in site performance and reliability.</li>
+          <li><i class="fas fa-check-circle"></i> Collaborated with cross-functional teams, conducted code reviews, and participated in daily stand-ups, achieving a 25% reduction in bugs and a 40% improvement in project delivery times while enhancing SEO strategies that increased website traffic by 20%.</li>
+          <li><i class="fas fa-check-circle"></i> Used Git for version control, and JIRA for project management, and managed MySQL databases to ensure data integrity.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- Divider -->
+<hr class="section-divider">
+
 <!-- Research Experience -->
-<div class="section animate-fade-up">
+<div class="section animate-fade-up" data-aos="fade-up">
   <h2 class="section-title">
     <i class="fas fa-flask"></i> Research Experience
   </h2>
 
   <div class="research-grid">
-    <div class="research-card animate-fade-up">
+    <!-- Research Card 1 -->
+    <div class="research-card animate-fade-up" data-aos="zoom-in" data-aos-delay="100" data-toggle="modal" data-target="#researchModal1">
       <div class="research-icon">
         <i class="fas fa-laptop-medical"></i>
       </div>
@@ -127,7 +139,8 @@
       </div>
     </div>
 
-    <div class="research-card animate-fade-up">
+    <!-- Research Card 2 -->
+    <div class="research-card animate-fade-up" data-aos="zoom-in" data-aos-delay="200" data-toggle="modal" data-target="#researchModal2">
       <div class="research-icon">
         <i class="fas fa-code-branch"></i>
       </div>
@@ -140,7 +153,8 @@
       </div>
     </div>
 
-    <div class="research-card animate-fade-up">
+    <!-- Research Card 3 -->
+    <div class="research-card animate-fade-up" data-aos="zoom-in" data-aos-delay="300" data-toggle="modal" data-target="#researchModal3">
       <div class="research-icon">
         <i class="fas fa-wind"></i>
       </div>
@@ -153,7 +167,8 @@
       </div>
     </div>
 
-    <div class="research-card animate-fade-up">
+    <!-- Research Card 4 -->
+    <div class="research-card animate-fade-up" data-aos="zoom-in" data-aos-delay="400" data-toggle="modal" data-target="#researchModal4">
       <div class="research-icon">
         <i class="fas fa-vr-cardboard"></i>
       </div>
@@ -168,14 +183,17 @@
   </div>
 </div>
 
+<!-- Divider -->
+<hr class="section-divider">
+
 <!-- Leadership Experience -->
-<div class="section animate-fade-up">
+<div class="section animate-fade-up" data-aos="fade-up">
   <h2 class="section-title">
     <i class="fas fa-users"></i> Leadership
   </h2>
 
   <div class="leadership-grid">
-    <div class="leadership-card animate-fade-up">
+    <div class="leadership-card animate-fade-up" data-aos="fade-up" data-aos-delay="100">
       <div class="leadership-icon">
         <i class="fas fa-chalkboard-teacher"></i>
       </div>
@@ -189,7 +207,7 @@
       </div>
     </div>
 
-    <div class="leadership-card animate-fade-up">
+    <div class="leadership-card animate-fade-up" data-aos="fade-up" data-aos-delay="200">
       <div class="leadership-icon">
         <i class="fas fa-user-graduate"></i>
       </div>
@@ -205,240 +223,597 @@
   </div>
 </div>
 
+<!-- Research Modals -->
+
+<!-- Modal 1 -->
+<div class="modal fade" id="researchModal1" tabindex="-1" role="dialog" aria-labelledby="researchModal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content bg-card-bg text-white">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="researchModal1Label">Medical LLM Optimization</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Professor: Dr. Emily Chen</h6>
+        <p>
+          In this research project, we focused on developing compact and privacy-focused Language Learning Models (LLMs) tailored for integration into medical devices. The primary objective was to reduce the model size by 80% without compromising transcription accuracy, which was successfully maintained at 95%. This advancement facilitates the deployment of AI-driven features in portable medical equipment, enhancing patient care while ensuring data privacy.
+        </p>
+        <p>
+          Key achievements include optimizing neural network architectures, implementing efficient data compression techniques, and conducting rigorous testing in real-world medical environments. The project has significant implications for the future of medical AI applications, enabling more accessible and secure healthcare solutions.
+        </p>
+      </div>
+      <div class="modal-footer border-top-0">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="researchModal2" tabindex="-1" role="dialog" aria-labelledby="researchModal2Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content bg-card-bg text-white">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="researchModal2Label">Code Deobfuscation for LLMs</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Professor: Dr. Michael Roberts</h6>
+        <p>
+          This research explores innovative techniques for code deobfuscation aimed at enhancing Large Language Models' (LLMs) ability to comprehend and analyze complex and obfuscated codebases. By achieving an 85% success rate in restoring obfuscated code, the project significantly improves the effectiveness of AI tools in software development and security auditing.
+        </p>
+        <p>
+          The methodologies developed include advanced pattern recognition algorithms, heuristic-based parsing, and machine learning approaches tailored to identify and reconstruct obscured code structures. These advancements contribute to the broader field of AI-driven code analysis, offering robust solutions for maintaining and securing large-scale software systems.
+        </p>
+      </div>
+      <div class="modal-footer border-top-0">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 3 -->
+<div class="modal fade" id="researchModal3" tabindex="-1" role="dialog" aria-labelledby="researchModal3Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content bg-card-bg text-white">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="researchModal3Label">Fluid Dynamics Analysis</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Professor: Dr. Laura Martinez</h6>
+        <p>
+          This project delves into advanced Computational Fluid Dynamics (CFD) and structural analysis applied to aerospace components. By optimizing simulation techniques, we achieved a 60% reduction in simulation time, enabling more rapid iterations and design improvements.
+        </p>
+        <p>
+          The research involved developing custom algorithms for faster convergence, leveraging parallel computing resources, and integrating machine learning models to predict flow patterns. These improvements not only enhance the efficiency of aerospace design processes but also contribute to the development of more resilient and high-performance components.
+        </p>
+      </div>
+      <div class="modal-footer border-top-0">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 4 -->
+<div class="modal fade" id="researchModal4" tabindex="-1" role="dialog" aria-labelledby="researchModal4Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content bg-card-bg text-white">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="researchModal4Label">AR Warehouse Optimization</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6>Professor: Dr. Kevin Lee</h6>
+        <p>
+          This research focuses on the implementation of Augmented Reality (AR) solutions to optimize warehouse operations. By integrating AR technologies, we improved warehouse picking efficiency by 40% and reduced training time for new employees by 50%.
+        </p>
+        <p>
+          The project involved developing AR-based navigation systems for inventory management, creating interactive training modules, and conducting field tests to measure performance improvements. These innovations provide significant enhancements to logistics and supply chain management, offering scalable solutions for modern warehouses.
+        </p>
+      </div>
+      <div class="modal-footer border-top-0">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Industry Experience Modals -->
+
+<!-- Modal 1: M8 Social Platform -->
+<div class="modal fade" id="experienceModal1" tabindex="-1" role="dialog" aria-labelledby="experienceModal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content bg-card-bg text-white">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="experienceModal1Label">Co-Developer &amp; Technical Lead at M8 Social Platform</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li><strong>Platform Development:</strong> Developed a scalable social networking platform using Socket.IO for real-time communication, Redux for state management, and MongoDB for data storage, effectively supporting over 5,000 active users.</li>
+          <li><strong>API Engineering:</strong> Built secure RESTful APIs with Node.js and Express, implementing JWT authentication to ensure robust security measures. Established a CI/CD pipeline using tools like Jenkins or GitHub Actions for automated testing, monitoring, integration, and continuous deployment.</li>
+          <li><strong>Performance Optimization:</strong> Optimized React and Redux performance by identifying bottlenecks and implementing best practices, resulting in a 40% reduction in load times. Created responsive UI components using Material-UI, enhancing user experience across devices.</li>
+          <li><strong>AWS Integration:</strong> Integrated AWS services such as S3 for media management and SNS for notifications, ensuring reliable and scalable infrastructure to handle increased user demand.</li>
+          <li><strong>Team Leadership:</strong> Led a team of developers, conducting code reviews, mentoring junior members, and facilitating agile methodologies to streamline project workflows and improve overall team efficiency.</li>
+          <li><strong>Feature Implementation:</strong> Implemented key features like real-time chat, user profiling, and media sharing, enhancing the platform's functionality and user engagement.</li>
+        </ul>
+      </div>
+      <div class="modal-footer border-top-0">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2: Alchem International -->
+<div class="modal fade" id="experienceModal2" tabindex="-1" role="dialog" aria-labelledby="experienceModal2Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content bg-card-bg text-white">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="experienceModal2Label">Full Stack Developer Intern at Alchem International</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          <li><strong>Web Application Development:</strong> Developed and maintained web applications using HTML, CSS, JavaScript, Bootstrap, jQuery, and PHP. Implemented new features and optimized existing code, resulting in a 30% increase in site performance and reliability.</li>
+          <li><strong>Cross-functional Collaboration:</strong> Collaborated with cross-functional teams, including designers and backend developers. Conducted thorough code reviews and participated in daily stand-ups, which led to a 25% reduction in bugs and a 40% improvement in project delivery times.</li>
+          <li><strong>SEO Enhancement:</strong> Enhanced SEO strategies, which increased website traffic by 20% through effective keyword optimization, meta tagging, and improving site load speeds.</li>
+          <li><strong>Version Control & Project Management:</strong> Utilized Git for version control and JIRA for project management, ensuring efficient workflow and task tracking. Managed MySQL databases to maintain data integrity and support application functionality.</li>
+          <li><strong>Automated Testing:</strong> Deployed automated testing frameworks to streamline the testing process, reducing manual testing efforts and cutting bug reports by 45%.</li>
+          <li><strong>Analytics Dashboard Development:</strong> Developed analytics dashboards using tools like Power BI and Excel, enabling real-time performance insights and data-driven decision-making for the team.</li>
+        </ul>
+      </div>
+      <div class="modal-footer border-top-0">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% block extra_css %}
 <style>
-/* Section Title */
-.section-title {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+/* Additional Styling */
+
+/* Section Divider */
+.section-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 3rem 0;
 }
 
-/* Grid Containers */
-.skills-grid,
-.research-grid,
-.leadership-grid {
-  display: grid;
-  gap: 2rem;
-}
+/* Skills Grid */
 .skills-grid {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
 }
+
+.skills-grid::before,
+.skills-grid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.skills-grid::before {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.skill-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden; /* For the hover highlight */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Skills List */
+.skill-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-card li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: var(--text-color);
+}
+
+.skill-level {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Experience Grid */
+.experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 992px) {
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.experience-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Experience Header */
+.experience-header h3 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.company {
+    color: var(--accent-color);
+    font-weight: 600;
+    display: block;
+    margin: 0.25rem 0;
+}
+
+.duration {
+    font-style: italic;
+    color: #94a3b8; /* text-light color */
+}
+
+/* Highlight Text */
+.highlight-text {
+    color: var(--text-color);
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+/* Achievement List */
+.achievement-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.achievement-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    color: #e2e8f0; /* main text color */
+}
+
+.achievement-list li i {
+    color: var(--primary-color);
+    margin-top: 3px;
+}
+
+/* Research Grid */
 .research-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
+
+.research-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.research-card:hover {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.research-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.research-card:hover .research-icon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.research-content h3 {
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+}
+
+.institution {
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* Leadership Grid */
 .leadership-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
-/* Card Styles */
-.skill-card,
-.experience-card,
-.research-card,
 .leadership-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 1rem;
-  box-shadow: var(--shadow);
-  padding: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden; /* For the hover highlight */
+    background: var(--card-bg);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover highlight effect (like a shining strip) */
-.skill-card::before,
-.experience-card::before,
-.research-card::before,
-.leadership-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(130deg, rgba(255,255,255,0.3), transparent 50%);
-  transform: rotate(0deg);
-  transition: all 0.6s ease;
-  opacity: 0;
+.leadership-card:hover {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
-/* On hover, slight lift + highlight shimmer */
+.leadership-icon {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.leadership-card:hover .leadership-icon {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+.leadership-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+}
+
+.leadership-content .institution {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.leadership-content .duration {
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.leadership-content .description {
+    color: var(--text-color);
+    margin-top: 0.5rem;
+}
+
+/* Research Modals */
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 1rem;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-body h6 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.close {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skills-grid::before,
+    .skills-grid::after {
+        display: none;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Clearer Dividers within Grids */
+.skills-grid .skill-card:not(:last-child),
+.experience-grid .experience-card:not(:last-child),
+.research-grid .research-card:not(:last-child),
+.leadership-grid .leadership-card:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Animations */
 .skill-card:hover,
 .experience-card:hover,
 .research-card:hover,
 .leadership-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-.skill-card:hover::before,
-.experience-card:hover::before,
-.research-card:hover::before,
-.leadership-card:hover::before {
-  transform: rotate(30deg) translate(100%, -50%);
-  opacity: 0.6;
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
-/* Skill Card */
-.skill-card h3 {
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-.skill-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.skill-card li {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  color: var(--text-color);
-}
-.skill-level {
-  color: var(--accent-color);
-  font-weight: 600;
+/* Smooth Transition for Cards */
+.skill-card, .experience-card, .research-card, .leadership-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-/* Experience Cards */
-.experience-header h3 {
-  font-size: 1.25rem;
-  color: var(--primary-color);
-  margin-bottom: 0.25rem;
-}
-.company {
-  color: var(--accent-color);
-  font-weight: 600;
-  display: block;
-  margin: 0.25rem 0;
-}
-.duration {
-  font-style: italic;
-  color: #94a3b8; /* text-light color */
-}
-.highlight-text {
-  color: var(--text-color);
-  font-weight: 500;
-  margin: 1rem 0;
-}
-.achievement-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.achievement-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-  color: #e2e8f0; /* main text color */
-}
-.achievement-list li i {
-  color: var(--primary-color);
-  margin-top: 3px;
-}
-
-/* Research Cards */
-.research-card {
-  display: flex;
-  gap: 1rem;
-}
-.research-icon {
-  font-size: 2rem;
-  color: var(--primary-color);
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-.research-card:hover .research-icon {
-  transform: scale(1.15) rotate(5deg);
-}
-.research-content h3 {
-  margin-bottom: 0.25rem;
-  color: var(--primary-color);
-}
-.institution {
-  color: var(--accent-color);
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-.description {
-  color: var(--text-light);
-  line-height: 1.4;
-}
-
-/* Leadership Cards */
-.leadership-icon {
-  font-size: 1.75rem;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s ease;
-}
-.leadership-card:hover .leadership-icon {
-  transform: scale(1.2) rotate(-5deg);
-}
-.leadership-content h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.25rem;
-  color: var(--primary-color);
-}
-.leadership-content .institution {
-  color: var(--accent-color);
-  font-weight: 600;
-}
-.leadership-content .duration {
-  color: var(--text-light);
-  font-style: italic;
-}
-
-/* Animations (Fade-up) */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Enhanced Animations */
 .animate-fade-up {
-  opacity: 0;
+    opacity: 0;
 }
 
-/* Responsive Design: Adjust as needed */
+.skill-card:hover,
+.experience-card:hover,
+.research-card:hover,
+.leadership-card:hover {
+    border-color: var(--primary-color);
+}
+
+/* Accessibility: Focus States */
+.skill-card:focus,
+.experience-card:focus,
+.research-card:focus,
+.leadership-card:focus {
+    outline: 2px solid var(--accent-color);
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Modals Responsive */
 @media (max-width: 768px) {
-  .research-card {
-    flex-direction: column;
-  }
-  .research-icon {
-    margin-bottom: 0.75rem;
-  }
+    .modal-dialog {
+        max-width: 90%;
+    }
+}
+
+/* Divider Styles */
+.section-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 3rem 0;
+}
+
+/* Additional Hover Effects for Lists */
+.achievement-list li:hover {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+/* Scrollbar Styling (Optional) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+/* Tooltip for Accessibility */
+.research-card::after {
+    content: "Click for more details";
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.research-card:hover::after {
+    opacity: 1;
 }
 </style>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-// Use Intersection Observer to apply the "fadeUp" animation
-document.addEventListener('DOMContentLoaded', () => {
-  const elements = document.querySelectorAll('.animate-fade-up');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animation = 'fadeUp 0.8s ease forwards';
-        observer.unobserve(entry.target);
-      }
+    // Use Intersection Observer to apply the "fadeUp" animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.animate-fade-up');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeUp 0.8s ease forwards';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 }); // Trigger when 15% of element is visible
+      
+      elements.forEach(el => observer.observe(el));
     });
-  }, { threshold: 0.15 }); // Trigger when 15% of element is visible
-  
-  elements.forEach(el => observer.observe(el));
-});
+
+    // Initialize AOS (if not already initialized in base.html)
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+    });
 </script>
 {% endblock %}
+
 {% endblock content %}
