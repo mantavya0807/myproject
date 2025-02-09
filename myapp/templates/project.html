@@ -5,261 +5,511 @@
 
 {% block content %}
 
+<style>
+    /* Inline styles to avoid conflicts with base.html */
+    :root {
+      --primary-color: #6366f1;
+      --hover-color: #4f46e5;
+      --accent-color: #ec4899;
+      --gradient-start: #6366f1;
+      --gradient-end: #8b5cf6;
+      --text-color: #e2e8f0;
+      --text-light: #94a3b8;
+      --bg-color: #0f172a;
+      --header-bg: rgba(15, 23, 42, 0.95);
+      --header-bg-scrolled: rgba(15, 23, 42, 0.85);
+      --card-bg: #1e293b;
+      --footer-bg: #0f172a;
+      --transition-speed: 0.3s;
+      --shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2), 0 2px 4px -1px rgba(99, 102, 241, 0.1);
+      --shadow-hover: 0 10px 15px -3px rgba(99, 102, 241, 0.3), 0 4px 6px -2px rgba(99, 102, 241, 0.2);
+      --font-family: 'Inter', Arial, sans-serif;
+    }
+
+    @keyframes pjFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .pj-section {
+      padding: 2rem;
+      background-color: var(--card-bg);
+      margin: 2rem 0;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      opacity: 0;
+      transition: all var(--transition-speed) ease-in-out;
+    }
+
+    .pj-section:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .pj-section-title {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pj-intro-text {
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .pj-filter-buttons .pj-filter-btn {
+      margin: 0 5px;
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+
+    .pj-filter-buttons .pj-filter-btn.active,
+    .pj-filter-buttons .pj-filter-btn:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .pj-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .pj-project-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pj-project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .pj-project-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(130deg, rgba(255, 255, 255, 0.3), transparent 50%);
+      transform: rotate(0deg);
+      transition: all 0.6s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pj-project-card:hover::before {
+      transform: rotate(25deg) translate(100%, -50%);
+      opacity: 0.5;
+    }
+
+    .pj-project-icon {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .pj-project-card:hover .pj-project-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .pj-project-content h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .pj-project-content p {
+      color: var(--text-light);
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .pj-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .pj-tech-tag {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .pj-project-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pj-project-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: transform 0.3s ease;
+    }
+
+    .pj-project-link:hover {
+      transform: translateX(5px);
+    }
+
+    .pj-github-link {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      transition: color var(--transition-speed);
+    }
+
+    .pj-github-link:hover {
+      color: var(--accent-color);
+    }
+
+    .pj-animate-fade-up {
+      opacity: 0;
+    }
+
+    .pj-project-image {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      overflow: hidden;
+    }
+
+    .pj-project-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 1rem;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    .modal-title {
+      color: var(--primary-color);
+    }
+
+    .carousel-indicators li {
+      background-color: var(--primary-color);
+    }
+
+    .carousel-indicators .active {
+      background-color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .pj-projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pj-project-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .pj-github-link {
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pj-filter-buttons .pj-filter-btn {
+        width: 100%;
+        margin: 5px 0;
+      }
+    }
+  </style>
+
 <!-- Projects Section -->
-<div class="section animate-fade-up" style="margin-top:80px;">
-  <h2 class="section-title">
-    <i class="fas fa-code"></i> Personal & Academic Projects
+<div class="pj-section pj-animate-fade-up" style="margin-top:80px;">
+  <h2 class="pj-section-title">
+    <i class="fas fa-code"></i> Personal &amp; Academic Projects
   </h2>
-  <p class="intro-text">
+  <p class="pj-intro-text">
     Below is a selection of my latest software, research, and academic projects. Hover over each card for a quick preview, and visit the GitHub links to learn more!
   </p>
   
   <!-- Filter Buttons -->
-  <div class="filter-buttons text-center mb-4">
-    <button class="btn btn-primary filter-btn active" data-filter="all">All</button>
-    <button class="btn btn-outline-primary filter-btn" data-filter="web">Web</button>
-    <button class="btn btn-outline-primary filter-btn" data-filter="ml">Machine Learning</button>
-    <button class="btn btn-outline-primary filter-btn" data-filter="mobile">Mobile</button>
-    <button class="btn btn-outline-primary filter-btn" data-filter="other">Other</button>
+  <div class="pj-filter-buttons text-center mb-4">
+    <button class="btn btn-primary pj-filter-btn active" data-filter="all">All</button>
+    <button class="btn btn-outline-primary pj-filter-btn" data-filter="web">Web</button>
+    <button class="btn btn-outline-primary pj-filter-btn" data-filter="ml">Machine Learning</button>
+    <button class="btn btn-outline-primary pj-filter-btn" data-filter="mobile">Mobile</button>
+    <button class="btn btn-outline-primary pj-filter-btn" data-filter="other">Other</button>
   </div>
   
   <!-- Projects Grid -->
-  <div class="projects-grid">
+  <div class="pj-projects-grid">
     
-    <!-- Existing Project Cards -->
-    <!-- Project 1: M8 Website -->
-    <div class="project-card animate-fade-up filter-item web">
-      <div class="project-icon">
+    <!-- PROJECT 1: M8 Website -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item web">
+      <div class="pj-project-icon">
         <i class="fas fa-globe"></i>
       </div>
-      <div class="project-content">
+      <div class="pj-project-content">
         <h3>M8 Website</h3>
         <p>A dynamic web platform built with React and Node.js for M8 LLC. Features user authentication, social networking, and real-time communication functionalities.</p>
-        <div class="tech-stack">
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">NodeJS</span>
-          <span class="tech-tag">Express</span>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">React</span>
+          <span class="pj-tech-tag">NodeJS</span>
+          <span class="pj-tech-tag">Express</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="project-link" data-toggle="modal" data-target="#projectModalM8Website" aria-label="View M8 Website Details">
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModalM8Website" aria-label="View M8 Website Details">
             View Details <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/mantavya0807" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View M8 Website on GitHub">
+          <a href="https://github.com/mantavya0807" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View M8 Website on GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
     </div>
-      <!-- New Project 9: HomeHarmony -->
-      <div class="project-card animate-fade-up filter-item web">
-        <div class="project-icon">
-          <i class="fas fa-home"></i>
+
+    <!-- PROJECT 2: HomeHarmony -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item web">
+      <div class="pj-project-icon">
+        <i class="fas fa-home"></i>
+      </div>
+      <div class="pj-project-content">
+        <h3>HomeHarmony</h3>
+        <p>A comprehensive real estate platform built with React, TypeScript, and Supabase. Facilitates seamless interactions between buyers and sellers with robust property management and communication features.</p>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">React</span>
+          <span class="pj-tech-tag">TypeScript</span>
+          <span class="pj-tech-tag">Supabase</span>
+          <span class="pj-tech-tag">Tailwind CSS</span>
+          <span class="pj-tech-tag">Google Maps</span>
+          <span class="pj-tech-tag">Stripe</span>
         </div>
-        <div class="project-content">
-          <h3>HomeHarmony</h3>
-          <p>A comprehensive real estate platform built with React, TypeScript, and Supabase. Facilitates seamless interactions between buyers and sellers with robust property management and communication features.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">Supabase</span>
-            <span class="tech-tag">Tailwind CSS</span>
-            <span class="tech-tag">Google Maps</span>
-            <span class="tech-tag">Stripe</span>
-          </div>
-          <div class="project-actions">
-            <a href="#" class="project-link" data-toggle="modal" data-target="#projectModalHomeHarmony" aria-label="View HomeHarmony Details">
-              View Details <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="https://www.home-harmony.me/" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View HomeHarmony on GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-          </div>
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModalHomeHarmony" aria-label="View HomeHarmony Details">
+            View Details <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="https://www.home-harmony.me/" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View HomeHarmony on GitHub">
+            <i class="fab fa-github"></i>
+          </a>
         </div>
       </div>
-    <!-- Project 2: M8 Social Mobile -->
-    <div class="project-card animate-fade-up filter-item mobile">
-      <div class="project-icon">
+    </div>
+
+    <!-- PROJECT 3: M8 Social Mobile -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item mobile">
+      <div class="pj-project-icon">
         <i class="fas fa-mobile-alt"></i>
       </div>
-      <div class="project-content">
+      <div class="pj-project-content">
         <h3>M8 Social Mobile</h3>
         <p>Prototype mobile version of M8 Social Platform. Focuses on clean UI and real-time user engagement using Firebase for data sync.</p>
-        <div class="tech-stack">
-          <span class="tech-tag">React Native</span>
-          <span class="tech-tag">TypeScript</span>
-          <span class="tech-tag">Firebase</span>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">React Native</span>
+          <span class="pj-tech-tag">TypeScript</span>
+          <span class="pj-tech-tag">Firebase</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="project-link" data-toggle="modal" data-target="#projectModal4" aria-label="View M8 Social Mobile Details">
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModal4" aria-label="View M8 Social Mobile Details">
             View Details <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/mantavya0807" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View M8 Social Mobile on GitHub">
+          <a href="https://github.com/mantavya0807" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View M8 Social Mobile on GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
     </div>
     
-    <!-- Project 3: AgriScience -->
-    <div class="project-card animate-fade-up filter-item web">
-      <div class="project-icon">
+    <!-- PROJECT 4: AgriScience -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item web">
+      <div class="pj-project-icon">
         <i class="fas fa-leaf"></i>
       </div>
-      <div class="project-content">
+      <div class="pj-project-content">
         <h3>AgriScience</h3>
         <p>Django-based platform that optimizes crop growth using real-time data and predictive analytics. Ideal for small-scale farms.</p>
-        <div class="tech-stack">
-          <span class="tech-tag">Django</span>
-          <span class="tech-tag">MySQL</span>
-          <span class="tech-tag">Bootstrap</span>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">Django</span>
+          <span class="pj-tech-tag">MySQL</span>
+          <span class="pj-tech-tag">Bootstrap</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="project-link" data-toggle="modal" data-target="#projectModalAgriScience" aria-label="View AgriScience Details">
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModalAgriScience" aria-label="View AgriScience Details">
             View Details <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/mantavya0807/demo" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View AgriScience on GitHub">
+          <a href="https://github.com/mantavya0807/demo" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View AgriScience on GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
     </div>
     
-    <!-- Project 4: Meal Plan Optimizer -->
-    <div class="project-card animate-fade-up filter-item ml">
-      <div class="project-icon">
+    <!-- PROJECT 5: Meal Plan Optimizer -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item ml">
+      <div class="pj-project-icon">
         <i class="fas fa-utensils"></i>
       </div>
-      <div class="project-content">
+      <div class="pj-project-content">
         <h3>Meal Plan Optimizer</h3>
         <p>Web application for Penn State students to analyze and optimize their campus meal plan spending. Features automated data collection, spending analytics, and personalized recommendations.</p>
-        <div class="tech-stack">
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">Firebase</span>
-          <span class="tech-tag">TypeScript</span>
-          <span class="tech-tag">Node.js</span>
-          <span class="tech-tag">Puppeteer</span>
-          <span class="tech-tag">Tailwind CSS</span>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">React</span>
+          <span class="pj-tech-tag">Firebase</span>
+          <span class="pj-tech-tag">TypeScript</span>
+          <span class="pj-tech-tag">Node.js</span>
+          <span class="pj-tech-tag">Puppeteer</span>
+          <span class="pj-tech-tag">Tailwind CSS</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="project-link" data-toggle="modal" data-target="#projectModalMealPlan" aria-label="View Meal Plan Optimizer Details">
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModalMealPlan" aria-label="View Meal Plan Optimizer Details">
             View Details <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/mantavya0807/Mealer" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View Meal Plan Optimizer on GitHub">
+          <a href="https://github.com/mantavya0807/Mealer" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View Meal Plan Optimizer on GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
     </div>
     
-    <!-- Project 5: SecureWater -->
-    <div class="project-card animate-fade-up filter-item ml">
-      <div class="project-icon">
+    <!-- PROJECT 6: SecureWater -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item ml">
+      <div class="pj-project-icon">
         <i class="fas fa-shield-alt"></i>
       </div>
-      <div class="project-content">
+      <div class="pj-project-content">
         <h3>SecureWater</h3>
         <p>Advanced image watermarking system for protecting digital assets with tamper detection and verification capabilities. Built with React and Node.js.</p>
-        <div class="tech-stack">
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">Node.js</span>
-          <span class="tech-tag">MongoDB</span>
-          <span class="tech-tag">Sharp</span>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">React</span>
+          <span class="pj-tech-tag">Node.js</span>
+          <span class="pj-tech-tag">MongoDB</span>
+          <span class="pj-tech-tag">Sharp</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="project-link" data-toggle="modal" data-target="#projectModalSecureWater" aria-label="View SecureWater Details">
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModalSecureWater" aria-label="View SecureWater Details">
             View Details <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/mantavya0807/SecureWater" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View SecureWater on GitHub">
+          <a href="https://github.com/mantavya0807/SecureWater" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View SecureWater on GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
     </div>
     
-    <!-- Project 6: SAR Meditech Website -->
-    <div class="project-card animate-fade-up filter-item web">
-      <div class="project-icon">
+    <!-- PROJECT 7: SAR Meditech Website -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item web">
+      <div class="pj-project-icon">
         <i class="fab fa-vuejs"></i>
       </div>
-      <div class="project-content">
+      <div class="pj-project-content">
         <h3>SAR Meditech Website</h3>
         <p>Modern company website for medical equipment procurement firm built with Vue 3, featuring responsive design and dynamic components.</p>
-        <div class="tech-stack">
-          <span class="tech-tag">Vue 3</span>
-          <span class="tech-tag">TailwindCSS</span>
-          <span class="tech-tag">TypeScript</span>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">Vue 3</span>
+          <span class="pj-tech-tag">TailwindCSS</span>
+          <span class="pj-tech-tag">TypeScript</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="project-link" data-toggle="modal" data-target="#projectModalSAR" aria-label="View SAR Meditech Website Details">
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModalSAR" aria-label="View SAR Meditech Website Details">
             View Details <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/mantavya0807/SAR" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View SAR Meditech Website on GitHub">
+          <a href="https://github.com/mantavya0807/SAR" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View SAR Meditech Website on GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
     </div>
     
-    <!-- Project 7: Course Scheduler -->
-    <div class="project-card animate-fade-up filter-item other">
-      <div class="project-icon">
+    <!-- PROJECT 8: Course Scheduler -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item other">
+      <div class="pj-project-icon">
         <i class="fas fa-calendar"></i>
       </div>
-      <div class="project-content">
+      <div class="pj-project-content">
         <h3>Course Scheduler</h3>
         <p>Modern web application that leverages web scraping and natural language processing to automatically gather and process course information. Built with the MERN stack, it provides an intelligent course planning solution.</p>
-        <div class="tech-stack">
-          <span class="tech-tag">NLTK</span>
-          <span class="tech-tag">Selenium</span>
-          <span class="tech-tag">Beautiful Soup</span>
-          <span class="tech-tag">MongoDB</span>
-          <span class="tech-tag">Express</span>
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">Node.js</span>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">NLTK</span>
+          <span class="pj-tech-tag">Selenium</span>
+          <span class="pj-tech-tag">Beautiful Soup</span>
+          <span class="pj-tech-tag">MongoDB</span>
+          <span class="pj-tech-tag">Express</span>
+          <span class="pj-tech-tag">React</span>
+          <span class="pj-tech-tag">Node.js</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="project-link" data-toggle="modal" data-target="#projectModalScheduler" aria-label="View Course Scheduler Details">
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModalScheduler" aria-label="View Course Scheduler Details">
             View Details <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/mantavya0807" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View Course Scheduler on GitHub">
+          <a href="https://github.com/mantavya0807" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View Course Scheduler on GitHub">
             <i class="fab fa-github"></i>
           </a>
         </div>
       </div>
     </div>
     
-    <!-- Project 8: StockFetcher -->
-    <div class="project-card animate-fade-up filter-item ml">
-      <div class="project-icon">
+    <!-- PROJECT 9: StockFetcher -->
+    <div class="pj-project-card pj-animate-fade-up pj-filter-item ml">
+      <div class="pj-project-icon">
         <i class="fas fa-chart-line"></i>
       </div>
-      <div class="project-content">
+      <div class="pj-project-content">
         <h3>StockFetcher</h3>
         <p>A Django web app that provides real-time stock data analysis, backtesting capabilities, and ML-powered price predictions using financial APIs.</p>
-        <div class="tech-stack">
-          <span class="tech-tag">Django</span>
-          <span class="tech-tag">Pandas</span>
-          <span class="tech-tag">Scikit-learn</span>
+        <div class="pj-tech-stack">
+          <span class="pj-tech-tag">Django</span>
+          <span class="pj-tech-tag">Pandas</span>
+          <span class="pj-tech-tag">Scikit-learn</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="project-link" data-toggle="modal" data-target="#projectModalStockFetcher" aria-label="View StockFetcher Details">
+        <div class="pj-project-actions">
+          <a href="#" class="pj-project-link" data-toggle="modal" data-target="#projectModalStockFetcher" aria-label="View StockFetcher Details">
             View Details <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="https://github.com/mantavya0807/StockFetcher" class="github-link" target="_blank" rel="noopener noreferrer" aria-label="View StockFetcher on GitHub">
+          <a href="https://github.com/mantavya0807/StockFetcher" class="pj-github-link" target="_blank" rel="noopener noreferrer" aria-label="View StockFetcher on GitHub">
             <i class="fab fa-github"></i>
           </a>
        </div>
       </div>
     </div>
     
-  
+  </div> <!-- End pj-projects-grid -->
+</div> <!-- End pj-section -->
 
-  </div> <!-- End projects-grid -->
-</div> <!-- End main section -->
+<!-- ========== EXISTING MODALS BELOW (unchanged except for the class name on "fade" ========== -->
 
-<!-- Existing Project Modals -->
 <!-- Modal: M8 Website -->
-<div class="modal fade animate-fade-up" id="projectModalM8Website" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelM8Website" aria-hidden="true">
+<div class="modal fade pj-animate-fade-up" id="projectModalM8Website" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelM8Website" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -278,17 +528,17 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/M81.png' %}" alt="M8 Website Screenshot 1">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/M82.png' %}" alt="M8 Website Screenshot 2">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/M83.png' %}" alt="M8 Website Screenshot 3">
               </div>
             </div>
@@ -328,7 +578,7 @@
 </div>
 
 <!-- Modal: AgriScience -->
-<div class="modal fade animate-fade-up" id="projectModalAgriScience" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelAgriScience" aria-hidden="true">
+<div class="modal fade pj-animate-fade-up" id="projectModalAgriScience" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelAgriScience" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -347,17 +597,17 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/Agriscience1.jpg' %}" alt="AgriScience Screenshot 1">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/Agriscience2.jpg' %}" alt="AgriScience Screenshot 2">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/Agriscience3.jpg' %}" alt="AgriScience Screenshot 3">
               </div>
             </div>
@@ -397,7 +647,7 @@
 </div>
 
 <!-- Modal: Meal Plan Optimizer -->
-<div class="modal fade animate-fade-up" id="projectModalMealPlan" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelMealPlan" aria-hidden="true">
+<div class="modal fade pj-animate-fade-up" id="projectModalMealPlan" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelMealPlan" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -416,17 +666,17 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/Mealer1.png' %}" alt="Meal Plan Dashboard">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/Mealer2.png' %}" alt="Spending Analytics">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
+              <div class="pj-project-image">
                 <img src="{% static 'projects/Mealer3.png' %}" alt="Transaction History">
               </div>
             </div>
@@ -466,7 +716,7 @@
 </div>
 
 <!-- Modal: SecureWater -->
-<div class="modal fade animate-fade-up" id="projectModalSecureWater" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelSecureWater" aria-hidden="true">
+<div class="modal fade pj-animate-fade-up" id="projectModalSecureWater" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelSecureWater" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -485,18 +735,18 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="project-image">
-                <img src="{% static 'projects/securewater1.png' %}" alt="SecureWater Upload Interface">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/SecureWater1.png' %}" alt="SecureWater Screenshot 1">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/securewater2.png' %}" alt="SecureWater Verification Process">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/SecureWater2.png' %}" alt="SecureWater Screenshot 2">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/securewater3.png' %}" alt="SecureWater Results Dashboard">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/SecureWater3.png' %}" alt="SecureWater Screenshot 3">
               </div>
             </div>
           </div>
@@ -512,19 +762,16 @@
         <!-- Project Description -->
         <div class="mt-4">
           <h5>Overview</h5>
-          <p>SecureWater is an advanced image watermarking system that helps protect digital assets using frequency-domain techniques. The system provides robust watermarking with tamper detection capabilities, ensuring the integrity and authenticity of digital images.</p>
-
+          <p>SecureWater is an advanced image watermarking system designed to protect digital assets with tamper detection and verification capabilities. Built with React and Node.js, it ensures the integrity and authenticity of digital images.</p>
           <h5>Features</h5>
           <ul>
-            <li>Invisible watermark embedding using DCT/DWT techniques</li>
-            <li>Tamper detection and verification system</li>
-            <li>User authentication and image ownership tracking</li>
-            <li>Robust against image modifications and compression</li>
-            <li>Public verification portal for watermark checking</li>
+            <li>Robust image watermarking with tamper detection</li>
+            <li>Verification system for image authenticity</li>
+            <li>User-friendly interface for watermark management</li>
+            <li>Integration with cloud storage for secure image handling</li>
           </ul>
-
           <h5>Technologies Used</h5>
-          <p>React, Node.js, MongoDB, Sharp, JWT, Express.js</p>
+          <p>React, Node.js, MongoDB, Sharp</p>
         </div>
       </div>
       <div class="modal-footer justify-content-end">
@@ -537,9 +784,9 @@
   </div>
 </div>
 
-<!-- Modal: SAR Meditech -->
-<div class="modal fade animate-fade-up" id="projectModalSAR" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelSAR" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+<!-- Modal: SAR Meditech Website -->
+<div class="modal fade pj-animate-fade-up" id="projectModalSAR" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelSAR" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="projectModalLabelSAR">SAR Meditech Website</h5>
@@ -549,34 +796,34 @@
       </div>
       <div class="modal-body">
         <!-- Carousel for SAR Meditech Website -->
-        <div id="carouselSARWebsite" class="carousel slide" data-ride="carousel">
+        <div id="carouselSAR" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#carouselSARWebsite" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselSARWebsite" data-slide-to="1"></li>
-            <li data-target="#carouselSARWebsite" data-slide-to="2"></li>
+            <li data-target="#carouselSAR" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselSAR" data-slide-to="1"></li>
+            <li data-target="#carouselSAR" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="project-image">
-                <img src="{% static 'projects/SAR1.png' %}" alt="SAR Meditech Website Home Page">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/SAR1.png' %}" alt="SAR Meditech Website Screenshot 1">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/SAR2.png' %}" alt="SAR Meditech Services Page">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/SAR2.png' %}" alt="SAR Meditech Website Screenshot 2">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/SAR3.png' %}" alt="SAR Meditech Team Page">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/SAR3.png' %}" alt="SAR Meditech Website Screenshot 3">
               </div>
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselSARWebsite" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#carouselSAR" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next" href="#carouselSARWebsite" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#carouselSAR" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
@@ -584,17 +831,16 @@
         <!-- Project Description -->
         <div class="mt-4">
           <h5>Overview</h5>
-          <p>A modern company website for SAR Meditech, a leading medical equipment procurement firm with 25 years of experience. Built using Vue 3 and TailwindCSS, the website showcases their services, achievements, and expertise in healthcare commerce.</p>
+          <p>SAR Meditech Website is a modern company website for a medical equipment procurement firm. Built with Vue 3, it features a responsive design and dynamic components to provide an engaging user experience.</p>
           <h5>Features</h5>
           <ul>
-            <li>Responsive design with mobile-first approach</li>
-            <li>Dynamic component architecture using Vue 3 Composition API</li>
-            <li>Modern UI with TailwindCSS for optimal styling</li>
-            <li>TypeScript integration for enhanced code reliability</li>
-            <li>Optimized performance with Vite build system</li>
+            <li>Responsive design for optimal viewing on all devices</li>
+            <li>Dynamic components for interactive user experience</li>
+            <li>Comprehensive product catalog with detailed descriptions</li>
+            <li>Contact and inquiry forms for customer engagement</li>
           </ul>
           <h5>Technologies Used</h5>
-          <p>Vue 3, TailwindCSS, TypeScript, Vite, ESLint</p>
+          <p>Vue 3, TailwindCSS, TypeScript</p>
         </div>
       </div>
       <div class="modal-footer justify-content-end">
@@ -608,7 +854,7 @@
 </div>
 
 <!-- Modal: Course Scheduler -->
-<div class="modal fade animate-fade-up" id="projectModalScheduler" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelScheduler" aria-hidden="true">
+<div class="modal fade pj-animate-fade-up" id="projectModalScheduler" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelScheduler" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -619,34 +865,34 @@
       </div>
       <div class="modal-body">
         <!-- Carousel for Course Scheduler -->
-        <div id="carouselCourseScheduler" class="carousel slide" data-ride="carousel">
+        <div id="carouselScheduler" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#carouselCourseScheduler" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselCourseScheduler" data-slide-to="1"></li>
-            <li data-target="#carouselCourseScheduler" data-slide-to="2"></li>
+            <li data-target="#carouselScheduler" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselScheduler" data-slide-to="1"></li>
+            <li data-target="#carouselScheduler" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="project-image">
-                <img src="{% static 'projects/CourseScheduler1.jpg' %}" alt="Course Scheduler Screenshot 1">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/CourseScheduler1.png' %}" alt="Course Scheduler Screenshot 1">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/CourseScheduler2.jpg' %}" alt="Course Scheduler Screenshot 2">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/CourseScheduler2.png' %}" alt="Course Scheduler Screenshot 2">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/CourseScheduler3.jpg' %}" alt="Course Scheduler Screenshot 3">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/CourseScheduler3.png' %}" alt="Course Scheduler Screenshot 3">
               </div>
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselCourseScheduler" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#carouselScheduler" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next" href="#carouselCourseScheduler" role="button" data-slide="next">
+          <a class="carousel-control-next" href="#carouselScheduler" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
@@ -657,13 +903,13 @@
           <p>Course Scheduler is a modern web application that leverages web scraping and natural language processing to automatically gather and process course information. Built with the MERN stack, it provides an intelligent course planning solution.</p>
           <h5>Features</h5>
           <ul>
-            <li>Automated course data collection using Selenium and Beautiful Soup</li>
-            <li>Natural language processing for course description analysis</li>
-            <li>Real-time schedule generation with MongoDB</li>
-            <li>RESTful API with Express and Node.js</li>
+            <li>Automated course information gathering using web scraping</li>
+            <li>Natural language processing for course data analysis</li>
+            <li>Intelligent course planning and scheduling</li>
+            <li>User-friendly interface for course management</li>
           </ul>
           <h5>Technologies Used</h5>
-          <p>NLTK, Selenium, Beautiful Soup, MongoDB, Express.js, React, Node.js</p>
+          <p>NLTK, Selenium, Beautiful Soup, MongoDB, Express, React, Node.js</p>
         </div>
       </div>
       <div class="modal-footer justify-content-end">
@@ -677,8 +923,8 @@
 </div>
 
 <!-- Modal: StockFetcher -->
-<div class="modal fade animate-fade-up" id="projectModalStockFetcher" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelStockFetcher" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+<div class="modal fade pj-animate-fade-up" id="projectModalStockFetcher" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelStockFetcher" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="projectModalLabelStockFetcher">StockFetcher</h5>
@@ -696,18 +942,18 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="project-image">
-                <img src="{% static 'projects/FA1.jpg' %}" alt="StockFetcher Dashboard">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/FA1.jpg' %}" alt="StockFetcher Screenshot 1">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/FA2.jpg' %}" alt="Stock Analysis Page">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/FA2.jpg' %}" alt="StockFetcher Screenshot 2">
               </div>
             </div>
             <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/FA3.jpg' %}" alt="Price Predictions View">
+              <div class="pj-project-image">
+                <img src="{% static 'projects/FA3.jpg' %}" alt="StockFetcher Screenshot 3">
               </div>
             </div>
           </div>
@@ -723,17 +969,16 @@
         <!-- Project Description -->
         <div class="mt-4">
           <h5>Overview</h5>
-          <p>StockFetcher is a comprehensive stock analysis platform built with Django that provides real-time market data, historical backtesting capabilities, and machine learning-powered price predictions using financial APIs. The system integrates multiple financial APIs to deliver accurate insights for informed trading decisions.</p>
+          <p>StockFetcher is a Django web app that provides real-time stock data analysis, backtesting capabilities, and ML-powered price predictions using financial APIs.</p>
           <h5>Features</h5>
           <ul>
-            <li>Real-time stock price tracking and visualization</li>
-            <li>Historical data analysis and backtesting engine</li>
-            <li>ML-based price prediction models using LSTM networks</li>
-            <li>Custom strategy testing and performance metrics</li>
-            <li>Interactive dashboards with technical indicators</li>
+            <li>Real-time stock data analysis</li>
+            <li>Backtesting capabilities for trading strategies</li>
+            <li>ML-powered price predictions</li>
+            <li>Integration with financial APIs for data retrieval</li>
           </ul>
           <h5>Technologies Used</h5>
-          <p>Django, Python, Pandas, Scikit-learn, TensorFlow, Alpha Vantage API, PostgreSQL</p>
+          <p>Django, Pandas, Scikit-learn</p>
         </div>
       </div>
       <div class="modal-footer justify-content-end">
@@ -746,364 +991,16 @@
   </div>
 </div>
 
-<!-- New Modal: HomeHarmony -->
-<div class="modal fade animate-fade-up" id="projectModalHomeHarmony" tabindex="-1" role="dialog" aria-labelledby="projectModalLabelHomeHarmony" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="projectModalLabelHomeHarmony">HomeHarmony</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close HomeHarmony Modal">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Carousel for HomeHarmony -->
-        <div id="carouselHomeHarmony" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselHomeHarmony" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselHomeHarmony" data-slide-to="1"></li>
-            <li data-target="#carouselHomeHarmony" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="project-image">
-                <img src="{% static 'projects/HomeHarmony1.png' %}" alt="HomeHarmony Property Listings">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/HomeHarmony2.png' %}" alt="HomeHarmony User Dashboard">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="project-image">
-                <img src="{% static 'projects/HomeHarmony3.png' %}" alt="HomeHarmony Chat System">
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselHomeHarmony" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselHomeHarmony" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-        <!-- Project Description -->
-        <div class="mt-4">
-          <h5>Overview</h5>
-          <p>HomeHarmony is a comprehensive real estate platform built with React, TypeScript, and Supabase. It facilitates seamless interactions between buyers and sellers with robust property management and communication features.</p>
-          
-          <h5>Features</h5>
-          <ol>
-            <li><strong>User Roles:</strong>
-              <ul>
-                <li>Buyers can browse properties, save favorites, write reviews, and make purchases</li>
-                <li>Sellers can list properties and manage their listings</li>
-              </ul>
-            </li>
-            <li><strong>Property Management:</strong>
-              <ul>
-                <li>Property listings with details like price, bedrooms, bathrooms, square footage</li>
-                <li>Support for property images and amenities</li>
-                <li>Property verification system</li>
-              </ul>
-            </li>
-            <li><strong>Housing Complexes:</strong>
-              <ul>
-                <li>Management of apartment/condo complexes</li>
-                <li>Complex amenities tracking</li>
-                <li>Review and rating system for complexes</li>
-              </ul>
-            </li>
-            <li><strong>Authentication & Authorization:</strong>
-              <ul>
-                <li>User registration and login</li>
-                <li>Role-based access control</li>
-                <li>Password recovery functionality</li>
-              </ul>
-            </li>
-            <li><strong>Payment Integration:</strong>
-              <ul>
-                <li>Stripe integration for property purchases</li>
-                <li>Secure checkout process</li>
-                <li>Payment verification system</li>
-              </ul>
-            </li>
-            <li><strong>Communication Features:</strong>
-              <ul>
-                <li>Chat system between buyers and sellers</li>
-                <li>Support for both individual and group chats</li>
-                <li>Real-time messaging</li>
-              </ul>
-            </li>
-          </ol>
-          
-          <h5>Technologies Used</h5>
-          <ul>
-            <li>React with TypeScript</li>
-            <li>Tailwind CSS and shadcn/ui for styling</li>
-            <li>Supabase for backend and authentication</li>
-            <li>Framer Motion for animations</li>
-            <li>Google Maps integration for location services</li>
-            <li>Stripe for payment processing</li>
-          </ul>
-        </div>
-      </div>
-      <div class="modal-footer justify-content-end">
-        <a href="https://www.home-harmony.me/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="View HomeHarmony on GitHub">
-          <i class="fab fa-github"></i> View on GitHub
-        </a>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close HomeHarmony Modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-{% block extra_css %}
-<style>
-/* Section Title */
-.section-title {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Intro Text */
-.intro-text {
-  color: var(--text-light);
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  line-height: 1.5;
-}
-
-/* Filter Buttons */
-.filter-buttons .filter-btn {
-  margin: 0 5px;
-  transition: background-color var(--transition-speed), color var(--transition-speed);
-}
-
-.filter-buttons .filter-btn.active,
-.filter-buttons .filter-btn:hover {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-/* Projects Grid */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-/* Project Cards */
-.project-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 1rem;
-  box-shadow: var(--shadow);
-  padding: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Shimmer effect on hover */
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(130deg, rgba(255,255,255,0.3), transparent 50%);
-  transform: rotate(0deg);
-  transition: all 0.6s ease;
-  opacity: 0;
-}
-
-.project-card:hover::before {
-  transform: rotate(25deg) translate(100%, -50%);
-  opacity: 0.5;
-}
-
-/* Icon */
-.project-icon {
-  color: var(--primary-color);
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-icon {
-  transform: scale(1.1) rotate(5deg);
-}
-
-/* Project Content */
-.project-content h3 {
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-}
-
-.project-content p {
-  color: var(--text-light);
-  line-height: 1.4;
-  margin-bottom: 1rem;
-}
-
-/* Tech Stack */
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.tech-tag {
-  background: rgba(99,102,241,0.1);
-  color: var(--primary-color);
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
-/* Project Actions */
-.project-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Project Link */
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: transform 0.3s ease;
-}
-
-.project-link:hover {
-  transform: translateX(5px);
-}
-
-/* GitHub Link */
-.github-link {
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  transition: color var(--transition-speed);
-}
-
-.github-link:hover {
-  color: var(--accent-color);
-}
-
-/* Fade-up animation */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  opacity: 0;
-}
-
-/* Modal Styles */
-.modal-content {
-  background: var(--card-bg);
-  color: var(--text-color);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 1rem;
-}
-
-.modal-header {
-  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-}
-
-.modal-title {
-  color: var(--primary-color);
-}
-
-.modal-body img {
-  border-radius: 0.5rem;
-}
-
-/* Carousel Indicators */
-.carousel-indicators li {
-  background-color: var(--primary-color);
-}
-
-.carousel-indicators .active {
-  background-color: var(--accent-color);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  .project-actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .github-link {
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .filter-buttons .filter-btn {
-    width: 100%;
-    margin: 5px 0;
-  }
-}
-
-/* Project Image */
-.project-image {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
-  overflow: hidden;
-}
-.project-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-</style>
-{% endblock %}
-
 {% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Fade-up animations
-  const fadeElements = document.querySelectorAll('.animate-fade-up');
+  // Intersection Observer for fade-up
+  const fadeElements = document.querySelectorAll('.pj-animate-fade-up');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting) {
-        entry.target.style.animation = 'fadeUp 0.8s ease forwards';
+        // run the animation
+        entry.target.style.animation = 'pjFadeUp 0.8s ease forwards';
         observer.unobserve(entry.target);
       }
     });
@@ -1112,22 +1009,22 @@ document.addEventListener('DOMContentLoaded', () => {
   fadeElements.forEach(el => observer.observe(el));
 
   // Filter functionality
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const filterItems = document.querySelectorAll('.filter-item');
+  const filterButtons = document.querySelectorAll('.pj-filter-btn');
+  const filterItems = document.querySelectorAll('.pj-filter-item');
 
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-      // Remove active class from all buttons
+      // remove .active from all
       filterButtons.forEach(btn => btn.classList.remove('active'));
-      // Add active class to the clicked button
+      // add .active to the clicked button
       button.classList.add('active');
 
       const filter = button.getAttribute('data-filter');
-
       filterItems.forEach(item => {
         if(filter === 'all') {
           item.style.display = 'block';
         } else {
+          // show if item has the matching filter class
           if(item.classList.contains(filter)) {
             item.style.display = 'block';
           } else {
@@ -1138,8 +1035,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Keyboard accessibility for project links
-  document.querySelectorAll('.project-link').forEach(link => {
+  // Keyboard accessibility for project links (modal triggers)
+  document.querySelectorAll('.pj-project-link').forEach(link => {
     link.setAttribute('tabindex', '0');
     link.addEventListener('keypress', function(e) {
       if(e.key === 'Enter' || e.key === ' ') {
@@ -1157,5 +1054,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-{% endblock %}
+{% endblock extra_js %}
 {% endblock content %}
